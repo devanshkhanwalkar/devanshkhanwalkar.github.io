@@ -1,0 +1,169 @@
+@charset "utf-8";
+/* CSS Document */
+*
+{
+	font-family:Ebrima;
+}
+body
+{
+	/*background:url('img04.jpg') repeat;*/
+background:#FAF8EF;
+}
+p
+{
+	text-align:justify;
+	margin-left:50px;
+	margin-right:50px;
+	margin-top:200px;
+	
+}
+.score
+{
+	position:relative;
+	width:100px;
+	height:50px;
+	bottom:-15px;
+	color:#fff;
+	font-size:20px;
+	background:#BBADA0;
+	border-radius:5px;
+	width:100px;
+	height:40px;
+	text-align:center;
+}
+.moves
+{
+	position:relative;
+	width:100px;
+	height:50px;
+	bottom:-15px;
+	color:#fff;
+	font-size:20px;
+	background:#BBADA0;
+	border-radius:5px;
+	width:100px;
+	height:40px;
+	text-align:center;
+}
+.sc
+{
+	position:relative;
+	float:left;
+	left:360px;
+}
+.mv
+{
+	position:relative;
+	float:left;
+	left:425px;
+}
+
+#head
+{
+	width:100%;
+	height:15%;
+	/*background:url('img03.jpg') repeat;*/
+	border-radius:5px;
+	float:left;
+}
+
+#left
+{
+	float:left;
+	position:relative;
+	width:400px;
+	height:500px;
+	color:#776E65;
+	
+
+	
+}
+#mid
+{
+	float:left;
+	position:relative;
+	width:450px;
+	height:500px;
+	color:#776E65;
+
+	
+}
+#rite
+{
+	float:left;
+	position:relative;
+	width:350px;
+	height:500px;
+	color:#776E65;
+	
+
+}
+
+h1
+{
+	color:#776E65;
+	float:left;
+	position:relative;
+	left:70px;
+	font-size:100px;
+	top:-90px;
+	
+	
+}
+h6
+{
+	
+	float:right;
+	position:relative;
+	right:50px;
+	bottom:50px;
+	color:#776E65;
+}
+h5
+{
+	color:#776E65;
+	float:left;
+	position:relative;
+	left:-100px;
+	top:90px;
+	
+	
+}
+
+.schedule
+{
+
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:20px;
+	
+	border-radius:5px;
+	background:#BBADA0;
+	width:450px;
+	height:450px;
+	margin-top:50px;
+	float:left;
+	position:relative;
+
+	
+	
+
+
+}
+
+
+/* === Button Style === */
+.b
+{
+    width:100px;
+	height:100px;
+	background:#CCC0B3;
+	
+	margin-left:3px;
+	color:#776E65;
+	font-size:30px;
+	
+	text-align: center;
+	border:none;
+border-radius:5px;
+	
+}
