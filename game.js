@@ -1,6 +1,19 @@
 function init()
 {
 	
+		
+	setTimeout("gameloading()",3000);
+
+	
+	
+	
+}
+function gameloading()
+{
+	
+	document.getElementById("load").style.display="none";
+	document.getElementById("myTable").style.display="block";
+	changeColor();
 	var r1=Math.floor((Math.random()*3)+1);
 	var r2=Math.floor((Math.random()*3)+1);
 	for(var i=0;i< r1;i++)
@@ -15,8 +28,6 @@ function init()
 	  
 	}
 	}
-	
-	
 }
 
      
