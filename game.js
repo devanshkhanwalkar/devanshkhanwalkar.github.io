@@ -1,12 +1,26 @@
 function init()
 {
 	
-		
+		document.getElementById("load").style.display="block";
+	document.getElementById("myTable").style.display="none";
 	setTimeout("gameloading()",3000);
 
 	
 	
 	
+}
+function restart()
+{
+	document.getElementById("score").value=0;
+document.getElementById("moves").value=0;
+for(var m=0;m<=3;m++)
+	{
+	for(var n=0;n<=3;n++)
+	  {
+		  document.getElementById(m+""+n).value="";
+	  }
+	}
+init();
 }
 function gameloading()
 {
@@ -28,6 +42,7 @@ function gameloading()
 	  
 	}
 	}
+	changeColor();
 }
 
      
@@ -764,14 +779,14 @@ function gameOver()
 		not++;
 	}
 	if(game==16&&not==16)
-	alert("GAME OVER :-( Refresh the window to Restart..");
+	alert("GAME OVER :-( Hit Restart to try again..");
 	
 	for(var m=0;m<=3;m++)
 	for(var n=0;n<=3;n++)
 	{
 		if(document.getElementById(m+""+n).value==4096)
 		{
-			alert("you win!! Refresh the window to Restart");
+			alert("you win!! Hit Restart to play again");
 		}
 	}
 	
