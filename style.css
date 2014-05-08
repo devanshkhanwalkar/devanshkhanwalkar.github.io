@@ -133,6 +133,7 @@ h5
 .schedule
 {
 
+
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:20px;
 	
@@ -143,7 +144,8 @@ h5
 	margin-top:50px;
 	float:left;
 	position:relative;
-
+	
+display:none;
 	
 	
 
@@ -166,4 +168,103 @@ h5
 	border:none;
 border-radius:5px;
 	
+}
+
+/*===========================loading=================================================*/
+
+.css_spinner{
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	left: 50%;
+	top: 50%;
+	margin: -50px 0 0 -50px;
+	opacity: .9;
+	
+	-webkit-border-radius: 999px;
+	-moz-border-radius: 999px;
+	border-radius: 999px;
+}
+
+.css_spinner .half{
+	position: absolute;
+	width: 50px;
+	height: 100px;
+	top: 0;
+	overflow: hidden;
+}
+
+.css_spinner .left{
+	left: 0px;
+	
+	-webkit-border-radius: 999px 0 0 999px;
+	-moz-border-radius: 999px 0 0 999px;
+	border-radius: 999px 0 0 999px;
+}
+
+.css_spinner .right{
+	left: 50px;
+	
+	-webkit-border-radius: 0 999px 999px 0;
+	-moz-border-radius: 0 999px 999px 0;
+	border-radius: 0 999px 999px 0;
+}
+
+.css_spinner .band{
+	position: absolute;
+	width: 50px;
+	height: 100px;
+	background:#F65E3B;
+	
+	-webkit-border-radius: 999px;
+	-moz-border-radius: 999px;
+	border-radius: 999px;
+	
+	-webkit-animation: cssSpinnerRight 1s infinite linear;
+	-moz-animation: cssSpinnerRight 1s infinite linear;
+}
+
+.css_spinner .left .band{
+	left: 0;
+	border-left: 50px solid #FAF8EF;
+
+	-webkit-animation: cssSpinnerLeft 1s infinite linear;
+	-moz-animation: cssSpinnerLeft 1s infinite linear;
+}
+
+.css_spinner .right .band{
+	right: 0;
+	border-right: 50px solid #FAF8EF;
+}
+
+@-webkit-keyframes cssSpinnerLeft{
+  0%{-webkit-transform:rotate(0deg)}
+  25%{-webkit-transform:rotate(0deg)}
+  50%{-webkit-transform:rotate(180deg)}
+  75%{-webkit-transform:rotate(180deg)}
+  100%{-webkit-transform:rotate(360deg)}
+}
+
+@-webkit-keyframes cssSpinnerRight{
+  0%{-webkit-transform:rotate(0deg)}
+  25%{-webkit-transform:rotate(180deg)}
+  50%{-webkit-transform:rotate(180deg)}
+  75%{-webkit-transform:rotate(360deg)}
+  100%{-webkit-transform:rotate(360deg)}
+}
+
+@-moz-keyframes cssSpinnerLeft{
+  0%{-moz-transform:rotate(0deg)}
+  25%{-moz-transform:rotate(0deg)}
+  50%{-moz-transform:rotate(180deg)}
+  75%{-moz-transform:rotate(180deg)}
+  100%{-moz-transform:rotate(360deg)}
+}
+
+@-moz-keyframes cssSpinnerRight{
+  0%{-moz-transform:rotate(0deg)}
+  25%{-moz-transform:rotate(180deg)}
+  50%{-moz-transform:rotate(180deg)}
+  75%{-moz-transform:rotate(360deg)}
+  100%{-moz-transform:rotate(360deg)}
 }
