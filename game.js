@@ -3,6 +3,8 @@ function init()
 	
 		document.getElementById("load").style.display="block";
 	document.getElementById("myTable").style.display="none";
+	document.getElementById("score").value=score;
+document.getElementById("moves").value=moves;
 	setTimeout("gameloading()",3000);
 
 	
@@ -11,8 +13,11 @@ function init()
 }
 function restart()
 {
-	document.getElementById("score").value=0;
-document.getElementById("moves").value=0;
+moves=0;
+score=0;
+	//document.getElementById("score").value=moves;
+//document.getElementById("moves").value=score;
+
 for(var m=0;m<=3;m++)
 	{
 	for(var n=0;n<=3;n++)
@@ -23,10 +28,10 @@ for(var m=0;m<=3;m++)
 init();
 }
 function gameloading()
-{
-	
+{	
 	document.getElementById("load").style.display="none";
 	document.getElementById("myTable").style.display="block";
+
 	changeColor();
 	var r1=Math.floor((Math.random()*3)+1);
 	var r2=Math.floor((Math.random()*3)+1);
@@ -62,40 +67,35 @@ function checkKey(e) {
     if (e.keyCode == '37') {
 		
 		left();
-		gameOver();
-moves++;
-document.getElementById("score").value=score;
-document.getElementById("moves").value=moves;
+		
+
         // left arrow
     }
-	if (e.keyCode == '38') {
+	else if (e.keyCode == '38') {
 		
 		up();
-		gameOver();
-moves++;
-document.getElementById("score").value=score;
-document.getElementById("moves").value=moves;
+		
         // up arrow
     }
-    if (e.keyCode == '39') {
+    else if (e.keyCode == '39') {
 		
 		right();
-		gameOver();
-moves++;
-document.getElementById("score").value=score;
-document.getElementById("moves").value=moves;
+		
+
         // right arrow
     }
-	if (e.keyCode == '40') {
+	else if(e.keyCode == '40') {
 		
 		down();
-		gameOver();
-moves++;
-document.getElementById("score").value=score;
-document.getElementById("moves").value=moves;
+		
+
         // down arrow
     }
-	
+	moves++;
+	gameOver();
+document.getElementById("score").value=score;
+document.getElementById("moves").value=moves;
+
 }
 function left()
 {
