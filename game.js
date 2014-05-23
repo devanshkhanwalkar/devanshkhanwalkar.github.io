@@ -67,31 +67,31 @@ function checkKey(e) {
     if (e.keyCode == '37') {
 		
 		left();
-		
+		moves++;
 
         // left arrow
     }
 	else if (e.keyCode == '38') {
 		
 		up();
-		
+		moves++;
         // up arrow
     }
     else if (e.keyCode == '39') {
 		
 		right();
-		
+		moves++;
 
         // right arrow
     }
 	else if(e.keyCode == '40') {
 		
 		down();
-		
+		moves++;
 
         // down arrow
     }
-	moves++;
+	
 	gameOver();
 document.getElementById("score").value=score;
 document.getElementById("moves").value=moves;
