@@ -1,793 +1,678 @@
-function init()
-{
-	
-		document.getElementById("load").style.display="block";
-	document.getElementById("myTable").style.display="none";
-	document.getElementById("score").value=score;
-document.getElementById("moves").value=moves;
-	setTimeout("gameloading()",3000);
+//=========================== jquery initialization function=================================================
+$(function () {
+    init();
+});
 
-	
-	
-	
-}
-function restart()
-{
-moves=0;
-score=0;
-	//document.getElementById("score").value=moves;
-//document.getElementById("moves").value=score;
+//===========================end of jquery initialization function=================================================
+//=========================== grid initialization function=========================================================
+/*
+initializes score=0  , moves=0 , shows loding spinner and hides grid
 
-for(var m=0;m<=3;m++)
-	{
-	for(var n=0;n<=3;n++)
-	  {
-		  document.getElementById(m+""+n).value="";
-	  }
-	}
-init();
-}
-function gameloading()
-{	
-	document.getElementById("load").style.display="none";
-	document.getElementById("myTable").style.display="block";
+calls game loading function after 3 seconds
+*/
 
-	changeColor();
-	var r1=Math.floor((Math.random()*3)+1);
-	var r2=Math.floor((Math.random()*3)+1);
-	for(var i=0;i< r1;i++)
-	{
-		for(var j=0;j< r2;j++)
-	{
-	  	
-	 
-	  var k=Math.floor((Math.random()*2)+0);
-	  if(k==1)
-	  document.getElementById(i+""+j).value=2;
-	  
-	}
-	}
-	changeColor();
+function init() {
+
+    $("#load").show();
+    $("#myTable").hide();
+    $("#score").val(score);
+    $("#moves").val(moves);
+    setTimeout("gameloading()", 3000);
 }
 
-     
-	 
-	
-	var count;
-var moves=0;
-var score=0;
+//===========================end of grid initialization function=================================================
+//=========================== restart function=================================================
+/*
+invoked if player hits restart button
+resets moves, score , each grid cell to blank and calls init() function again
+*/
+
+function restart() {
+    moves = 0;
+    score = 0;
+
+    for (var m = 0; m <= 3; m++) {
+        for (var n = 0; n <= 3; n++) {
+            $("#" + m + "" + n).val("");
+        }
+    }
+    init();
+}
+
+//===========================end of restart function=================================================
+//=========================== gameloading function=================================================
+/*
+hides loading spinner and displays grid with 2 generated on randomly chosen grid cells
+also calls changeColor function that gives appropriate background and foreground colors to each cell
+
+*/
+
+function gameloading() {
+    $("#load").hide();
+    $("#myTable").show();
+
+    changeColor();
+    var r1 = Math.floor((Math.random() * 3) + 1);
+    var r2 = Math.floor((Math.random() * 3) + 1);
+    for (var i = 0; i < r1; i++) {
+        for (var j = 0; j < r2; j++) {
+
+
+            var k = Math.floor((Math.random() * 2) + 0);
+            if (k == 1) $("#" + i + "" + j).val("2");
+
+        }
+    }
+    changeColor();
+}
+
+//=========================== end of gameloading function=================================================   
+var count;
+var moves = 0; // moves variable initialized to zero
+var score = 0; // score variable initialized to zero
 var randomElement = 0;
-	
-	document.onkeydown = checkKey;
+
+document.onkeydown = checkKey; // invokes checkKey function as soon as player presses any key
+//=========================== checkKey function=================================================
+/*
+check wether only any one of the 4 arrow keys is pressed, if any other key is pressed this function does not responds
+*/
 
 function checkKey(e) {
 
     e = e || window.event;
 
-    if (e.keyCode == '37') {
-		
-		left();
-		moves++;
-
-        // left arrow
+    if (e.keyCode == '37') { //keycode if 37 it is left arrow
+        left(); // so call left() function
+        moves++; //this is also a move so move++
+    } else if (e.keyCode == '38') { //keycode if 38 it is left arrow
+        up(); // so call up() function
+        moves++; //this is also a move so move++
+    } else if (e.keyCode == '39') { //keycode if 39 it is left arrow
+        right(); // so call right() function
+        moves++; //this is also a move so move++
+    } else if (e.keyCode == '40') { //keycode if 40 it is left arrow
+        down(); // so call down() function
+        moves++; //this is also a move so move++
     }
-	else if (e.keyCode == '38') {
-		
-		up();
-		moves++;
-        // up arrow
+
+    gameOver(); //after reaching here with appropriate move done check if next move can be done or not so call gameover() function
+    $("#score").val(score); //if here means game is not over so update score value to the score botton
+    $("#moves").val(moves); //also update moves button value
+}
+
+//=========================== left function=================================================
+/*
+this is invoked if left arrow key is pressed
+we have to move every cell to the left so for every row it calls its 2 utility functions
+subleft ---> that shifts all cells to the left
+addLeftMove ---> that adds a random generated number (only 2 or 4) in any of the blank valued cells (randomly chosen)
+
+other than this it also calls change color function to make changes in the color of cell appropriatly as the cells are shifted
+and the new numbers are generated.
+*/
+
+function left() {
+
+    for (var i = 0; i <= 3; i++) {
+
+        changeColor();
+        subleft(i);
+        changeColor();
+
+        //changeColor();
     }
-    else if (e.keyCode == '39') {
-		
-		right();
-		moves++;
+    addLeftMove();
+    changeColor();
+}
 
-        // right arrow
+//=========================== end of left function=================================================
+//=========================== subLeft function=================================================
+/*
+primary work is to shift all cells to the left of grid if possible
+i.e. if already on the left then ignore
+*/
+
+function subleft(i) {
+
+
+    var A = new Array(); // array A that stores all the non empty values present in the ith row
+    var track = i; //value of i is changed many time so before going store its value
+    count = 1; //just to increase index of array
+    var f = 0;
+
+    for (var j = 0; j < 4; j++) {
+
+        if (($("#" + i + "" + j).val()) != "") //if value of cell isnt blank
+        {
+            A[count] = $("#" + i + "" + j).val() - 0; //put it in A
+            count++;
+        }
     }
-	else if(e.keyCode == '40') {
-		
-		down();
-		moves++;
 
-        // down arrow
+    j = 0; //reset j to 0
+    count--; //as count in the last iteration goes to one more we make it one less
+
+    for (var k = 1; k <= count; k++) // now we have all non blank numbers of the row
+    {
+        //this loop simply puts those value one by one starting from 1st column
+        $("#" + i + "" + j).val(A[k]); //uptill count becoz we only have "count" no of non blank values
+        j++;
     }
-	
-	gameOver();
-document.getElementById("score").value=score;
-document.getElementById("moves").value=moves;
 
+    for (var h = j; h < 4; h++) // and after that just put blank till the last!
+    {
+        $("#" + i + "" + h).val(""); // this makes all non blank values come to left and after that blank
+        j++;
+    }
+
+    for (j = 0; j <= 2; j++) //now we check for each cell in current row if its left cell value is equal to it coz we have to add them up!
+    {
+        if ($("#" + i + "" + j).val() == $("#" + i + "" + (j + 1)).val() && $("#" + i + "" + j).val() != "" && $("#" + i + "" + (j + 1)).val() != "") //check here for that
+        {
+            $("#" + i + "" + j).val(($("#" + i + "" + j).val() - 0) + ($("#" + i + "" + (j + 1)).val() - 0)); //and add them and put them in the left cell
+            $("#" + i + "" + j).animate({
+                width: "110px",
+                height: "110"
+            }, 100); //just to animate pop up effect when adding
+            $("#" + i + "" + j).animate({
+                width: "100px",
+                height: "100"
+            }, 100);
+
+
+            $("#" + i + "" + (j + 1)).val(""); //also put blank on right cell
+            score = (score - 0) + (($("#" + i + "" + j).val()) - 0); //and update score
+        }
+    }
+
+    for (var i = 0; i < 4; i++) {
+
+        for (var j = 0; j < 4; j++) {
+            if ($("#" + i + "" + j).val() == 0) //this creates 0 on blank cells so make it blank again
+            $("#" + i + "" + j).val("");
+        }
+    }
+
+    i = track; //value of i is changed many time so before going to next iteration to left function give back i its value
+    j = 0; //j has to restart every time so give it zero and go to left() for next ith row
 }
-function left()
-{
-	
-	for(var i=0;i<=3;i++)
-		{
-			
-			changeColor();
-			subleft(i);
-			changeColor();
-			addLeftMove(i);
-			changeColor();
-			//alert(i);
-			
-		}
-		
-}
+//=========================== end of subLeft function=================================================
+//=========================== addLeftMove function=================================================
+/*
+this function creates 2 or 4 on randomly chosen cells that are already blank
+*/
 
-function subleft(i)
-{
-	
-				//alert("in");
-				//alert(i);
-			var A=new Array();
-			
-			var track=i;
-			count=1;
-			var f=0;
-			
-			for(var j=0;j<4;j++)
-			{
-				
-				if((document.getElementById(i+""+j).value)!="")
-				{
-					A[count]=document.getElementById(i+""+j).value-0;
-					
-					count++;
-				}
-			}
-			
-			j=0;
-			count--;
-		
-			
-			
-			for(var k=1;k<=count;k++)
-			{
-				
-				document.getElementById(i+""+j).value=A[k];
-			
-				j++;
-			}
-			for(var h=j;h<4;h++)
-			{
-				document.getElementById(i+""+h).value="";
-				j++;
-			}
-			j=0;
-			if(document.getElementById(i+""+j).value==document.getElementById(i+""+(j+1)).value)
-			{
-			 document.getElementById(i+""+j).value=(document.getElementById(i+""+j).value-0)+(document.getElementById(i+""+(j+1)).value-0);
-			 document.getElementById(i+""+(j+1)).value="";
-				score=(score-0)+((document.getElementById(i+""+j).value)-0);
-				var flag=1;
-			}
-			j=1;
-			if(document.getElementById(i+""+j).value==document.getElementById(i+""+(j+1)).value)
-			{
-			 document.getElementById(i+""+j).value=(document.getElementById(i+""+j).value-0)+(document.getElementById(i+""+(j+1)).value-0);
-			 document.getElementById(i+""+(j+1)).value="";
-				score=(score-0)+((document.getElementById(i+""+j).value)-0);
-				
-			 flag++;
-			}
-			j=2;
-			if(document.getElementById(i+""+j).value==document.getElementById(i+""+(j+1)).value)
-			{
-			 document.getElementById(i+""+j).value=(document.getElementById(i+""+j).value-0)+(document.getElementById(i+""+(j+1)).value-0);
-			 document.getElementById(i+""+(j+1)).value="";
-				score=(score-0)+((document.getElementById(i+""+j).value)-0);
-			 flag++;
-			}
-			/*if(flag==1||flag==2)
-			{
-				document.getElementById(i+""+(j-1)).value=document.getElementById(i+""+j).value;
-				document.getElementById(i+""+j).value="";
-			}*/
-			for(var i=0;i<4;i++)
-		    {
-		
-			for(var j=0;j<4;j++)
-			{
-				if(document.getElementById(i+""+j).value==0)
-				document.getElementById(i+""+j).value="";
-			}
-		    }
-			
-			i=track;
-			j=0;
-			
-}
+function addLeftMove() {
 
-function addLeftMove(i)
-{
-	
-	var empty=new Array();
-	var q=1;
-	for(var x=0;x<=3;x++)
-	{
-		for(var y=0;y<=3;y++)
-		{
-			if(document.getElementById(x+""+y).value=="")
-			{
-			empty[q]=x+""+y;
-			q++;
-			}
-		}
-	}
-	
-	
-	var randomIndex = Math.floor(Math.random() * empty.length); 
+    var empty = new Array(); // Array empty that store position of grid cells that are empty
+    var q = 1; //for increasing index of array
+    for (var x = 0; x <= 3; x++) {
+        for (var y = 0; y <= 3; y++) {
+            if ($("#" + x + "" + y).val() == "") //if cell value is blank
+            {
+                empty[q] = x + "" + y; //store its position
+                q++;
+            }
+        }
+    }
+
+
+    var randomIndex = Math.floor(Math.random() * empty.length); //generates random index under range of empty array length
 
 
 
-//alert("randomElement="+randomElement);
-if(i==3)
-{
-	//alert("randomIndex="+randomIndex);
-	//alert(randomElement);
-	if(randomElement == 0)
-	{
-document.getElementById(empty[randomIndex]).value=2;
-randomElement++;
-}
-else
-{
-document.getElementById(empty[randomIndex]).value=4;
-randomElement =0;
-}
-}
 
-}
-
-function up()
-{
-	for(var i=0;i<=3;i++)
-		{ 
-		changeColor();
-		 subup(i);   
-		 changeColor();
-			addUpMove(i);
-		 changeColor();
-		}
-		
+    if (randomElement == 0) //this is to generate 2 1st time and 4 2nd time and so on one by one
+    {
+        $("#" + empty[randomIndex]).val("2");
+        randomElement++;
+    } else {
+        $("#" + empty[randomIndex]).val("4");
+        randomElement = 0;
+    }
 }
 
 
-function subup(i)
-{
-	var A=new Array();
-		    var track=i;
-			count=1;
-			//====================================================
-			for(var j=0;j<4;j++)
-			{
-				
-				if((document.getElementById(j+""+i).value)!="")
-				{
-					A[count]=document.getElementById(j+""+i).value;
-					count++;
-				}
-			}
-			j=0;
-			count--;
-			
-			
-			for(var k=1;k<=count;k++)
-			{
-				
-				var test=document.getElementById(j+""+i).value=A[k];
-				
-				j++;
-			}
-			for(var h=j;h<4;h++)
-			{
-				document.getElementById(h+""+i).value="";
-				j++;
-			}
-			
-			
-			
-			j=0;
-			if(document.getElementById(j+""+i).value==document.getElementById((j+1)+""+i).value)
-			{
-			 document.getElementById(j+""+i).value=(document.getElementById(j+""+i).value-0)+(document.getElementById((j+1)+""+i).value-0);
-			 document.getElementById((j+1)+""+i).value="";
-				score=(score-0)+((document.getElementById(j+""+i).value)-0);
-			 var flag=1;
-			}
-			j=1;
-			if(document.getElementById(j+""+i).value==document.getElementById((j+1)+""+i).value)
-			{
-			 document.getElementById(j+""+i).value=(document.getElementById(j+""+i).value-0)+(document.getElementById((j+1)+""+i).value-0);
-			 document.getElementById((j+1)+""+i).value="";
-				score=(score-0)+((document.getElementById(j+""+i).value)-0);
-			 flag++;
-			}
-			j=2;
-			if(document.getElementById(j+""+i).value==document.getElementById((j+1)+""+i).value)
-			{
-			 document.getElementById(j+""+i).value=(document.getElementById(j+""+i).value-0)+(document.getElementById((j+1)+""+i).value-0);
-			 document.getElementById((j+1)+""+i).value="";
-				score=(score-0)+((document.getElementById(j+""+i).value)-0);
-			 flag++;
-			}
-			/*if(flag==1||flag==2)
-			{
-				document.getElementById((j-1)+""+i).value=document.getElementById(j+""+i).value;
-				document.getElementById(j+""+i).value="";
-			}*/
-			for(var i=0;i<4;i++)
-		    {
-		
-			for(var j=0;j<4;j++)
-			{
-				if(document.getElementById(j+""+i).value==0)
-				document.getElementById(j+""+i).value="";
-			}
-		    }
-			
-			i=track;
-			j=0;
-			
-			//======================================================
-		
+//=========================== end of addLeftMove function=================================================
+//=========================== up function=================================================
+
+function up() {
+    for (var i = 0; i <= 3; i++) {
+        changeColor();
+        subup(i);
+        changeColor();
+
+    }
+    addUpMove();
+    changeColor();
 }
+//=========================== end of up function=================================================
+//=========================== subup function=================================================
 
-function addUpMove(i)
-{
-	
-	var empty=new Array();
-	var q=1;
-	for(var x=0;x<4;x++)
-	{
-		for(var y=0;y<4;y++)
-		{
-			if(document.getElementById(x+""+y).value=="")
-			{
-			empty[q]=x+""+y;
-			q++;
-			}
-		}
-	}
-	
-	
-	var randomIndex = Math.floor(Math.random() * empty.length); 
-var randomElement = empty[randomIndex];
-if(i==3)
-{
-if(randomElement == 0)
-	{
-document.getElementById(empty[randomIndex]).value=2;
-randomElement++;
-}
-else
-{
-document.getElementById(empty[randomIndex]).value=4;
-randomElement =0;
-}
+function subup(i) {
+    var A = new Array();
+    var track = i;
+    count = 1;
 
-}
-}
+    for (var j = 0; j < 4; j++) {
+
+        if (($("#" + j + "" + i).val()) != "") {
+            A[count] = $("#" + j + "" + i).val();
+            count++;
+        }
+    }
+    j = 0;
+    count--;
 
 
-function right()
-{
-	for(var i=0;i<=3;i++)
-		{
-			changeColor();
-			subright(i);
-			changeColor();
-			addRightMove(i);
-			changeColor();//======================================================
-		}
-}
+    for (var k = 1; k <= count; k++) {
+
+        var test = $("#" + j + "" + i).val(A[k]);
+
+        j++;
+    }
+    for (var h = j; h < 4; h++) {
+        $("#" + h + "" + i).val("");
+        j++;
+    }
 
 
-function subright(i)
-{
-	var A=new Array();
-			var track=i;
-			count=1;
-			//====================================================
-			for(var j=0;j<4;j++)
-			{
-				
-				if((document.getElementById(i+""+j).value)!="")
-				{
-					A[count]=document.getElementById(i+""+j).value;
-					count++;
-				}
-			}
-			j--;
-			count--;
-			
-			
-			for(var k=count;k>0;k--)
-			{
-				
-				var test=document.getElementById(i+""+j).value=A[k];
-				
-				j--;
-			}
-			for(var h=j;h>=0;h--)
-			{
-				document.getElementById(i+""+h).value="";
-				j--;
-			}
-			
-			
-			
-			j=3;
-			if(document.getElementById(i+""+j).value==document.getElementById(i+""+(j-1)).value)
-			{
-			 document.getElementById(i+""+j).value=(document.getElementById(i+""+j).value-0)+(document.getElementById(i+""+(j-1)).value-0);
-			 document.getElementById(i+""+(j-1)).value="";
-				score=(score-0)+((document.getElementById(i+""+j).value)-0);
-			 var flag=1;
-			}
-			j=2;
-			if(document.getElementById(i+""+j).value==document.getElementById(i+""+(j-1)).value)
-			{
-			 document.getElementById(i+""+j).value=(document.getElementById(i+""+j).value-0)+(document.getElementById(i+""+(j-1)).value-0);
-			 document.getElementById(i+""+(j-1)).value="";
-				score=(score-0)+((document.getElementById(i+""+j).value)-0);
-			 flag++;
-			}
-			j=1;
-			if(document.getElementById(i+""+j).value==document.getElementById(i+""+(j-1)).value)
-			{
-			 document.getElementById(i+""+j).value=(document.getElementById(i+""+j).value-0)+(document.getElementById(i+""+(j-1)).value-0);
-			 document.getElementById(i+""+(j-1)).value="";
-				score=(score-0)+((document.getElementById(i+""+j).value)-0);
-			 flag++;
-			}
-			/*if(flag==1||flag==2)
-			{
-				document.getElementById(i+""+(j+1)).value=document.getElementById(i+""+j).value;
-				document.getElementById(i+""+j).value="";
-			}*/
-			for(var i=0;i<4;i++)
-		    {
-		
-			for(var j=0;j<4;j++)
-			{
-				if(document.getElementById(i+""+j).value==0)
-				document.getElementById(i+""+j).value="";
-			}
-		    }
-			
-			i=track;
-			j=0;
-						
 
-}
+    j = 0;
+    if ($("#" + j + "" + i).val() == $("#" + (j + 1) + "" + i).val() && $("#" + j + "" + i).val() != "" && $("#" + (j + 1) + "" + i).val() != "") {
+        $("#" + j + "" + i).val(($("#" + j + "" + i).val() - 0) + ($("#" + (j + 1) + "" + i).val() - 0));
+        $("#" + j + "" + i).animate({
+            width: "110px",
+            height: "110"
+        }, 100);
+        $("#" + j + "" + i).animate({
+            width: "100px",
+            height: "100"
+        }, 100);
 
-function addRightMove(i)
-{
-	
-	var empty=new Array();
-	var q=1;
-	for(var x=0;x<4;x++)
-	{
-		for(var y=0;y<4;y++)
-		{
-			if(document.getElementById(x+""+y).value=="")
-			{
-			empty[q]=x+""+y;
-			q++;
-			}
-		}
-	}
-	
-	
-	var randomIndex = Math.floor(Math.random() * empty.length); 
-//var randomElement = empty[randomIndex];
+        $("#" + (j + 1) + "" + i).val("");
 
-if(i==3)
-{
-if(randomElement == 0)
-	{
-document.getElementById(empty[randomIndex]).value=2;
-randomElement++;
-}
-else
-{
-document.getElementById(empty[randomIndex]).value=4;
-randomElement =0;
-}
+        score = (score - 0) + (($("#" + j + "" + i).val()) - 0);
+        var flag = 1;
+    }
 
-}
-}
+    for (var i = 0; i < 4; i++) {
 
+        for (var j = 0; j < 4; j++) {
+            if ($("#" + j + "" + i).val() == 0) $("#" + j + "" + i).val("");
+        }
+    }
 
-function down()
-{
-	for(var i=0;i<=3;i++)
-		{
-			changeColor();
-			subdown(i);
-			changeColor();
-			addDownMove(i);
-			changeColor();
-			//======================================================
-		}
-}
+    i = track;
+    j = 0;
 
-function subdown(i)
-{
-	var A=new Array();
-			var track=i;
-			count=1;
-			//====================================================
-			for(var j=0;j<4;j++)
-			{
-				
-				if((document.getElementById(j+""+i).value)!="")
-				{
-					A[count]=document.getElementById(j+""+i).value;
-					count++;
-				}
-			}
-			j--;
-			count--;
-			
-			
-			for(var k=count;k>0;k--)
-			{
-				
-				var test=document.getElementById(j+""+i).value=A[k];
-				
-				j--;
-			}
-			for(var h=j;h>=0;h--)
-			{
-				document.getElementById(h+""+i).value="";
-				j--;
-			}
-			
-			
-			
-			j=3;
-			if(document.getElementById(j+""+i).value==document.getElementById((j-1)+""+i).value)
-			{
-			 document.getElementById(j+""+i).value=(document.getElementById(j+""+i).value-0)+(document.getElementById((j-1)+""+i).value-0);
-			 document.getElementById((j-1)+""+i).value="";
-				score=(score-0)+((document.getElementById(j+""+i).value)-0);
-			 var flag=1;
-			}
-			//=======================================================================================================================================
-			j=2;
-			if(document.getElementById(j+""+i).value==document.getElementById((j-1)+""+i).value)
-			{
-			 document.getElementById(j+""+i).value=(document.getElementById(j+""+i).value-0)+(document.getElementById((j-1)+""+i).value-0);
-			 document.getElementById((j-1)+""+i).value="";
-				score=(score-0)+((document.getElementById(j+""+i).value)-0);
-			 flag++;
-			}
-			//========================================================================================================================================
-			j=1;
-			if(document.getElementById(j+""+i).value==document.getElementById((j-1)+""+i).value)
-			{
-			 document.getElementById(j+""+i).value=(document.getElementById(j+""+i).value-0)+(document.getElementById((j-1)+""+i).value-0);
-			 document.getElementById((j-1)+""+i).value="";
-				score=(score-0)+((document.getElementById(j+""+i).value)-0);
-			 flag++;
-			}
-			/*if(flag==1||flag==2)
-			{
-				document.getElementById((j+1)+""+i).value=document.getElementById(j+""+i).value;
-				document.getElementById(j+""+i).value="";
-			}*/
-			for(var i=0;i<4;i++)
-		    {
-		
-			for(var j=0;j<4;j++)
-			{
-				if(document.getElementById(j+""+i).value==0)
-				document.getElementById(j+""+i).value="";
-			}
-		    }
-			
-			i=track;
-			j=0;
-			
-			
-}
-
-function addDownMove(i)
-{
-	
-	var empty=new Array();
-	var q=1;
-	for(var x=0;x<4;x++)
-	{
-		for(var y=0;y<4;y++)
-		{
-			if(document.getElementById(x+""+y).value=="")
-			{
-			empty[q]=x+""+y;
-			q++;
-			}
-		}
-	}
-	
-	
-	var randomIndex = Math.floor(Math.random() * empty.length); 
-
-if(i==3)
-{
-if(randomElement == 0)
-	{
-document.getElementById(empty[randomIndex]).value=2;
-randomElement++;
-}
-else
-{
-document.getElementById(empty[randomIndex]).value=4;
-randomElement =0;
-}
-
-}
-}
-
-
-function changeColor()
-{
-	for(var m=0;m<=3;m++)
-	{
-	for(var n=0;n<=3;n++)
-	  {
-		  if(document.getElementById(m+""+n).value=="")
-		  {
-		   document.getElementById(m+""+n).style.background="#CCC0B3";
-		   //document.getElementById(m+""+n).style.color ="";
-		  }
-		  if(document.getElementById(m+""+n).value==2)
-		  {
-		    document.getElementById(m+""+n).style.backgroundColor ="#EEE4DA";
-			document.getElementById(m+""+n).style.color ="#776E65";
-		  }
-			if(document.getElementById(m+""+n).value==4)
-			{
-		    document.getElementById(m+""+n).style.backgroundColor ="#EDE0C8";
-			document.getElementById(m+""+n).style.color ="#776E65";
-			}
-			if(document.getElementById(m+""+n).value==8)
-			{
-		    document.getElementById(m+""+n).style.backgroundColor ="#F2B179";
-			document.getElementById(m+""+n).style.color ="#F9F6F2";
-			}
-			if(document.getElementById(m+""+n).value==16)
-			{
-		    document.getElementById(m+""+n).style.backgroundColor ="#F59563";
-			document.getElementById(m+""+n).style.color ="#F9F6F2";
-			}
-			if(document.getElementById(m+""+n).value==32)
-			{
-		    document.getElementById(m+""+n).style.backgroundColor ="#F67C5F";
-			document.getElementById(m+""+n).style.color ="#F9F6F2";
-			}
-			if(document.getElementById(m+""+n).value==64)
-			{
-			document.getElementById(m+""+n).style.backgroundColor ="#F65E3B";
-			document.getElementById(m+""+n).style.color ="#F9F6F2";
-			}
-			if(document.getElementById(m+""+n).value==128)
-			{
-		    document.getElementById(m+""+n).style.backgroundColor ="#EDCF72";
-			document.getElementById(m+""+n).style.color ="#F9F6F2";
-			}
-			if(document.getElementById(m+""+n).value==256)
-			{
-		    document.getElementById(m+""+n).style.backgroundColor ="#EDCC61";
-			document.getElementById(m+""+n).style.color ="#F9F6F2";
-			}
-			if(document.getElementById(m+""+n).value==512)
-			{
-			document.getElementById(m+""+n).style.backgroundColor ="#EDC850";
-			document.getElementById(m+""+n).style.color ="#F9F6F2";
-			}
-			if(document.getElementById(m+""+n).value==1024)
-			{
-		    document.getElementById(m+""+n).style.backgroundColor ="#eb4141";
-			document.getElementById(m+""+n).style.color ="#fff";
-			}
-			if(document.getElementById(m+""+n).value==2048)
-			{
-			document.getElementById(m+""+n).style.backgroundColor ="#68b12f";
-			document.getElementById(m+""+n).style.color ="#fff";
-			}
-			if(document.getElementById(m+""+n).value==4096)
-			{
-		    document.getElementById(m+""+n).style.backgroundColor ="#000";
-			document.getElementById(m+""+n).style.color ="#fff";
-			}
-	  }
-	}
 
 
 }
+//=========================== end of subUp function=================================================
+//=========================== addUpMove function=================================================
 
-function gameOver()
-{
-	var game=0;
-	var not=0
-	
-	for(var m=0;m<=3;m++)
-	for(var n=0;n<=3;n++)
-	{
-		if(m==0&&n==0)
-		{
-			if((document.getElementById("01").value!=document.getElementById("00").value)&&(document.getElementById("10").value!=document.getElementById("00").value))
-			game++;
-			
-		}
-		if((m==0&&n==1)||(m==0&&n==2))
-		{
-			if((document.getElementById(m+""+(n-1)).value!=document.getElementById(m+""+n).value)&&(document.getElementById(m+""+(n+1)).value!=document.getElementById(m+""+n).value)&&(document.getElementById((m+1)+""+n).value!=document.getElementById(m+""+n).value))
-		    game++;
-		}
-		
-		if(m==0&&n==3)
-		{
-			if((document.getElementById("02").value!=document.getElementById("03").value)&&(document.getElementById("13").value!=document.getElementById("03").value))
-			game++;
-			
-		}
-		
-		if((m==1&&n==0)||(m==2&&n==0))
-		{
-			if((document.getElementById(m+""+(n+1)).value!=document.getElementById(m+""+n).value)&&(document.getElementById((m+1)+""+n).value!=document.getElementById(m+""+n).value)&&(document.getElementById((m-1)+""+n).value!=document.getElementById(m+""+n).value))
-			game++;
-		}
-		if(m==3&&n==0)
-		{
-			if((document.getElementById("20").value!=document.getElementById("30").value)&&(document.getElementById("31").value!=document.getElementById("30").value))
-			game++;
-		}
-		
-		if((m==3&&n==1)||(m==3&&n==2))
-		{
-			if((document.getElementById(m+""+(n-1)).value!=document.getElementById(m+""+n).value)&&(document.getElementById((m-1)+""+n).value!=document.getElementById(m+""+n).value)&&(document.getElementById((m-1)+""+n).value!=document.getElementById(m+""+n).value))
-			game++;
-		}
-		
-		if(m==3&&n==3)
-		{
-			if((document.getElementById("32").value!=document.getElementById("33").value)&&(document.getElementById("23").value!=document.getElementById("33").value))
-			game++;
-		}
-		
-		if((m==1&&n==3)||(m==2&&n==3))
-		{
-			if((document.getElementById((m-1)+""+n).value!=document.getElementById(m+""+n).value)&&(document.getElementById(m+""+(n-1)).value!=document.getElementById(m+""+n).value)&&(document.getElementById((m+1)+""+n).value!=document.getElementById(m+""+n).value))
-			game++;
-		}
-	}
-	
-	for(var m=1;m<=2;m++)
-	for(var n=1;n<=2;n++)
-	{
-		if((document.getElementById((m-1)+""+n).value!=document.getElementById(m+""+n).value)&&(document.getElementById(m+""+(n-1)).value!=document.getElementById(m+""+n).value)&&(document.getElementById((m+1)+""+n).value!=document.getElementById(m+""+n).value)&&(document.getElementById(m+""+(n+1)).value!=document.getElementById(m+""+n).value))
-			game++;
-		
-	}
-		for(var m=0;m<=3;m++)
-	for(var n=0;n<=3;n++)
-	{
-		if(document.getElementById(m+""+n).value!="")
-		not++;
-	}
-	if(game==16&&not==16)
-	alert("GAME OVER :-( Hit Restart to try again..");
-	
-	for(var m=0;m<=3;m++)
-	for(var n=0;n<=3;n++)
-	{
-		if(document.getElementById(m+""+n).value==4096)
-		{
-			alert("you win!! Hit Restart to play again");
-		}
-	}
-	
+function addUpMove() {
+
+    var empty = new Array();
+    var q = 1;
+    for (var x = 0; x < 4; x++) {
+        for (var y = 0; y < 4; y++) {
+            if ($("#" + x + "" + y).val() == "") {
+                empty[q] = x + "" + y;
+                q++;
+            }
+        }
+    }
+
+
+    var randomIndex = Math.floor(Math.random() * empty.length);
+    var randomElement = empty[randomIndex];
+
+
+    if (randomElement == 0) {
+        $("#" + empty[randomIndex]).val("2");
+        randomElement++;
+    } else {
+        $("#" + empty[randomIndex]).val("4");
+        randomElement = 0;
+    }
+
+
 }
+//=========================== end of addUpMove function=================================================
+//=========================== right function=================================================
+
+function right() {
+    for (var i = 0; i <= 3; i++) {
+        changeColor();
+        subright(i);
+        changeColor();
+
+    }
+    addRightMove();
+    changeColor();
+}
+//=========================== end of right function=================================================
+//=========================== subRight function=================================================
+
+function subright(i) {
+    var A = new Array();
+    var track = i;
+    count = 1;
+
+    for (var j = 0; j < 4; j++) {
+
+        if (($("#" + i + "" + j).val()) != "") {
+            A[count] = $("#" + i + "" + j).val();
+            count++;
+        }
+    }
+    j--;
+    count--;
+
+
+    for (var k = count; k > 0; k--) {
+
+        var test = $("#" + i + "" + j).val(A[k]);
+
+        j--;
+    }
+    for (var h = j; h >= 0; h--) {
+        $("#" + i + "" + h).val("");
+        j--;
+    }
+
+
+
+
+    for (j = 3; j >= 1; j--) {
+        if ($("#" + i + "" + j).val() == $("#" + i + "" + (j - 1)).val() && $("#" + i + "" + j).val() != "" && $("#" + i + "" + (j - 1)).val() != "") {
+            $("#" + i + "" + j).val(($("#" + i + "" + j).val() - 0) + ($("#" + i + "" + (j - 1)).val() - 0));
+            $("#" + i + "" + j).animate({
+                width: "110px",
+                height: "110"
+            }, 100);
+            $("#" + i + "" + j).animate({
+                width: "100px",
+                height: "100"
+            }, 100);
+            $("#" + i + "" + (j - 1)).val("");
+            score = (score - 0) + (($("#" + i + "" + j).val()) - 0);
+            var flag = 1;
+        }
+    }
+
+    for (var i = 0; i < 4; i++) {
+
+        for (var j = 0; j < 4; j++) {
+            if ($("#" + i + "" + j).val() == 0) $("#" + i + "" + j).val("");
+        }
+    }
+
+    i = track;
+    j = 0;
+
+
+}
+//=========================== end of subRight function=================================================
+//=========================== addRightMove function=================================================
+
+function addRightMove() {
+
+    var empty = new Array();
+    var q = 1;
+    for (var x = 0; x < 4; x++) {
+        for (var y = 0; y < 4; y++) {
+            if ($("#" + x + "" + y).val() == "") {
+                empty[q] = x + "" + y;
+                q++;
+            }
+        }
+    }
+
+
+    var randomIndex = Math.floor(Math.random() * empty.length);
+
+
+    if (randomElement == 0) {
+        $("#" + empty[randomIndex]).val("2");
+        randomElement++;
+    } else {
+        $("#" + empty[randomIndex]).val("4");
+        randomElement = 0;
+    }
+
+
+}
+//=========================== end of addRightMove function=================================================
+//=========================== down function=================================================
+
+function down() {
+    for (var i = 0; i <= 3; i++) {
+        changeColor();
+        subdown(i);
+        changeColor();
+
+    }
+    addDownMove();
+    changeColor();
+
+}
+//=========================== end of down function=================================================
+//=========================== subdown function=================================================
+
+function subdown(i) {
+    var A = new Array();
+    var track = i;
+    count = 1;
+
+    for (var j = 0; j < 4; j++) {
+
+        if (($("#" + j + "" + i).val()) != "") {
+            A[count] = $("#" + j + "" + i).val();
+            count++;
+        }
+    }
+    j--;
+    count--;
+
+
+    for (var k = count; k > 0; k--) {
+
+        var test = $("#" + j + "" + i).val(A[k]);
+
+        j--;
+    }
+    for (var h = j; h >= 0; h--) {
+        $("#" + h + "" + i).val("");
+        j--;
+    }
+
+
+
+    for (j = 3; j >= 1; j--) {
+        if ($("#" + j + "" + i).val() == $("#" + (j - 1) + "" + i).val() && $("#" + j + "" + i).val() != "" && $("#" + (j - 1) + "" + i).val() != "") {
+            $("#" + j + "" + i).val(($("#" + j + "" + i).val() - 0) + ($("#" + (j - 1) + "" + i).val() - 0));
+            $("#" + j + "" + i).animate({
+                width: "110px",
+                height: "110"
+            }, 100);
+            $("#" + j + "" + i).animate({
+                width: "100px",
+                height: "100"
+            }, 100);
+            $("#" + (j - 1) + "" + i).val("");
+            score = (score - 0) + (($("#" + j + "" + i).val()) - 0);
+            var flag = 1;
+        }
+    }
+
+    for (var i = 0; i < 4; i++) {
+
+        for (var j = 0; j < 4; j++) {
+            if ($("#" + j + "" + i).val() == 0) $("#" + j + "" + i).val("");
+        }
+    }
+
+    i = track;
+    j = 0;
+
+
+}
+//=========================== end of subdown function=================================================
+//=========================== addDownMove function=================================================
+
+function addDownMove() {
+
+    var empty = new Array();
+    var q = 1;
+    for (var x = 0; x < 4; x++) {
+        for (var y = 0; y < 4; y++) {
+            if ($("#" + x + "" + y).val() == "") {
+                empty[q] = x + "" + y;
+                q++;
+            }
+        }
+    }
+
+
+    var randomIndex = Math.floor(Math.random() * empty.length);
+
+
+    if (randomElement == 0) {
+        $("#" + empty[randomIndex]).val("2");
+        randomElement++;
+    } else {
+        $("#" + empty[randomIndex]).val("4");
+        randomElement = 0;
+    }
+
+
+}
+//=========================== end of addDownMove function=================================================
+//=========================== changeColor function=================================================
+/*
+this function changes color of grid cell according to the value contained in it
+*/
+
+function changeColor() {
+    for (var m = 0; m <= 3; m++) {
+        for (var n = 0; n <= 3; n++) {
+            if ($("#" + m + "" + n).val() == "") {
+                $("#" + m + "" + n).css("background-color", "#CCC0B3");
+
+            }
+            if ($("#" + m + "" + n).val() == 2) {
+                $("#" + m + "" + n).css("background-color", "#EEE4DA");
+                $("#" + m + "" + n).css("color", "#776E65");
+            }
+            if ($("#" + m + "" + n).val() == 4) {
+                $("#" + m + "" + n).css("background-color", "#EDE0C8");
+                $("#" + m + "" + n).css("color", "#776E65");
+            }
+            if ($("#" + m + "" + n).val() == 8) {
+                $("#" + m + "" + n).css("background-color", "#F2B179");
+                $("#" + m + "" + n).css("color", "#F9F6F2");
+            }
+            if ($("#" + m + "" + n).val() == 16) {
+                $("#" + m + "" + n).css("background-color", "#F59563");
+                $("#" + m + "" + n).css("color", "#F9F6F2");
+            }
+            if ($("#" + m + "" + n).val() == 32) {
+                $("#" + m + "" + n).css("background-color", "#F67C5F");
+                $("#" + m + "" + n).css("color", "#F9F6F2");
+            }
+            if ($("#" + m + "" + n).val() == 64) {
+                $("#" + m + "" + n).css("background-color", "#F65E3B");
+                $("#" + m + "" + n).css("color", "#F9F6F2");
+            }
+            if ($("#" + m + "" + n).val() == 128) {
+                $("#" + m + "" + n).css("background-color", "#EDCF72");
+                $("#" + m + "" + n).css("color", "#F9F6F2");
+            }
+            if ($("#" + m + "" + n).val() == 256) {
+                $("#" + m + "" + n).css("background-color", "#EDCC61");
+                $("#" + m + "" + n).css("color", "#F9F6F2");
+            }
+            if ($("#" + m + "" + n).val() == 512) {
+                $("#" + m + "" + n).css("background-color", "#EDC850");
+                $("#" + m + "" + n).css("color", "#F9F6F2");
+            }
+            if ($("#" + m + "" + n).val() == 1024) {
+                $("#" + m + "" + n).css("background-color", "#eb4141");
+                $("#" + m + "" + n).css("color", "#fff");
+            }
+            if ($("#" + m + "" + n).val() == 2048) {
+                $("#" + m + "" + n).css("background-color", "#68b12f");
+                $("#" + m + "" + n).css("color", "#fff");
+            }
+            if ($("#" + m + "" + n).val() == 4096) {
+                $("#" + m + "" + n).css("background-color", "#000");
+                $("#" + m + "" + n).css("color", "#fff");
+            }
+        }
+    }
+
+
+}
+//=========================== end of changeColor function=================================================
+//=========================== gameOver function=================================================
+/*
+this function checks if game is over or player has won
+*/
+
+function gameOver() {
+    var game = 0;
+    var not = 0;
+    var full = 0;
+
+
+
+    for (var m = 0; m <= 3; m++) {
+        for (var n = 0; n <= 3; n++) {
+
+            if (m - 1 >= 0) {
+                if ($("#" + (m - 1) + n + "").val() != $("#" + m + n + "").val()) game++;
+
+            }
+
+            if (n - 1 >= 0) {
+                if ($("#" + m + (n - 1) + "").val() != $("#" + m + n + "").val()) game++
+            }
+
+            if (m + 1 <= 3) {
+                if ($("#" + (m + 1) + n + "").val() != $("#" + m + n + "").val()) game++;
+            }
+            if (n + 1 <= 3) {
+                if ($("#" + m + (n + 1) + "").val() != $("#" + m + n + "").val()) game++;
+            }
+        }
+    }
+
+
+    for (var m = 0; m <= 3; m++)
+    for (var n = 0; n <= 3; n++) {
+        if ($("#" + m + "" + n).val() != "") not++;
+        if ($("#" + m + "" + n).val() == 4096) {
+            full = 1;
+            break;
+        }
+
+
+    }
+
+
+
+    if (full == 1) {
+        window.alert("YOU WIN !");
+    } else if (game == 48 && not == 16) {
+        window.alert("GAME OVER :-( Hit Restart to try again..");
+    }
+
+
+
+
+}
+//=========================== end of gameOver function=================================================
