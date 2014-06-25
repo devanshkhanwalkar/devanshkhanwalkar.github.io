@@ -3,11 +3,12 @@ body
 margin:0;
 padding:0;
 font-family:Ebrima;
-background:#FAF8EF;
-color:#776E65;
+background:#0b6e8f;
+color:#FFF;
 overflow:hidden;
-}
 
+}
+/*#0b6e8f*/
 *{
 margin:0;
 padding:0;
@@ -22,59 +23,120 @@ max-width:1300px;
 
 h1
 {
-color:#776E65;
+color:#FFF;
 font-size:60px;
 
 }
 h5,h4
 {
-color:#776E65;
+color:#4892AB;
 }
-
-.score
+.score,.moves
 {
+background-color: #FFF;
+	background: -webkit-gradient(linear, left top, left bottom, from(#EEE), to(#FFF));
+	background: -webkit-linear-gradient(top, #EEE, #FFF);
+	background: -moz-linear-gradient(top, #EEE, #FFF);
+	background: -ms-linear-gradient(top, #EEE, #FFF);
+	background: -o-linear-gradient(top, #EEE, #FFF);
+	background: linear-gradient(top, #EEE, #FFF);
+	border: 1px solid #EEE;
+	border-bottom: 1px solid #FFF;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+	box-shadow: inset 0 1px 0 0 #EEE;
+	-webkit-box-shadow: 0 1px 0 0 #EEE inset ;
+	-moz-box-shadow: 0 1px 0 0 #EEE inset;
+	-ms-box-shadow: 0 1px 0 0 #EEE inset;
+	-o-box-shadow: 0 1px 0 0 #EEE inset;
+	color:#034D66 ;
+	
+	padding: 6px 20px;
 	
 	position:relative;
-	color:#fff;
-	font-size:12px;
-	background:#8F7A66;
-	border-radius:5px;
+	font-size:16px;
 	width:100px;
 	height:30px;
 	text-align:center;
-}
-.moves
-{
-    
-	position:relative;
-	color:#fff;
-	font-size:12px;
-	background:#8F7A66;
-	border-radius:5px;
-	width:100px;
-	height:30px;
-	text-align:center;
-}
+	}
+
+
 
 #refresh
 {
 	position:relative;
 	float:left;
 	left:35%;
-	color:#fff;
+	
 	cursor:pointer;
-	background:#8F7A66;
-	border-radius:5px;
+	
+	
 	width:100px;
 	height:30px;
-	text-align:center;
+	
 	top:0px;
 	
+	background-color:#4892AB;
+	background: -webkit-gradient(linear, left top, left bottom, from(#053746), to(#01384a));
+	background: -webkit-linear-gradient(top, #053746, #01384a);
+	background: -moz-linear-gradient(top, #053746, #01384a);
+	background: -ms-linear-gradient(top, #053746, #01384a);
+	background: -o-linear-gradient(top, #053746, #01384a);
+	background: linear-gradient(top, #053746, #01384a);
+	border: 1px solid #034D66;
+	border-bottom: 1px solid #034D66;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+	box-shadow: inset 0 1px 0 0 #034D66;
+	-webkit-box-shadow: 0 1px 0 0 #034D66 inset ;
+	-moz-box-shadow: 0 1px 0 0 #034D66 inset;
+	-ms-box-shadow: 0 1px 0 0 #034D66 inset;
+	-o-box-shadow: 0 1px 0 0 #034D66 inset;
+	color: #FFF;
+	
+	padding: 6px 20px;
+	
+	
+	font-size:12px;
+	
+	text-align:center;
 	
 }
 
+#power,#pow
+{
+	
+	float:left;
+	position:relative;
+	width:60px;
+	height:20px;
+	background:#4892AB;
+	color:#EEE;
+	border-radius:3px;
+	text-align:center;
+	border:2px solid #4892AB;
+	
+	
+}
+#power td:hover
+{
+	background:#EEE;
+	color:#4892AB;
+	cursor:pointer;
+}
 
-
+#pow
+{
+	
+	border:1px solid #EEE;
+	
+}
 /*===================================================================*/
 #logo
 {
@@ -120,15 +182,33 @@ height:69%;
 
 }
 
+.feed
+{
+	position:relative;
+	float:left;
+	width:33%;
+	
+}
+#feedleft
+{
+	float:left;
+	position:relative;
+	
+}
+#feedrite
+{
+	float:left;
+	position:relative;
+	
+	margin-top:30px;
+}
 .schedule
 {
-
-
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:12px;
-    left:35%;
+    left:2%;
 	border-radius:5px;
-	background:#BBADA0;
+	background:#EEE;
 	width:440px;
 	height:440px;
 	margin-top:10px;
@@ -141,8 +221,6 @@ height:69%;
 {
     width:100px;
 	height:100px;
-	background:#CCC0B3;
-	
 	margin-left:3px;
 	color:#776E65;
 	font-size:30px;
@@ -185,8 +263,9 @@ min-height:200px;
 
 #contentarea #leftside .thumbs h4
 {
-background:#EDCC61;
-color:#FFF;
+background:#4892AB;
+font:Mido;
+color:#2C6A7E;
 width:100%;
 text-align:center;
 
@@ -200,8 +279,8 @@ margin-right:20px;
 }
 
 #contentarea #rightside  h4{
-background:#F2B179;
-color:#FFF;
+background:#4892AB;
+color:#2C6A7E;
 width:100%;
 text-align:center;
 }
@@ -225,7 +304,7 @@ width:100%;
 height:25px;
 line-height:25px;
 color:#FFF;
-background:#333;
+background:#034D66;
 text-align:center;
 }
 
@@ -456,7 +535,7 @@ text-align:center;
 	font-size:12px;
     left:1%;
 	border-radius:5px;
-	background:#BBADA0;
+	background:#FFF;
 	width:90%;
 	height:90%;
 	margin-top:10px;
@@ -469,10 +548,10 @@ text-align:center;
 {
     width:100px;
 	height:100px;
-	background:#CCC0B3;
+	background:#EEE;
 	
 	margin-left:3px;
-	color:#776E65;
+	
 	font-size:30px;
 	
 	text-align: center;
