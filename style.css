@@ -268,7 +268,7 @@ font:Mido;
 color:#2C6A7E;
 width:100%;
 text-align:center;
-
+border-radius:3px;
 }
 #contentarea #rightside 
 {
@@ -283,6 +283,7 @@ background:#4892AB;
 color:#2C6A7E;
 width:100%;
 text-align:center;
+border-radius:3px;
 }
 
 #contentarea #rightside ul{
