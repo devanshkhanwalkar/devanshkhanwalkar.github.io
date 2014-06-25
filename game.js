@@ -1,6 +1,8 @@
 //=========================== jquery initialization function=================================================
 $(function () {
-    init();
+
+    init(12);
+
 });
 
 //===========================end of jquery initialization function=================================================
@@ -10,14 +12,39 @@ initializes score=0  , moves=0 , shows loding spinner and hides grid
 
 calls game loading function after 3 seconds
 */
+var upperBound = 4096;
+var power = 12;
 
-function init() {
+function init(u) {
 
-    $("#load").show();
+    upperBound = 1;
+    if ($("#pow").val()) {
+        if ($("#pow").val() <= 2) {
+            window.alert("Enter n greater than 2");
+            return false;
+        } else {
+            u = $("#pow").val();
+            power = u;
+        }
+        $("#pow").blur();
+    } else {
+        power = u;
+    }
+
+    for (var b = u; b >= 1; b--) {
+        upperBound = upperBound * 2;
+    }
+
+
+    //window.alert(upperBound);
+    //window.alert(power);
+    changeGame();
+    //$("#load").show();
+    $("#title").text(upperBound);
     $("#myTable").hide();
     $("#score").val(score);
     $("#moves").val(moves);
-    setTimeout("gameloading()", 3000);
+    setTimeout("gameloading()", 100);
 }
 
 //===========================end of grid initialization function=================================================
@@ -36,8 +63,20 @@ function restart() {
             $("#" + m + "" + n).val("");
         }
     }
-    init();
+    init(power);
 }
+
+function changeGame() {
+    score = 0;
+    moves = 0;
+    for (var m = 0; m <= 3; m++) {
+        for (var n = 0; n <= 3; n++) {
+            $("#" + m + "" + n).val("");
+        }
+    }
+}
+
+
 
 //===========================end of restart function=================================================
 //=========================== gameloading function=================================================
@@ -48,7 +87,8 @@ also calls changeColor function that gives appropriate background and foreground
 */
 
 function gameloading() {
-    $("#load").hide();
+
+    //$("#load").hide();
     $("#myTable").show();
 
     changeColor();
@@ -71,7 +111,6 @@ var count;
 var moves = 0; // moves variable initialized to zero
 var score = 0; // score variable initialized to zero
 var randomElement = 0;
-
 document.onkeydown = checkKey; // invokes checkKey function as soon as player presses any key
 //=========================== checkKey function=================================================
 /*
@@ -152,7 +191,6 @@ function subleft(i) {
 
     j = 0; //reset j to 0
     count--; //as count in the last iteration goes to one more we make it one less
-
     for (var k = 1; k <= count; k++) // now we have all non blank numbers of the row
     {
         //this loop simply puts those value one by one starting from 1st column
@@ -219,8 +257,6 @@ function addLeftMove() {
 
 
     var randomIndex = Math.floor(Math.random() * empty.length); //generates random index under range of empty array length
-
-
 
 
     if (randomElement == 0) //this is to generate 2 1st time and 4 2nd time and so on one by one
@@ -561,56 +597,60 @@ function changeColor() {
     for (var m = 0; m <= 3; m++) {
         for (var n = 0; n <= 3; n++) {
             if ($("#" + m + "" + n).val() == "") {
-                $("#" + m + "" + n).css("background-color", "#CCC0B3");
+                $("#" + m + "" + n).css("background-color", "#DDD");
 
             }
             if ($("#" + m + "" + n).val() == 2) {
-                $("#" + m + "" + n).css("background-color", "#EEE4DA");
-                $("#" + m + "" + n).css("color", "#776E65");
+                $("#" + m + "" + n).css("background-color", "#96C5D3");
+                $("#" + m + "" + n).css("color", "#EEE");
             }
             if ($("#" + m + "" + n).val() == 4) {
-                $("#" + m + "" + n).css("background-color", "#EDE0C8");
-                $("#" + m + "" + n).css("color", "#776E65");
+                $("#" + m + "" + n).css("background-color", "#71B0C4");
+                $("#" + m + "" + n).css("color", "#EEE");
             }
             if ($("#" + m + "" + n).val() == 8) {
-                $("#" + m + "" + n).css("background-color", "#F2B179");
-                $("#" + m + "" + n).css("color", "#F9F6F2");
+                $("#" + m + "" + n).css("background-color", "#4691A6");
+                $("#" + m + "" + n).css("color", "#EEE");
             }
             if ($("#" + m + "" + n).val() == 16) {
-                $("#" + m + "" + n).css("background-color", "#F59563");
-                $("#" + m + "" + n).css("color", "#F9F6F2");
+                $("#" + m + "" + n).css("background-color", "#346A7A");
+                $("#" + m + "" + n).css("color", "#EEE");
             }
             if ($("#" + m + "" + n).val() == 32) {
-                $("#" + m + "" + n).css("background-color", "#F67C5F");
-                $("#" + m + "" + n).css("color", "#F9F6F2");
+                $("#" + m + "" + n).css("background-color", "#044C65");
+                $("#" + m + "" + n).css("color", "#EEE");
             }
             if ($("#" + m + "" + n).val() == 64) {
-                $("#" + m + "" + n).css("background-color", "#F65E3B");
-                $("#" + m + "" + n).css("color", "#F9F6F2");
+                $("#" + m + "" + n).css("background-color", "#4FCFEC");
+                $("#" + m + "" + n).css("color", "#EEE");
             }
             if ($("#" + m + "" + n).val() == 128) {
-                $("#" + m + "" + n).css("background-color", "#EDCF72");
-                $("#" + m + "" + n).css("color", "#F9F6F2");
+                $("#" + m + "" + n).css("background-color", "#DDD");
+                $("#" + m + "" + n).css("color", "#71B0C4");
             }
             if ($("#" + m + "" + n).val() == 256) {
-                $("#" + m + "" + n).css("background-color", "#EDCC61");
-                $("#" + m + "" + n).css("color", "#F9F6F2");
+                $("#" + m + "" + n).css("background-color", "#DDD");
+                $("#" + m + "" + n).css("color", "#4691A6");
             }
             if ($("#" + m + "" + n).val() == 512) {
-                $("#" + m + "" + n).css("background-color", "#EDC850");
-                $("#" + m + "" + n).css("color", "#F9F6F2");
+                $("#" + m + "" + n).css("background-color", "DDD");
+                $("#" + m + "" + n).css("color", "#346A7A");
             }
             if ($("#" + m + "" + n).val() == 1024) {
-                $("#" + m + "" + n).css("background-color", "#eb4141");
-                $("#" + m + "" + n).css("color", "#fff");
+                $("#" + m + "" + n).css("background-color", "DDD");
+                $("#" + m + "" + n).css("color", "#044C65");
             }
             if ($("#" + m + "" + n).val() == 2048) {
                 $("#" + m + "" + n).css("background-color", "#68b12f");
-                $("#" + m + "" + n).css("color", "#fff");
+                $("#" + m + "" + n).css("color", "#EEE");
             }
             if ($("#" + m + "" + n).val() == 4096) {
-                $("#" + m + "" + n).css("background-color", "#000");
-                $("#" + m + "" + n).css("color", "#fff");
+                $("#" + m + "" + n).css("background-color", "#eb4141");
+                $("#" + m + "" + n).css("color", "#EEE");
+            }
+            if ($("#" + m + "" + n).val() > 4096) {
+                $("#" + m + "" + n).css("background-color", "green");
+                $("#" + m + "" + n).css("color", "#EEE");
             }
         }
     }
@@ -655,7 +695,7 @@ function gameOver() {
     for (var m = 0; m <= 3; m++)
     for (var n = 0; n <= 3; n++) {
         if ($("#" + m + "" + n).val() != "") not++;
-        if ($("#" + m + "" + n).val() == 4096) {
+        if ($("#" + m + "" + n).val() == upperBound) {
             full = 1;
             break;
         }
