@@ -42,7 +42,7 @@ function init(u) {
     else {
         power = u;
     }
-
+	$("#pow").val("");
     for (var b = u; b >= 1; b--) {
         upperBound = upperBound * 2;
     }
