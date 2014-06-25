@@ -22,7 +22,13 @@ function init(u) {
         if ($("#pow").val() <= 2) {
             window.alert("Enter n greater than 2");
             return false;
-        } else {
+        } 
+        else if(isNaN($("#pow").val()))
+		{
+			window.alert("This is not a Number");
+            return false;
+		}
+        else {
             u = $("#pow").val();
             power = u;
         }
