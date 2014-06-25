@@ -27,7 +27,13 @@ function init(u) {
             power = u;
         }
         $("#pow").blur();
-    } else {
+    } 
+    else if(isNaN($("#pow").val()))
+		{
+			window.alert("This is not a Number");
+            return false;
+		}
+    else {
         power = u;
     }
 
