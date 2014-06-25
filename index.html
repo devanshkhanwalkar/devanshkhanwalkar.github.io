@@ -9,13 +9,24 @@
 <script src="jquery-1.2.6.js" type="text/javascript"></script>
 <script src="game.min.js" type="text/javascript">
 </script>
+<script>
+
+function show()
+{
+	
+	if(document.getElementById("power").style.display=="block")
+	document.getElementById("power").style.display="none";
+	else
+	document.getElementById("power").style.display="block";
+}
+</script>
 </head>
 <body>
 <div id="wrapper">
 <center>
 <div id="logo">
 
-<h1>4096</h1>
+<h1 id="title"></h1>
 <h5>Awesomely addictive!</h5>
 
 </div>
@@ -23,9 +34,9 @@
 <div id="header">
 
 <ul>
-<li class="sc">SCORE</li>
+<li class="sc">score</li>
 <li><input type="text" id="score" class="score" disabled></li>
-<li class="mv">MOVES</li>
+<li class="mv">moves</li>
 <li><input type="text" id="moves" class="moves" disabled></li>
 <li><input type="button" id="refresh" value="Restart" onClick="restart()" ></li>
 </ul>
@@ -33,17 +44,39 @@
 </div>
 
 <div id="slider">
-<div class="css_spinner" id="load" style="display:block;">
+<div class="feed" >
+<div id="feedleft">
+<h1 style="font-family:'Comic Sans MS', cursive;">2<sup>n --></sup></h1>
+</div>
+<div id="feedrite">
+<img src="1403645357_package-x-generic.png" width="50" style="cursor:pointer;" id="box" onClick="show()" />		
+<table id="power" style="display:none;">
+<tr><td><input type="text" id="pow" onKeyUp="init(12)" placeholder="custom"/></td></tr> 
+<tr><td id="p9" onClick="init(9)">9</td></tr>			
+<tr><td id="p10" onClick="init(10)">10</td></tr>           
+<tr><td id="p11" onClick="init(11)">11</td></tr>
+<tr><td id="p12" onClick="init(12)">12</td></tr>
+<tr><td id="p13" onClick="init(13)">13</td></tr>
+<tr><td id="p14" onClick="init(14)">14</td></tr>
+<tr><td id="p15" onClick="init(15)">15</td></tr>
+<tr><td id="p16" onClick="init(16)">16</td></tr>
+<tr><td id="p17" onClick="init(17)">17</td></tr>
+<tr><td id="p18" onClick="init(18)">18</td></tr>
+<tr><td id="p19" onClick="init(19)">19</td></tr>
+</table>
+</div>
+</div>
+<!--<div class="css_spinner" id="load" style="display:none;">
             <div class="half left">
                 <div class="band"></div>
 		        </div>
 		        <div class="half right">
 			          <div class="band"></div>
 		        </div>
-        </div>
+        </div>-->
 
 
-<table id="myTable" class="schedule" width="900px" height="600px">
+<table id="myTable" class="schedule" >
 <tr>
 <td>
 <input type="button" id="00" value="" class="b">
@@ -114,10 +147,7 @@
 <h4>HOW TO PLAY:</h4>
 <p>Use your arrow keys to move the tiles. When two tiles with the same number touch, they merge into one!</p>
 </div>
-<div class="thumbs">
-<h4>NOTE:</h4>
-<p>False or unnecessary moves will also be counted so think before you move.</p>
-</div>
+
 
 
 </div>
