@@ -23,26 +23,21 @@ function init(u) {
             window.alert("Enter n greater than 2");
             return false;
         } 
-        else if(isNaN($("#pow").val()))
+		else if(isNaN($("#pow").val()))
 		{
 			window.alert("This is not a Number");
             return false;
 		}
-        else {
+		else {
             u = $("#pow").val();
             power = u;
         }
         $("#pow").blur();
-    } 
-    else if(isNaN($("#pow").val()))
-		{
-			window.alert("This is not a Number");
-            return false;
-		}
-    else {
+    } else {
+			
         power = u;
     }
-	$("#pow").val("");
+$("#pow").val("");
     for (var b = u; b >= 1; b--) {
         upperBound = upperBound * 2;
     }
@@ -327,7 +322,7 @@ function subup(i) {
 
 
 
-    j = 0;
+   for (j = 0; j <= 3; j++) {
     if ($("#" + j + "" + i).val() == $("#" + (j + 1) + "" + i).val() && $("#" + j + "" + i).val() != "" && $("#" + (j + 1) + "" + i).val() != "") {
         $("#" + j + "" + i).val(($("#" + j + "" + i).val() - 0) + ($("#" + (j + 1) + "" + i).val() - 0));
         $("#" + j + "" + i).animate({
@@ -344,6 +339,7 @@ function subup(i) {
         score = (score - 0) + (($("#" + j + "" + i).val()) - 0);
         var flag = 1;
     }
+   }
 
     for (var i = 0; i < 4; i++) {
 
