@@ -6,9 +6,13 @@
             <meta property="og:type" content="javascript game by devansh khanwalkar" />
             <meta property="og:url" content="http://www.devanshkh.comli.com/" />
 <link href="style.css" rel="stylesheet" />
-<script src="jquery-1.2.6.js" type="text/javascript"></script>
+	<script src="jquery.js"></script>
+    <script src="amazingslider.js"></script>
+    <script src="initslider-1.js"></script>
+
 <script src="game.js" type="text/javascript">
 </script>
+
 <script>
 
 function show()
@@ -23,6 +27,7 @@ function show()
 </head>
 <body>
 <div id="wrapper">
+
 <center>
 <div id="logo">
 
@@ -34,10 +39,10 @@ function show()
 <div id="header">
 
 <ul>
-<li class="sc">score</li>
-<li><input type="text" id="score" class="score" disabled></li>
-<li class="mv">moves</li>
-<li><input type="text" id="moves" class="moves" disabled></li>
+<li class="sc">score<br>
+<input type="text" id="score" class="score" disabled></li>
+<li class="mv">moves<br>
+<input type="text" id="moves" class="moves" disabled></li>
 <li><input type="button" id="refresh" value="Restart" onClick="restart()" ></li>
 </ul>
 
@@ -49,7 +54,7 @@ function show()
 <h1 style="font-family:'Comic Sans MS', cursive;">2<sup>n --></sup></h1>
 </div>
 <div id="feedrite">
-<img src="https://cloud.githubusercontent.com/assets/5525512/3385391/b8db63f8-fc69-11e3-8d6b-d6145238bc5a.png" width="50" style="cursor:pointer;" id="box" onClick="show()" />		
+<img src="box.png" width="50" style="cursor:pointer;" id="box" onClick="show()" />		
 <table id="power" style="display:none;">
 <tr><td><input type="text" id="pow" onKeyUp="init(12)" placeholder="custom"/></td></tr> 
 <tr><td id="p9" onClick="init(9)">9</td></tr>			
@@ -66,14 +71,7 @@ function show()
 </table>
 </div>
 </div>
-<!--<div class="css_spinner" id="load" style="display:none;">
-            <div class="half left">
-                <div class="band"></div>
-		        </div>
-		        <div class="half right">
-			          <div class="band"></div>
-		        </div>
-        </div>-->
+
 
 
 <table id="myTable" class="schedule" >
@@ -137,32 +135,23 @@ function show()
 </td>
 </tr>
 </table>
-</div>
 
-
-<div id="contentarea">
-<div id="leftside">
-
-<div class="thumbs">
-<h4>HOW TO PLAY:</h4>
-<p>Use your arrow keys to move the tiles. When two tiles with the same number touch, they merge into one!</p>
-</div>
-
-
-
-</div>
-<div id="rightside">
-<h4>DEVELOPERS:</h4>
-
-<ul>
-<li>Created by Devansh Khanwalkar.</li>
-<li>Based on 1024 by Veewo Studio</li>
-<li>conceptually similar to Threes by Asher Vollmer.</li>
-
-</ul>
+<div style="margin:100px auto;max-width:411px;float:left;position:relative;left:50px;">
+    
+    <!-- Insert to your webpage where you want to display the slider -->
+    <div id="amazingslider-1" style="display:block;position:relative;margin:16px auto 32px;">
+        <ul class="amazingslider-slides" style="display:none;">
+            <li><img src="https://cloud.githubusercontent.com/assets/5525512/3426512/1e959c6a-0023-11e4-8ec1-d73ba1cc8442.png" /></li>
+            <li><img src="https://cloud.githubusercontent.com/assets/5525512/3426513/1ecd2d10-0023-11e4-825b-58f553c573ae.png" /></li>
+        </ul>
+        
+    <!-- End of body section HTML codes -->
+    
 </div>
 
 </div>
+
+
 
 <div id="footer">
 &COPY; Devansh Khanwalkar | NIT Trichy
