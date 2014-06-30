@@ -101,7 +101,7 @@ background-color: #FFF;
 	color: #FFF;
 	
 	padding: 6px 20px;
-	
+	margin-top:20px;
 	
 	font-size:12px;
 	
@@ -154,7 +154,7 @@ float:left;
 width:100%;
 position:relative;
 height:42px;
-margin-top:70px;
+margin-top:47px;
 
 }
 
@@ -170,6 +170,7 @@ position:relative;
 font-size:12px;
 text-align:center;
 left:35%;
+padding-right:10px;
 }
 
 
@@ -178,7 +179,7 @@ left:35%;
 clear:both;
 float:left;
 width:100%;
-height:69%;
+height:65%;
 
 }
 
@@ -235,70 +236,10 @@ margin-top:-50px;
 
 
 
-#contentarea
-{
-margin-top:0px;
-width:100%;
-clear:both;
-float:left;
-
-}
-
-#contentarea #leftside
-{
-float:left;
-width:70%;
-
-}
-
-#contentarea #leftside .thumbs
-{
-margin-left:30px;
-margin-bottom:30px;
-float:left;
-width:45%;
-min-height:200px;
-
-}
-
-#contentarea #leftside .thumbs h4
-{
-background:#4892AB;
-font:Mido;
-color:#2C6A7E;
-width:100%;
-text-align:center;
-border-radius:3px;
-}
-#contentarea #rightside 
-{
-
-float:right;
-width:26%;
-margin-right:20px;
-}
-
-#contentarea #rightside  h4{
-background:#4892AB;
-color:#2C6A7E;
-width:100%;
-text-align:center;
-border-radius:3px;
-}
-
-#contentarea #rightside ul{
-list-style:none;
-}
-
-#contentarea #rightside ul li{
-
-height:35px;
-line-height:35px;
-padding-left:10px;
-}
 
 #footer
 {
+position:relative;
 clear:both;
 float:left;
 width:100%;
@@ -307,108 +248,9 @@ line-height:25px;
 color:#FFF;
 background:#034D66;
 text-align:center;
+border-radius:3px;
 }
 
-/*===========================loading=================================================*/
-
-.css_spinner{
-	position: absolute;
-	width: 100px;
-	height: 100px;
-	left: 52%;
-	top: 62%;
-	margin: -50px 0 0 -50px;
-	opacity: .9;
-	
-	-webkit-border-radius: 999px;
-	-moz-border-radius: 999px;
-	border-radius: 999px;
-}
-
-.css_spinner .half{
-	position: absolute;
-	width: 50px;
-	height: 100px;
-	top: 0;
-	overflow: hidden;
-}
-
-.css_spinner .left{
-	left: 0px;
-	
-	-webkit-border-radius: 999px 0 0 999px;
-	-moz-border-radius: 999px 0 0 999px;
-	border-radius: 999px 0 0 999px;
-}
-
-.css_spinner .right{
-	left: 50px;
-	
-	-webkit-border-radius: 0 999px 999px 0;
-	-moz-border-radius: 0 999px 999px 0;
-	border-radius: 0 999px 999px 0;
-}
-
-.css_spinner .band{
-	position: absolute;
-	width: 50px;
-	height: 100px;
-	background:#F65E3B;
-	
-	-webkit-border-radius: 999px;
-	-moz-border-radius: 999px;
-	border-radius: 999px;
-	
-	-webkit-animation: cssSpinnerRight 1s infinite linear;
-	-moz-animation: cssSpinnerRight 1s infinite linear;
-}
-
-.css_spinner .left .band{
-	left: 0;
-	border-left: 50px solid #FAF8EF;
-
-	-webkit-animation: cssSpinnerLeft 1s infinite linear;
-	-moz-animation: cssSpinnerLeft 1s infinite linear;
-}
-
-.css_spinner .right .band{
-	right: 0;
-	border-right: 50px solid #FAF8EF;
-}
-
-@-webkit-keyframes cssSpinnerLeft{
-  0%{-webkit-transform:rotate(0deg)}
-  25%{-webkit-transform:rotate(0deg)}
-  50%{-webkit-transform:rotate(180deg)}
-  75%{-webkit-transform:rotate(180deg)}
-  100%{-webkit-transform:rotate(360deg)}
-}
-
-@-webkit-keyframes cssSpinnerRight{
-  0%{-webkit-transform:rotate(0deg)}
-  25%{-webkit-transform:rotate(180deg)}
-  50%{-webkit-transform:rotate(180deg)}
-  75%{-webkit-transform:rotate(360deg)}
-  100%{-webkit-transform:rotate(360deg)}
-}
-
-@-moz-keyframes cssSpinnerLeft{
-  0%{-moz-transform:rotate(0deg)}
-  25%{-moz-transform:rotate(0deg)}
-  50%{-moz-transform:rotate(180deg)}
-  75%{-moz-transform:rotate(180deg)}
-  100%{-moz-transform:rotate(360deg)}
-}
-
-@-moz-keyframes cssSpinnerRight{
-  0%{-moz-transform:rotate(0deg)}
-  25%{-moz-transform:rotate(180deg)}
-  50%{-moz-transform:rotate(180deg)}
-  75%{-moz-transform:rotate(360deg)}
-  100%{-moz-transform:rotate(360deg)}
-}
-
-/*=================================================================================================*/
 
 
 @media screen and (max-width:720px)
