@@ -18,7 +18,7 @@ jQuery(document).ready(function(){
 
         jsfolder:jsFolder,
 
-        width:400,
+        width:350,
 
         height:217,
 
