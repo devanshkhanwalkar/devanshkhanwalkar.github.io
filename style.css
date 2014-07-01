@@ -255,13 +255,10 @@ border-radius:3px;
 }
 
 #disqus_thread{
-width:1000px;
+max-width:1300px;
 
 }
-#disqus_thread a
-{
-	color:#FFF;
-}
+
 @media screen and (max-width:720px)
 {
 #logo
