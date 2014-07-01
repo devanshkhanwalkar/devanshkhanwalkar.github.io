@@ -255,7 +255,8 @@ border-radius:3px;
 }
 
 #disqus_thread{
-max-width:1300px;
+	position:relative;
+width:1300px;
 
 }
 
