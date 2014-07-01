@@ -725,7 +725,7 @@ function gameOver() {
 }
 //=========================== end of gameOver function=================================================
 
-var ar=new Array(33,34,35,36,37,38,39,40);
+var ar=new Array(37,38,39,40);
 
 $(document).keydown(function(e) {
      var key = e.which;
