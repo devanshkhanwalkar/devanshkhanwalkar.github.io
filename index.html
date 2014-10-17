@@ -1,0 +1,293 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>4096 Devansh</title>
+<meta property="og:title" content="4096 game" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+            <meta property="og:description" content="2048..4096..STOP it! now generalized.. feed your custom power of two and enjoy! How far can you go?" />
+            <meta property="og:type" content="jquery game by devansh khanwalkar" />
+            <meta property="og:url" content="http://devanshkhanwalkar.github.io" />
+            <link rel="shortcut icon" href="https://cloud.githubusercontent.com/assets/5525512/3385391/b8db63f8-fc69-11e3-8d6b-d6145238bc5a.png"  type="image/x-icon">
+
+<link rel="stylesheet" href="foundation.css" />
+	<script src="jquery.js"></script>
+	<script src="game.js" type="text/javascript"></script>
+<script src="modernizr.js"></script>
+  </head>
+  <body>
+    <header	>
+    <div class="row">
+      <div class="large-12 columns">
+        <h1><span class="title">4096</span>
+        <small>Awesomely Addictive !</small></h1>
+        
+        </div>
+      
+    </div>
+    </header>
+    <hr>
+    
+    <div class="row">
+    <div class="large-4 medium-3 columns" >
+<div class="panel">
+     <h1><small>2<sup>n --></sup></small>
+     <img src="https://cloud.githubusercontent.com/assets/5525512/3385391/b8db63f8-fc69-11e3-8d6b-d6145238bc5a.png
+" width="50" style="cursor:pointer;"/></h1>		
+
+<label></label>
+				      <select onChange="init(this.value)">
+                        <option value="12"><small>Select n</small></option>
+				        <option id="p9"  value="9">9</option>
+				        <option id="p10" value="10">10</option>
+				        <option id="p11" value="11">11</option>
+				        <option id="p12" value="12">12</option>
+                        <option id="p13" value="13">13</option>
+				        <option id="p14" value="14">14</option>
+				        <option id="p15" value="15">15</option>
+				        <option id="p16" value="16">16</option>
+                        <option id="p17" value="17">17</option>
+                        <option id="p18" value="18">18</option>
+                        <option id="p19" value="19">19</option>
+				      </select>
+</div>
+<div class="panel">
+    <a>score<input type="text" id="score" class="score" style="width:100%;height:49px;" disabled></a>
+<a>moves<input type="text" id="moves" class="moves" style="width:100%;height:49px;" disabled></a>
+<center><a class="small button radius" id="refresh" onClick="restart()">Restart</a></center>
+</div>
+
+      </div>
+<div class="large-8 columns">
+
+<table width="100%">
+<tr>
+<td width="100" height="100">
+<input type="text" id="00" value="" disabled>
+</td>
+<td width="100" height="100">
+<input type="text" id="01" value="" disabled>
+</td>
+<td width="100" height="100">
+<input type="text" id="02" value="" disabled>
+</td>
+<td width="100" height="100">
+<input type="text" id="03" value="" disabled>
+</td>
+</tr>
+
+<tr>
+<td width="100" height="100">
+<input type="text" id="10" value="" disabled>
+</td>
+<td width="100" height="100">
+<input type="text" id="11" value="" disabled>
+</td>
+<td width="100" height="100">
+<input type="text" id="12" value="" disabled>
+</td>
+<td width="100" height="100">
+<input type="text" id="13" value="" disabled>
+</td>
+</tr>
+
+<tr>
+<td width="100" height="100">
+<input type="text" id="20" value="" disabled>
+</td>
+<td width="100" height="100">
+<input type="text" id="21" value="" disabled>
+</td>
+<td width="100" height="100">
+<input type="text" id="22" value="" disabled>
+</td>
+<td width="100" height="100">
+<input type="text" id="23" value="" disabled>
+</td>
+</tr>
+
+<tr>
+<td width="100" height="100">
+<input type="text" id="30" value="" disabled> 
+</td>
+<td width="100" height="100">
+<input type="text" id="31" value="" disabled>
+</td>
+<td width="100" height="100">
+<input type="text" id="32" value="" disabled>
+</td>
+<td width="100" height="100">
+<input type="text" id="33" value="" disabled>
+</td>
+</tr>
+</table>
+      </div>
+      <div class="large-4 columns" >
+        <div class="panel">
+        Leaderboard
+        </div>
+      </div>
+      
+    </div>
+    <hr>
+<div class="row">
+      <div class="large-12 columns">
+      <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = '4096devansh'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+      </div>
+      </div>
+
+    <!--<div class="row">
+      <div class="large-8 medium-8 columns">
+        <h5>Here&rsquo;s your basic grid:</h5>
+        <!-- Grid Example 
+
+        <div class="row">
+          <div class="large-12 columns">
+            <div class="callout panel">
+              <p><strong>This is a twelve column section in a row.</strong> Each of these includes a div.panel element so you can see where the columns are - it's not required at all for the grid.</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-6 medium-6 columns">
+            <div class="callout panel">
+              <p>Six columns</p>
+            </div>
+          </div>
+          <div class="large-6 medium-6 columns">
+            <div class="callout panel">
+              <p>Six columns</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-4 medium-4 small-4 columns">
+            <div class="callout panel">
+              <p>Four columns</p>
+            </div>
+          </div>
+          <div class="large-4 medium-4 small-4 columns">
+            <div class="callout panel">
+              <p>Four columns</p>
+            </div>
+          </div>
+          <div class="large-4 medium-4 small-4 columns">
+            <div class="callout panel">
+              <p>Four columns</p>
+            </div>
+          </div>
+        </div>
+        
+        <hr />
+                
+        <h5>We bet you&rsquo;ll need a form somewhere:</h5>
+        <form>
+				  <div class="row">
+				    <div class="large-12 columns">
+				      <label>Input Label</label>
+				      <input type="text" placeholder="large-12.columns" />
+				    </div>
+				  </div>
+				  <div class="row">
+				    <div class="large-4 medium-4 columns">
+				      <label>Input Label</label>
+				      <input type="text" placeholder="large-4.columns" />
+				    </div>
+				    <div class="large-4 medium-4 columns">
+				      <label>Input Label</label>
+				      <input type="text" placeholder="large-4.columns" />
+				    </div>
+				    <div class="large-4 medium-4 columns">
+				      <div class="row collapse">
+				        <label>Input Label</label>
+				        <div class="small-9 columns">
+				          <input type="text" placeholder="small-9.columns" />
+				        </div>
+				        <div class="small-3 columns">
+				          <span class="postfix">.com</span>
+				        </div>
+				      </div>
+				    </div>
+				  </div>
+				  <div class="row">
+				    <div class="large-12 columns">
+				      <label>Select Box</label>
+				      <select>
+				        <option value="husker">Husker</option>
+				        <option value="starbuck">Starbuck</option>
+				        <option value="hotdog">Hot Dog</option>
+				        <option value="apollo">Apollo</option>
+				      </select>
+				    </div>
+				  </div>
+				  <div class="row">
+				    <div class="large-6 medium-6 columns">
+				      <label>Choose Your Favorite</label>
+				      <input type="radio" name="pokemon" value="Red" id="pokemonRed"><label for="pokemonRed">Radio 1</label>
+				      <input type="radio" name="pokemon" value="Blue" id="pokemonBlue"><label for="pokemonBlue">Radio 2</label>
+				    </div>
+				    <div class="large-6 medium-6 columns">
+				      <label>Check these out</label>
+				      <input id="checkbox1" type="checkbox"><label for="checkbox1">Checkbox 1</label>
+				      <input id="checkbox2" type="checkbox"><label for="checkbox2">Checkbox 2</label>
+				    </div>
+				  </div>
+				  <div class="row">
+				    <div class="large-12 columns">
+				      <label>Textarea Label</label>
+				      <textarea placeholder="small-12.columns"></textarea>
+				    </div>
+				  </div>
+				</form>
+      </div>     
+
+      <div class="large-4 medium-4 columns">
+			  <h5>Try one of these buttons:</h5>
+			  <p><a href="#" class="small button">Simple Button</a><br/>
+        <a href="#" class="small radius button">Radius Button</a><br/>
+        <a href="#" class="small round button">Round Button</a><br/>            
+        <a href="#" class="medium success button">Success Btn</a><br/>
+        <a href="#" class="medium alert button">Alert Btn</a><br/>
+        <a href="#" class="medium secondary button">Secondary Btn</a></p>           
+				<div class="panel">
+        	<h5>So many components, girl!</h5>
+        	<p>A whole kitchen sink of goodies comes with Foundation. Checkout the docs to see them all, along with details on making them your own.</p>
+        	<a href="http://foundation.zurb.com/docs/" class="small button">Go to Foundation Docs</a>          
+        </div>
+      </div>
+    </div>-->
+    
+    
+    <script src="foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+	  
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = '4096devansh'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+    
+    </script>
+  </body>
+</html>
