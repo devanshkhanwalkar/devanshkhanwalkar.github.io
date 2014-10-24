@@ -1,6 +1,6 @@
 .direction-button
 {
-border-radius:25%;
+border-radius:50%;
 width:10px;
 height:10px;
 }
@@ -5344,7 +5344,7 @@ table {
       color: #222222; }
   table tr th,
   table tr td {
-    padding: 0.5625rem 0.625rem;
+    
     font-size: 0.875rem;
     color: #222222;
     text-align:center; }
