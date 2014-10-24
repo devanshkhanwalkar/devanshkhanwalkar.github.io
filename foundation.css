@@ -2809,6 +2809,7 @@ meta.foundation-mq-topbar {
         border-bottom-right-radius: 3px; } }
   .button-group.round > * {
     margin: 0 -2px;
+    border-radius:50%;width:200px;height:200px;
     float: left;
     display: inline-block; }
     .button-group.round > * > button, .button-group.round > * .button {
