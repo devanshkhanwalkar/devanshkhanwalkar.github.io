@@ -1650,18 +1650,22 @@ select::-ms-expand {
   border-top-right-radius: 3px; }
 
 .prefix.button.round {
-  border-radius: 0;
-  -webkit-border-bottom-left-radius: 1000px;
+  border-radius: 50%;
+  width:200px;
+  height:200px;
+  /*-webkit-border-bottom-left-radius: 1000px;
   -webkit-border-top-left-radius: 1000px;
   border-bottom-left-radius: 1000px;
-  border-top-left-radius: 1000px; }
+  border-top-left-radius: 1000px; */}
 
 .postfix.button.round {
-  border-radius: 0;
-  -webkit-border-bottom-right-radius: 1000px;
+  border-radius: 50%;
+  width:200px;
+  height:200px;
+  /*-webkit-border-bottom-right-radius: 1000px;
   -webkit-border-top-right-radius: 1000px;
   border-bottom-right-radius: 1000px;
-  border-top-right-radius: 1000px; }
+  border-top-right-radius: 1000px; */}
 
 /* Separate prefix and postfix styles when on span or label so buttons keep their own */
 span.prefix, label.prefix {
