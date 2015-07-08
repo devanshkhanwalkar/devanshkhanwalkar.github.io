@@ -1,0 +1,233 @@
+<html>
+
+    <head>
+
+        <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Include roboto.css to use the Roboto web font, material.css to include the theme and ripples.css to style the ripple effect -->
+        <link href="css/roboto.min.css" rel="stylesheet">
+        <link href="css/material.css" rel="stylesheet">
+        <link href="css/ripples.min.css" rel="stylesheet">
+       
+        <link href="css/adminstyle.css" rel="stylesheet">
+        
+
+    </head>
+
+    <body>	
+
+        <!-- Your site -->
+ 
+    <div id="alertbox" class="modal fade" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        
+        <h4 class="modal-title"></h4>
+      </div>
+      <div class="modal-body">
+        <p></p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary btn-flat deleteok" data-dismiss="modal" data-toggle="modal" data-target="#deletemsg"><i class="mdi-navigation-check"></i> Ok</button>
+  		<button class="btn btn-default btn-flat" data-dismiss="modal"><i class="mdi-navigation-close"></i> Cancel</button>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div id="deletemsg" class="modal fade" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        
+        <h4 class="modal-title"></h4>
+      </div>
+      <div class="modal-body">
+        <p></p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary btn-flat deleteok" data-dismiss="modal"><i class="mdi-navigation-check"></i> Ok</button>
+        </div>
+    </div>
+  </div>
+</div>
+    <div class="container">
+      	<div class="row">
+      		<div class="well page active" id="about">
+                <div class="row topbarpanel">
+                     <div class="col-md-3 adminpanel">
+                           <img src="img/client.png"/><span></span>Admin Panel
+                           <span class="btn btn-primary btn-fab btn-raised mdi-content-add createuser" data-toggle="tooltip" data-placement="left" title="Create user"></span>
+                      </div>
+                      <div class="col-md-9 rightpanel">
+                          	<ul id="tab" class="nav nav-tabs nav-justified">
+                                <li class="hidden" id="tab1">
+                                    <a href="#createuser" data-toggle="tab">
+                                    Create user
+                                    </a>
+                                </li>
+                               <!-- <li id="tab4">
+                                    <a href="#userinfo" data-toggle="tab">
+                                    USER INFO
+                                    </a>
+                                </li>-->
+                                 <li id="tab2" class="hidden">
+                                    <a href="#edituser" data-toggle="tab">
+                                    EDIT USER
+                                    </a>
+                                </li>
+                           </ul>
+                      </div>
+               	</div>
+                <div class="row">
+                    <div class="col-md-3 allunreadmsg">
+                    	<div class="row search">
+                                 	<span class="mdi-action-search" ></span><input type="text" class="searchinput" name="search" id="search" placeholder="search users"/>
+                                 </div>
+                                 
+                                 <div class="row allusers">
+                                 	<div class="se-pre-con"></div>
+                                 </div>
+                          
+                    </div>
+                    <div class="col-md-9 lastnmsg">
+                         <div class="row lastnmsgbox">
+                         	<div id="tabContent" class="tab-content">
+                     			<div class="tab-pane fade in" id="createuser">
+                                    <div class="signupstep1 reg text-center">
+                                        <input type="text" class="form-control" name="email" id="email" placeholder="Enter email id.."/>
+                                        <input type="password" class="form-control" name="password" id="password" placeholder="Choose a password.."/>
+					<label class="text-center">User Type</label>
+					<div class="radio radio-primary text-center">
+					<label>
+                                        <input type="radio" name="type" value="A"/>
+					Admin
+					</label>
+					<label>
+					<input type="radio" name="type" value="CC"/>
+					Customer Care
+					</label>
+					</div>
+					<div class="nxt">
+                                        <a class="btn btn-lg btn-primary btn-raised next1">NEXT</a>
+                                     </div>
+                                    </div>
+                                    
+                                    <div class="signupstep2 reg hidden">
+                                        <form id="data" class="text-center">
+ 
+                                          Display Image: <input name="image" type="file" class="form-control" /><br />
+                                          <input type="submit" value="NEXT" class="filesubmit text-center btn btn-lg btn-primary btn-raised">
+                                        </form>
+                                        <!--<div class="nxt">
+                                        <a class="btn btn-lg btn-primary btn-raised next2">NEXT</a>
+                                     </div>-->
+                                    </div>
+                                   
+                                   <div class="signupstep3 reg hidden">
+                                        <input type="text" class="form-control" name="name" id="name" placeholder="Enter name.."/>
+                                        <input type="text" class="form-control" name="phone" id="phone" placeholder="Enter 10 digit Phone number.."/>
+					<div class="nxt">
+                                        <a class="btn btn-lg btn-primary btn-raised next3">NEXT</a>
+                                     </div>
+                                    </div>
+					 <div class="signupstep4 reg hidden">
+					
+                                        <input type="text" class="form-control" name="updatename" id="nameagain" placeholder="Enter name.."/>
+                                        <input type="number" class="form-control" name="updateage" id="updateage" placeholder="Enter age.."/>
+					<label class="text-center">Gender</label>
+					<div class="radio radio-primary text-center">
+					<label>
+                                        <input type="radio" name="gender" value="male"/>
+					Male
+					</label>
+					<label>
+					<input type="radio" name="gender" value="female"/>
+					Female
+					</label>
+					</div>
+					
+					<input type="number" class="form-control" name="updateheight" id="updateheight" placeholder="Height"/>
+					<input type="number" class="form-control" name="updateweight" id="updateweight" placeholder="Weight"/>
+
+					<input type="text" class="form-control" name="updatebg" id="updatebg" placeholder="Enter Blood Group.."/>
+					<input type="date" class="form-control" name="updatedob" id="updatedob" placeholder="Enter DOB.."/>
+					<input type="text" class="form-control" name="updateaddress" id="updateaddress" placeholder="Enter Address.."/>
+					<div class="nxt">
+                                        <a class="btn btn-lg btn-primary btn-raised next4" data-toggle="modal" data-target="#deletemsg">NEXT</a>
+                                     </div>
+				
+                                    </div>
+                                    
+                                    <div class="errors">
+                                    </div>
+                                  <div class="se-pre-con1"></div>
+                              </div>
+                              	<div class="tab-pane fade in" id="edituser">
+				<div class="formarea">
+					<h1 class="text-center" style='color:#fed859'>User Profile</h1>
+					<label>Email</label>
+                                	<input type="text" name="editemail" id="editemail" class="form-control" placeholder="email" value=""/>
+                                	<label>User Type</label>    
+				<input type="text" name="editusertype" id="editusertype" class="form-control" placeholder="usertype" value=""/>
+					<label>Name</label>                                    
+				<input type="text" name="editname" id="editname" class="form-control" placeholder="name" value=""/>
+                                <label>Phone Number</label>    
+				<input type="text" name="editphone" id="editphone" class="form-control" placeholder="phone" value=""/>
+				<label>Address</label>                                    
+				<input type="text" name="editaddress" id="editaddress" class="form-control" placeholder="address" value=""/>
+				<label>Age</label>                                    
+				<input type="number" name="editage" id="editage" class="form-control" placeholder="age" value=""/>
+				<label>DOB</label>                                    
+				<input type="date" name="editdob" id="editdob" class="form-control" placeholder="dob" value=""/>
+				<label class="text-center">Gender</label>
+					<div class="radio radio-primary text-center">
+					<label>
+                                        <input type="radio" name="editsex" value="male" id="m"/>
+					Male
+					</label>
+					<label>
+					<input type="radio" name="editsex" value="female" id="f"/>
+					Female
+					</label>
+					</div>
+				<label>Height</label>                                    
+				<input type="number" name="editheight" id="editheight" class="form-control" placeholder="height" value=""/>
+				<label>Weight</label>                                    
+				<input type="number" name="editweight" id="editweight" class="form-control" placeholder="weight" value=""/>
+				<label>Blood Group</label>                                
+				<input type="text" name="editbg" id="editbg" class="form-control" placeholder="bg" value=""/>
+                                    
+                                </div>
+				</div>
+                           </div>
+                         </div>
+                     	 <div class="row replybar text-center">
+                               
+                         </div>
+                    </div>
+                </div>
+            </div>
+                     <!--<div class="tab-pane fade in active" id="contactus">-->
+        </div>      
+    </div>
+          
+
+        <!-- Your site ends -->
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+        <script src="js/ripples.min.js"></script>
+        <script src="js/material.min.js"></script>
+        <script src="js/admin.js"></script>
+        
+        
+        
+        <script>
+            
+        </script>
+
+    </body>
+
+</html>

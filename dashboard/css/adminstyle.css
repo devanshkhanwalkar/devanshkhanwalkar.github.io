@@ -1,0 +1,290 @@
+@charset "utf-8";
+/* CSS Document */
+@import url(http://weloveiconfonts.com/api/?family=typicons);
+[class*="typicons-"]:before {
+  font-family: 'Typicons', sans-serif;
+}
+
+.module {
+  width:100%;
+  margin:0;
+}
+
+
+.discussion {
+  list-style: none;
+  background:none;
+  margin:0;
+  padding:0;
+}
+.discussion li {
+  padding:10;
+  display:block;
+  cursor:pointer;
+  border-bottom:1px solid #E2DBD8;
+  height:62px;
+}
+.discussion li:hover,.discussion li:focus {
+background:#FED859;
+
+}
+.discussion .avatar {
+  width: 40px;
+  height:40px;
+  position: relative;
+  float:left;
+}
+.discussion .avatar img {
+  display: block;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+}
+
+
+.messages {
+  background:none;
+  padding: 20px;
+  margin: -10px 0px 0px 30px;
+  position:relative;
+}
+.messages p {
+  font-size:1.2rem;
+  margin: 0;
+  float:left;
+}
+.messages time{
+  font-size:1rem;
+  color: #ccc;
+  float:right;
+}
+
+@keyframes pulse {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+.no-js #loader { display: none;  }
+.js #loader { display: block; position:relative; left: 100px; top: 0; }
+.se-pre-con {
+	position:relative;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url(../img/Preloader_3.gif) center no-repeat #fff;
+}
+@charset "utf-8";
+/* CSS Document */
+		body
+		{
+			background:#009688;
+		}
+      * {
+        box-sizing: border-box;
+      }
+      
+		.container
+		{
+			margin:10px auto;
+			width:98.5vw;
+		}
+      .page {
+        transform: translateY(1080px);
+        transition: transform 0 linear;
+        display: none;
+        opacity: 0;
+        font-size: 16px;
+		
+		
+		margin-top:0px;
+      }
+
+      .page.active {
+        transform: translateY(0px);
+        transition: all 0.3s ease-out;
+        display: block;
+        opacity: 1;
+		height:93vh;
+      }
+
+     
+ 
+
+  .topbarpanel
+  {
+	  background:#eee;
+	  height:50px;
+	  color:#5A595E;
+	  line-height:50px;
+  }
+  .adminpanel img
+  {
+	  width:40px;
+	  height:40px;
+	  border-radius:50%;
+  }
+  .adminpanel
+  {
+	  border-right:1px solid #E2DBD8;
+  }
+  body .well, .container .well
+  {
+	  padding: 0px 15px 0px 15px;
+  }
+  .col-md-1,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-md-10,.col-md-11,.col-md-12
+  {
+	  height:inherit;
+  }
+ 
+  .allunreadmsg .allusers
+  {
+	  
+	  height:77vh;
+	  overflow-y:scroll;
+  }
+  .allunreadmsg
+  {
+	  border-right:1px solid #E2DBD8;
+  }
+  .lastnmsg .lastnmsgbox
+  {
+	  background:#E2DCD6;
+	  /*background:#fff;*/
+	  height: 79vh;
+  		max-height:79vh;
+	  overflow-y:scroll;
+	 padding:50px 20px 50px 20px;
+  }
+  .replybar
+  {
+	  background:#F0EFED;
+	  height:45px;
+	  line-height:45px;
+  }
+  .replyinput
+  {
+	  width:85%;
+	  float:left;
+	  
+  }
+  .sendarrow
+  {
+	  
+	  float:right;
+	    margin-right: 40px;
+  margin-top: 10px;
+  }
+  .sendarrow:hover
+  {
+	  color:#009587;
+	  cursor:pointer;
+	  
+  }
+ 
+.search
+{
+	padding:20px 20px 0px 20px;
+	border-bottom:1px solid #E2DBD8;
+}
+.searchinput
+{
+	margin-left:20px;
+	border:none;
+	color:#555;
+	font-size:14px;
+	width:80%;
+}
+.search span
+{
+	color:#FED859;
+}
+.mdi-content-remove-circle.deleteuser:hover
+{
+	color:#f44336;
+}
+.mdi-content-remove-circle.deleteuser
+{
+	color:#CCC;
+}
+.mdi-content-create.edituser:hover
+{
+	color:#4CAF50;
+	
+}
+.mdi-content-create.edituser
+{
+	margin-right:20px;
+}
+.updateuserbutton
+{
+  line-height:40px;
+}
+.createuserbutton
+{
+	background:#00acc1;
+	color:#fff;
+	line-height:40px;
+}
+a,a:hover
+{
+	text-decoration:none;
+}
+.btn.btn-raised.mdi-content-add.createuser,.btn.btn-raised.mdi-content-add.createuser:hover
+  {
+	  width:40px;
+	  height:40px;
+	  padding:6px;
+	  float:right;
+	  background:#00acc1;
+	  margin-top:5px;
+	  color:#fff;
+  }
+  
+  
+  .signupstep1,.signupstep2,.signupstep3,.signupstep4
+  {
+	  width:60%;
+	  margin:50px auto 20px auto;
+	  background:#fff;
+  	padding: 10px;
+  	border-radius: 2px;
+  	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+  .errors,.nxt
+  {
+	  width:60%;
+	  margin:0px auto;
+	  text-align:center;
+  }
+  .signupstep1 input,.signupstep2 input,.signupstep3 input,.signupstep4 input
+  {
+	  width:80%;
+	  margin:10px auto 50px auto;
+  }
+  
+ /* .login-wrapper .form-control-wrapper .floating-label
+  {
+	  left:0%;
+	  top:5px;
+  }*/
+
+.lastnmsgbox .formarea
+{
+	 width:80%;
+	  margin:0 auto;
+	  background:#fff;
+  	padding: 10px;
+  	border-radius: 2px;
+  	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.lastnmsgbox .formarea input
+{
+	margin-bottom:50px;
+}
+
+

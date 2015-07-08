@@ -1,0 +1,334 @@
+@charset "utf-8";
+/* CSS Document */
+		body
+		{
+			background:#009688;
+		}
+      * {
+        box-sizing: border-box;
+      }
+      
+		.container
+		{
+			margin:10px;
+			width:98.5vw;
+		}
+      .page {
+        transform: translateY(1080px);
+        transition: transform 0 linear;
+        display: none;
+        opacity: 0;
+        font-size: 16px;
+		margin-top:0px;
+      }
+
+      .page.active {
+        transform: translateY(0px);
+        transition: all 0.3s ease-out;
+        display: block;
+        opacity: 1;
+		height:85vh;
+		
+      }
+
+     
+ 
+ .nav-tabs li
+ {
+	 background:#009688;
+	 box-shadow:0px 0px 1px #fff;
+	 color:rgba(255, 255, 255, 0.62);
+	 
+ }
+ .nav-tabs>li.active>a
+ {
+	 color:#fff;
+ }
+ 
+  .nav-tabs li.active
+  {
+	  background:#009688;
+	  color:#fff;
+	  border-top:5px solid #fff;
+	}
+  #dailyPlanTabs.nav-tabs>li>a
+  {
+	  line-height:28px;
+  }
+  #dailyPlanTabs.nav-tabs>li
+ {
+	 background:none;
+	 color:rgba(0, 0, 0, 0.62);
+	 height:50px;
+	 -webkit-transition: all 50ms ease-out; /* Safari */
+    transition:all 50ms ease-out;
+ }
+ #dailyPlanTabs.nav-tabs>li.active>a
+ {
+	 color:#009688;
+ }
+ 
+  #dailyPlanTabs.nav-tabs>li.active
+  {
+	  background:none;
+	  color:#009688;
+	  height:50px;
+	  border-bottom:2px solid #009688;
+	  
+  }
+  .topbarpanel
+  {
+	  background:#eee;
+	  height:50px;
+	  color:#5A595E;
+	  line-height:50px;
+  }
+  .adminpanel img
+  {
+	  width:40px;
+	  height:40px;
+	  border-radius:50%;
+  }
+  .adminpanel
+  {
+	  border-right:1px solid #E2DBD8;
+  }
+  body .well, .container .well
+  {
+	  padding: 0px 15px 0px 15px;
+  }
+  .col-md-1,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-md-10,.col-md-11,.col-md-12
+  {
+	  height:inherit;
+  }
+  #contactus .lastnmsg .lastnmsgbox,#editdailyplan .lastnmsg .lastnmsgbox,#userinfo .lastnmsg .lastnmsgbox
+  {
+	  /*background:#E2DCD6;*/
+	  background:#fff;
+	  height: 70vh;
+  max-height: 70vh;
+	  overflow:auto;
+  }
+  #getquote .lastnmsg .lastnmsgbox,#editdailyplan .lastnmsg .lastnmsgbox,#userinfo .lastnmsg .lastnmsgbox
+  {
+	  background:#fff;
+  }
+  #getquote .lastnmsg .lastnmsgbox .formarea,#editdailyplan .lastnmsg .lastnmsgbox .formarea,#userinfo .lastnmsg .lastnmsgbox .formarea
+  {
+	  background:#fff;
+	  height: 66vh;
+  		max-height: 66vh;
+	  overflow-y:scroll;
+	  padding:50px 20px 50px 20px;
+  }
+  #getquote .lastnmsg .lastnmsgbox input,#editdailyplan .lastnmsg .lastnmsgbox input,#userinfo .lastnmsg .lastnmsgbox input
+  {
+	  margin-top:0px;
+	  margin-bottom:30px;
+  }
+  .date,.date.form-control:focus
+  {
+	  width:55%;
+	  float:none;
+  }
+ 	.time,.time.form-control:focus
+	{
+		float:none;
+		width:55%;
+	}
+  .dropdownjs,dropdownjs.form-control:focus
+  {
+	  width:55%;
+	  float:none;
+  }
+  .select,.select.form-control:focus
+  {
+	  float:none;
+  }
+  .dropdownjs > ul > li
+  {
+	  font-size:14px;
+  }
+  .dropdownjs > ul
+  {
+	  width:100%;
+	  max-width:100%;
+  }
+   .btn.btn-raised.mdi-content-add.add_field_button,.btn.btn-raised.mdi-content-add.add_field_button:hover
+  {
+	  width:30px;
+	  height:30px;
+	  padding:2px;
+	 
+	  margin-left:10px;
+	 
+	  background:#FED859;
+	  color:#555;
+  }
+  .mdi-content-clear.remove_field,.mdi-content-clear.remove_field:hover
+  {
+	  float:left;
+	  width:30px;
+	  height:30px;
+	  padding:2px;
+	  margin-left:10px;
+	  color:#F44336;
+	  cursor:pointer;
+  }
+  #exercises .item
+  {
+	  width:30%;
+	  float:left;
+	  margin-left:200px;
+  }
+  .item
+  {
+	  width:30%;
+	  float:left;
+	  margin-left:100px;
+  }
+  .qty,.calorie
+  {
+	  width:10%;
+	  float:left;
+	  margin-left:20px;
+  }
+  
+  #getquote .form-control-wrapper .floating-label,#editdailyplan .form-control-wrapper .floating-label,#userinfo .form-control-wrapper .floating-label
+  {
+	  margin-left:100px;
+  }
+  #exercises .form-control-wrapper .floating-label
+  {
+	  margin-left:200px;
+  }
+  .item-div.item.form-control:focus
+  {
+	  float:left;
+  }
+  #getquote .allunreadmsg .allusers,#editdailyplan .allunreadmsg .allusers,#userinfo .allunreadmsg .allusers
+  {
+	  
+	  max-height:69vh;
+	  overflow:auto;
+  }
+  
+   #contactus .allunreadmsg .allusers
+  {
+	  
+	  max-height:69vh;
+	  overflow:auto;
+  }
+  .allunreadmsg
+  {
+	  border-right:1px solid #E2DBD8;
+  }
+  .replybar
+  {
+	  border-top:1px solid #F0EFED;
+	  height:48px;
+	  line-height:48px;
+  }
+
+  .replyinput
+  {
+	  width:85%;
+	  float:left;
+	  
+  }
+  .sendarrow
+  {
+	  
+	  float:right;
+	    margin-right: 40px;
+  margin-top: 10px;
+  }
+  .sendarrow:hover
+  {
+	  color:#009587;
+	  cursor:pointer;
+	  
+  }
+  .editcount
+  {
+	  float:right;
+	  display:inline-flex;
+	  line-height:40px;
+	  font-size:14px;
+  }
+  .editcount-tab2
+  {
+	  float:left;
+	  display:inline-flex;
+	  line-height:40px;
+	  font-size:14px;
+  }
+  
+  .numrows
+  {
+	  display:inline;
+	  float:left;
+	  width:30px;
+	  height:20px;
+	  margin:0px 15px 0px 15px;
+  }
+  
+  /*.form-control-wrapper .floating-label
+  {
+	  left:50%;
+	  top:-7px;
+  }*/
+  .btn.btn-xs
+  {
+	  margin-left:15px;
+	  margin-right:15px;
+  }
+  .form-control:focus
+  {
+	  float:left;
+  }
+  .login-wrapper
+  {
+	  
+	  width:33.33vw;
+	  height:40vh;
+	  position:absolute;
+	  left:33.33%;
+	  top:30%;
+	  padding-top:50px;
+  }
+.search
+{
+	padding:20px 20px 0px 20px;
+	border-bottom:1px solid #E2DBD8;
+}
+.searchinput1,.searchinput2,.searchinput3
+{
+	margin-left:20px;
+	border:none;
+	color:#555;
+	font-size:14px;
+	width:80%;
+}
+.search span
+{
+	color:#FED859;
+}
+a:hover
+{
+	text-decoration:none;
+}
+.submitplan,.updateplan
+{
+	line-height:48px;
+	margin-left:100px;
+}
+.dropdown-menu>li>a
+{
+	border-bottom:1px solid #ccc;
+}
+ /* .login-wrapper .form-control-wrapper .floating-label
+  {
+	  left:0%;
+	  top:5px;
+  }*/

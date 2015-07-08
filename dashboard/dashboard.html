@@ -1,0 +1,808 @@
+<html>
+
+    <head>
+
+        <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Include roboto.css to use the Roboto web font, material.css to include the theme and ripples.css to style the ripple effect -->
+        <link href="css/roboto.min.css" rel="stylesheet">
+        <link href="css/material.css" rel="stylesheet">
+        <link href="css/ripples.min.css" rel="stylesheet">
+        
+        <link href="css/userliststyle.css" rel="stylesheet">
+        <link href="css/chatstyle.css" rel="stylesheet">
+        <link href="css/jquery.dropdown.css" rel="stylesheet"/>
+        <link href="css/style.css" rel="stylesheet">
+        <script src="js/json2table.js" type="text/javascript" charset="utf-8"></script>
+        <link rel="stylesheet" href="css/simple-table-styling.css" type="text/css" media="all" charset="utf-8">
+      
+
+    </head>
+
+    <body>	
+
+        <!-- Your site -->
+ 
+    
+    <div class="container">
+      	<div class="row">
+       		
+            <ul id="myTab" class="nav nav-tabs nav-justified">
+                <li class="active" id="tab1">
+                    <a href="#contactus" data-toggle="tab">
+                    GET UNREPLIED MSG
+                    </a>
+                </li>
+               <!-- <li id="tab4">
+                    <a href="#userinfo" data-toggle="tab">
+                    USER INFO
+                    </a>
+                </li>-->
+                 <li id="tab3">
+                    <a href="#editdailyplan" data-toggle="tab">
+                    EDIT DAILY PLAN
+                    </a>
+                </li>
+                
+                <li id="tab2">
+                    <a href="#getquote" data-toggle="tab">
+                    CREATE DAILY PLAN
+                    </a>
+                </li>
+               
+            </ul>
+                
+            <div class="well page active" id="about">
+                        
+            	<div id="myTabContent" class="tab-content">
+                     <div class="tab-pane fade in active" id="contactus">
+                            <div class="row topbarpanel">
+                                  <div class="col-md-3 adminpanel">
+                                            <img src="img/client.png"/><span></span>Administrator
+                                   </div>
+                                   <div class="col-md-9">
+                                   	<span class="editcount">Messages <span><input type="text" placeholder="n" class="form-control numrows floating-label" value="10"/></span><button class="btn btn-xs btn-primary btn-raised loadmsg">LOAD</button> </span>
+                                   </div>
+                            </div>
+                            <div class="row">
+                                 <div class="col-md-3 allunreadmsg">
+                                 	<div class="row search">
+                                 	<span class="mdi-action-search" ></span><input type="text" class="searchinput1" name="search" id="search" placeholder="search users"/>
+                                 </div>
+                                 
+                                 <div class="row allusers">
+                                 	
+                                    
+                                 	<div class="se-pre-con"></div>
+                                    
+                                 </div>
+                          			
+                                 </div>
+                                 <div class="col-md-9 lastnmsg">
+                                 	<div class="row lastnmsgbox">
+                                       <div class="se-pre-con1"></div>         	
+                                 	</div>
+                                 	<div class="row replybar">
+                                      
+                                            <textarea placeholder="Give a reply..." class="form-control floating-label replyinput"></textarea>
+                                       
+                                       
+                                            <span class="mdi-content-send sendarrow"></span>
+                                      
+                                    </div>
+                                 </div>
+                            </div>
+                     </div>
+        <!--===========================================User ifo tab=========================================================-->
+       <!-- <div class="tab-pane fade in" id="userinfo">
+                            <div class="row topbarpanel">
+                                  <div class="col-md-3 adminpanel">
+                                            <img src="img/client.png"/><span></span>Administrator
+                                   </div>
+                                   <div class="col-md-9">
+                                   	
+                                   </div>
+                            </div>
+                            <div class="row">
+                                 <div class="col-md-3 allunreadmsg">
+                                 	<div class="row search">
+                                 	<span class="mdi-action-search" ></span><input type="text" class="searchinput" name="search" id="search" placeholder="search users"/>
+                                 </div>
+                                 
+                                 <div class="row allusers">
+                                 	
+                                    
+                                 	<div class="se-pre-con"></div>
+                                    
+                                 </div>
+                          			
+                                 </div>
+                                 <div class="col-md-9 lastnmsg">
+                                 	<div class="row lastnmsgbox">
+                                       <div class="se-pre-con1"></div>         	
+                                 	</div>
+                                 	<div class="row replybar">
+                                      
+                                            <textarea placeholder="Give a reply..." class="form-control floating-label replyinput"></textarea>
+                                       
+                                       
+                                            <span class="mdi-content-send sendarrow"></span>
+                                      
+                                    </div>
+                                 </div>
+                            </div>
+                     </div>-->
+       <!-- ==================================================================-->
+       <!--===========================================edit daily plan tab=========================================================-->
+        <div class="tab-pane fade in" id="editdailyplan">
+                            <div class="row topbarpanel">
+                                  <div class="col-md-3 adminpanel">
+                                            <img src="img/client.png"/><span></span>Administrator
+                                   </div>
+                                   <div class="col-md-9">
+                                   	<div class="col-md-3 datelist"></div>
+                                    <div class="col-md-9 datelistinfo"></div>
+                                   </div>
+                            </div>
+                            <div class="row">
+                                 <div class="col-md-3 allunreadmsg">
+                                 	<div class="row search">
+                                 	<span class="mdi-action-search" ></span><input type="text" class="searchinput2" name="search" id="search" placeholder="search users"/>
+                                 </div>
+                                 
+                                 <div class="row allusers">
+                                 	
+                                    
+                                 	<div class="se-pre-con"></div>
+                                    
+                                 </div>
+                          				
+                                 </div>
+                                 <div class="col-md-9 lastnmsg">
+                                 	<div class="row lastnmsgbox">
+                                    	<div class="bitable text-center">
+                                        	<table class="table table-hover">
+                                            	<tr>
+                                                	<th colspan="2">Basic Info</th>
+                                                </tr>
+                                                <tr>
+                                                	<td>Id</td>
+                                                    <td id="biid"></td>
+                                                </tr>
+                                                <tr>
+                                                	<td>User Id</td>
+                                                    <td id="biuserid"></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="dptable">
+                                        	<table class="table table-hover text-center">
+                                            	<tr>
+                                                	<th colspan="6">Diet Plan</th>
+                                                </tr>
+                                                <tr>
+                                                	<td colspan="3">Is Submitted</td>
+                                                    <td colspan="3" contenteditable="true" id="dpissubmitted"></td>
+                                                </tr>
+                                                <tr>
+                                                	<td colspan="3">Calorie Intake</td>
+                                                    <td colspan="3" contenteditable="true" id="dpcalorieintake"></td>
+                                                </tr>
+                                                <tr>
+                                                	<td colspan="3">Self Evaluation</td>
+                                                    <td colspan="3" contenteditable="true" id="dpselfevaluation"></td>
+                                                </tr>
+                                               
+                                            </table>
+                                        </div>
+                                        <div class="eptable">
+                                        	<table class="table table-hover text-center">
+                                            	<tr>
+                                                	<th colspan="6">Exercise Plan</th>
+                                                </tr>
+                                                <tr>
+                                                	<td colspan="3">Is Submitted</td>
+                                                    <td colspan="3" contenteditable="true" id="epissubmitted"></td>
+                                                </tr>
+                                                <tr>
+                                                	<td colspan="3">Calorie Burn</td>
+                                                    <td colspan="3" contenteditable="true" id="epcalorieburn"></td>
+                                                </tr>
+                                                <tr>
+                                                	<td colspan="3">Self Evaluation</td>
+                                                    <td colspan="3" contenteditable="true" id="epselfevaluation"></td>
+                                                </tr>
+                                               
+                                            </table>
+                                        </div>
+                                        <div class="hptable">
+                                        	<table class="table table-hover text-center">
+                                            	<tr>
+                                                	<th colspan="6">Hydration Plan</th>
+                                                </tr>
+                                                <tr>
+                                                	<td colspan="3">Is Submitted</td>
+                                                    <td colspan="3" contenteditable="true" id="hpissubmitted"></td>
+                                                </tr>
+                                             </table>
+                                        </div>
+                                            
+                                       <div class="se-pre-con1"></div>         	
+                                 	</div>
+                                 	<div class="row replybar text-center">
+                                      	<div><a href="#" class="btn-sm btn-success updateplan">Update Plan</a></div>
+                                    </div>
+                                 </div>
+                            </div>
+                     </div>
+       <!-- ==================================================================-->             
+                     <!--<div class="tab-pane fade in active" id="contactus">-->
+                     <div class="tab-pane fade in" id="getquote">
+                      <div class="row topbarpanel">
+                                  <div class="col-md-3 adminpanel">
+                                            <img src="img/client.png"/><span></span>Administrator
+                                   </div>
+                                   <div class="col-md-9">
+                                   	<ul id="dailyPlanTabs" class="nav nav-tabs nav-justified">
+                                        <li class="active" id="dptab1">
+                                            <a href="#mealpattern" data-toggle="tab">
+                                            	Meal Pattern
+                                            </a>
+                                        </li>
+                                        <li id="dptab2">
+                                            <a href="#exercises" data-toggle="tab">
+                                            Exercises
+                                            </a>
+                                        </li>
+                                        <li id="dptab3">
+                                            <a href="#hydration" data-toggle="tab">
+                                            Hydration
+                                            </a>
+                                        </li>
+                                    </ul>
+                                   </div>
+                            </div>
+                            <div class="row">
+                                 <div class="col-md-3 allunreadmsg">
+                                 <div class="row search">
+                                 	<span class="mdi-action-search" ></span><input type="text" class="searchinput3" name="search" id="search" placeholder="search users"/>
+                                 </div>
+                                 
+                                 <div class="row allusers">
+                                 	<div class="se-pre-con"></div>
+                                 </div>
+                                 
+                                 <!--<div class="row search">
+                                    	<span class="mdi-action-search" ></span><input type="text" class="searchinput" name="search" id="search" placeholder="search users"/>
+                                    </div>
+                                    <div class="row allusers">
+                                    
+                                 <div class="se-pre-con"></div>
+                                 </div>-->
+                                 </div>
+                                 <div class="col-md-9 lastnmsg">
+                                 	<div class="row lastnmsgbox">
+                                    	<div id="dpTabContent" class="tab-content">
+                     						<div class="tab-pane fade in active" id="mealpattern">
+                                            	<div class="col-md-1">
+                                                	 
+                                                </div>
+                                                <div class="col-md-11 formarea">
+                                                
+                                            	<div>
+												<label>Early Morning</label><br>
+												<label>Time</label>
+                                                <input type="text" class="form-control time" name="time" id="time0"/>
+                                                <label>Items</label>
+												<div class="item-div">
+                                                    	<div class="input_fields_wrap">
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname00"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty00"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie00"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname01"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty01"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie01"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname02"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty02"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie02"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname03"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty03"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie03"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname04"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty04"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie04"></div>
+														</div>
+												</div>
+												</div>
+												<div class="clearfix"></div>
+												<hr>
+												<div>
+												<label>Breakfast</label><br>
+												<label>Time</label>
+                                                <input type="text" class="form-control time" name="time" id="time1"/>
+                                                <label>Items</label>
+												<div class="item-div">
+                                                    	<div class="input_fields_wrap">
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname10"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty10"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie10"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname11"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty11"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie11"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname12"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty12"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie12"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname13"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty13"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie13"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname14"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty14"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie14"></div>
+														</div>
+												</div>
+												</div>
+												<div class="clearfix"></div>
+												<hr>
+												<div>
+												<label>Pre Lunch</label><br>
+												<label>Time</label>
+                                                <input type="text" class="form-control time" name="time" id="time2"/>
+                                                <label>Items</label>
+												<div class="item-div">
+                                                    	<div class="input_fields_wrap">
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname20"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty20"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie20"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname21"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty21"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie21"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname22"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty22"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie22"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname23"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty23"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie23"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname24"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty24"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie24"></div>
+														</div>
+												</div>
+												</div>
+												<div class="clearfix"></div>
+												<hr>
+												<div>
+												<label>Lunch</label><br>
+												<label>Time</label>
+                                                <input type="text" class="form-control time" name="time" id="time3"/>
+                                                <label>Items</label>
+												<div class="item-div">
+                                                    	<div class="input_fields_wrap">
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname30"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty30"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie30"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname31"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty31"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie31"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname32"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty32"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie32"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname33"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty33"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie33"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname34"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty34"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie34"></div>
+														</div>
+												</div>
+												</div>
+												<div class="clearfix"></div>
+												<hr>
+												<div>
+												<label>Evening Snacks</label><br>
+												<label>Time</label>
+                                                <input type="text" class="form-control time" name="time" id="time4"/>
+                                                <label>Items</label>
+												<div class="item-div">
+                                                    	<div class="input_fields_wrap">
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname40"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty40"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie40"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname41"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty41"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie41"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname42"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty42"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie42"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname43"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty43"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie43"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname44"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty44"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie44"></div>
+														</div>
+												</div>
+												</div>
+												<div class="clearfix"></div>
+												<hr>
+												<div>
+												<label>Pre Dinner</label><br>
+												<label>Time</label>
+                                                <input type="text" class="form-control time" name="time" id="time5"/>
+                                                <label>Items</label>
+												<div class="item-div">
+                                                    	<div class="input_fields_wrap">
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname50"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty50"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie50"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname51"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty51"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie51"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname52"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty52"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie52"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname53"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty53"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie53"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname54"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty54"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie54"></div>
+														</div>
+												</div>
+												</div>
+												<div class="clearfix"></div>
+												<hr>
+												<div>
+												<label>Dinner</label><br>
+												<label>Time</label>
+                                                <input type="text" class="form-control time" name="time" id="time6"/>
+                                                <label>Items</label>
+												<div class="item-div">
+                                                    	<div class="input_fields_wrap">
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname60"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty60"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie60"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname61"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty61"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie61"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname62"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty62"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie62"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname63"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty63"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie63"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname64"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty64"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie64"></div>
+														</div>
+												</div>
+												</div>
+												<div class="clearfix"></div>
+												<hr>
+												<div>
+												<label>Post Dinner</label><br>
+												<label>Time</label>
+                                                <input type="text" class="form-control time" name="time" id="time7"/>
+                                                <label>Items</label>
+												<div class="item-div">
+                                                    	<div class="input_fields_wrap">
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname70"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty70"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie70"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname71"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty71"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie71"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname72"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty72"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie72"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname73"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty73"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie73"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname74"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty74"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie74"></div>
+														</div>
+												</div>
+												</div>
+												<div class="clearfix"></div>
+												<hr>
+															<div>
+												<label>Custom Meal 1</label><br>
+												<label>Time</label>
+                                                <input type="text" class="form-control time" name="time" id="time8"/>
+                                                <label>Items</label>
+												<div class="item-div">
+                                                    	<div class="input_fields_wrap">
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname80"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty80"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie80"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname81"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty81"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie81"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname82"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty82"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie82"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname83"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty83"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie83"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname84"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty84"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie84"></div>
+														</div>
+												</div>
+												</div>
+												<div class="clearfix"></div>
+												<hr>
+												<div>
+												<label>Custom Meal2</label><br>
+												<label>Time</label>
+                                                <input type="text" class="form-control time" name="time" id="time9"/>
+                                                <label>Items</label>
+												<div class="item-div">
+                                                    	<div class="input_fields_wrap">
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname90"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty90"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie90"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname91"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty91"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie91"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname92"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty92"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie92"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname93"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty93"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie93"></div>
+															<div><input type="text" name="mytext[]" class="item form-control" placeholder="item name.." id="itemname94"><input type="text" name="qty" class="qty form-control" placeholder="Qty.." id="qty94"><input type="text" name="calorie" class="calorie form-control" placeholder="Calorie.." id="calorie94"></div>
+														</div>
+												</div>
+												</div>
+												
+							
+												</div>
+												<div style="text-align:center;"><a href="#" style="margin:5px 50px 5px 0px;line-height:2;" class="btn-sm btn-info reset">Reset</a><a href="#" class="btn-sm btn-info addtojson">Add</a></div>
+                                                 
+                                            </div>
+                                            <div class="tab-pane fade in" id="exercises">
+                                            	<div class="col-md-1">
+                                                	 
+                                                </div>
+                                                <div class="col-md-11 formarea">
+                                                <div>
+                                            	<label>Exercise Name</label>
+                                             	<input type="text" class="form-control floating-label" placeholder="Exercise name.." id="exercisename0"/>
+                                                <label>Calorie</label>
+                                                <input type="text" class="form-control floating-label" placeholder="Calorie Burn.." id="calorieburn0"/>
+                                                <label>Exercise Sets</label><!--<span class="btn btn-primary btn-fab btn-raised mdi-content-add add_field_button" data-toggle="tooltip" data-placement="right" title="Add Exercise Set"></span>-->
+                                                 
+                                                 	<div class="item-div">
+                                                    	<div class="input_fields_wrap">
+                                                            
+                                                            <div><input type="text" name="mytext[]" class="exitem00 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem01 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem02 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem03 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem04 floating-label form-control" placeholder="item name.."></div>
+                                                        </div>
+                                                 	
+                                                    </div>  
+                                                   </div> 
+							<div class="clearfix"></div>
+							<hr>
+                           			
+						<div>
+                                            	<label>Exercise Name</label>
+                                             	<input type="text" class="form-control floating-label" placeholder="Exercise name.." id="exercisename1"/>
+                                                <label>Calorie</label>
+                                                <input type="text" class="form-control floating-label" placeholder="Calorie Burn.." id="calorieburn1"/>
+                                                <label>Exercise Sets</label><!--<span class="btn btn-primary btn-fab btn-raised mdi-content-add add_field_button" data-toggle="tooltip" data-placement="right" title="Add Exercise Set"></span>-->
+                                                 
+                                                 	<div class="item-div">
+                                                    	<div class="input_fields_wrap">
+                                                            
+                                                            <div><input type="text" name="mytext[]" class="exitem10 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem11 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem12 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem13 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem14 floating-label form-control" placeholder="item name.."></div>
+                                                        </div>
+                                                 	
+                                                    </div>  
+                                                   </div> 
+							<div class="clearfix"></div>
+							<hr>
+
+							<div>
+                                            	<label>Exercise Name</label>
+                                             	<input type="text" class="form-control floating-label" placeholder="Exercise name.." id="exercisename2"/>
+                                                <label>Calorie</label>
+                                                <input type="text" class="form-control floating-label" placeholder="Calorie Burn.." id="calorieburn2"/>
+                                                <label>Exercise Sets</label><!--<span class="btn btn-primary btn-fab btn-raised mdi-content-add add_field_button" data-toggle="tooltip" data-placement="right" title="Add Exercise Set"></span>-->
+                                                 
+                                                 	<div class="item-div">
+                                                    	<div class="input_fields_wrap">
+                                                            
+                                                            <div><input type="text" name="mytext[]" class="exitem20 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem21 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem22 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem23 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem24 floating-label form-control" placeholder="item name.."></div>
+                                                        </div>
+                                                 	
+                                                    </div>  
+                                                   </div> 
+							<div class="clearfix"></div>
+							<hr>
+
+							<div>
+                                            	<label>Exercise Name</label>
+                                             	<input type="text" class="form-control floating-label" placeholder="Exercise name.." id="exercisename3"/>
+                                                <label>Calorie</label>
+                                                <input type="text" class="form-control floating-label" placeholder="Calorie Burn.." id="calorieburn3"/>
+                                                <label>Exercise Sets</label><!--<span class="btn btn-primary btn-fab btn-raised mdi-content-add add_field_button" data-toggle="tooltip" data-placement="right" title="Add Exercise Set"></span>-->
+                                                 
+                                                 	<div class="item-div">
+                                                    	<div class="input_fields_wrap">
+                                                            
+                                                            <div><input type="text" name="mytext[]" class="exitem30 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem31 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem32 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem33 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem34 floating-label form-control" placeholder="item name.."></div>
+                                                        </div>
+                                                 	
+                                                    </div>  
+                                                   </div> 
+							<div class="clearfix"></div>
+							<hr>
+							
+							<div>
+                                            	<label>Exercise Name</label>
+                                             	<input type="text" class="form-control floating-label" placeholder="Exercise name.." id="exercisename4"/>
+                                                <label>Calorie</label>
+                                                <input type="text" class="form-control floating-label" placeholder="Calorie Burn.." id="calorieburn4"/>
+                                                <label>Exercise Sets</label><!--<span class="btn btn-primary btn-fab btn-raised mdi-content-add add_field_button" data-toggle="tooltip" data-placement="right" title="Add Exercise Set"></span>-->
+                                                 
+                                                 	<div class="item-div">
+                                                    	<div class="input_fields_wrap">
+                                                            
+                                                            <div><input type="text" name="mytext[]" class="exitem40 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem41 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem42 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem43 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem44 floating-label form-control" placeholder="item name.."></div>
+                                                        </div>
+                                                 	
+                                                    </div>  
+                                                   </div> 
+							<div class="clearfix"></div>
+							<hr>
+
+							<div>
+                                            	<label>Exercise Name</label>
+                                             	<input type="text" class="form-control floating-label" placeholder="Exercise name.." id="exercisename5"/>
+                                                <label>Calorie</label>
+                                                <input type="text" class="form-control floating-label" placeholder="Calorie Burn.." id="calorieburn5"/>
+                                                <label>Exercise Sets</label><!--<span class="btn btn-primary btn-fab btn-raised mdi-content-add add_field_button" data-toggle="tooltip" data-placement="right" title="Add Exercise Set"></span>-->
+                                                 
+                                                 	<div class="item-div">
+                                                    	<div class="input_fields_wrap">
+                                                            
+                                                            <div><input type="text" name="mytext[]" class="exitem50 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem51 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem52 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem53 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem54 floating-label form-control" placeholder="item name.."></div>
+                                                        </div>
+                                                 	
+                                                    </div>  
+                                                   </div> 
+							<div class="clearfix"></div>
+							<hr>
+
+							<div>
+                                            	<label>Exercise Name</label>
+                                             	<input type="text" class="form-control floating-label" placeholder="Exercise name.." id="exercisename6"/>
+                                                <label>Calorie</label>
+                                                <input type="text" class="form-control floating-label" placeholder="Calorie Burn.." id="calorieburn6"/>
+                                                <label>Exercise Sets</label><!--<span class="btn btn-primary btn-fab btn-raised mdi-content-add add_field_button" data-toggle="tooltip" data-placement="right" title="Add Exercise Set"></span>-->
+                                                 
+                                                 	<div class="item-div">
+                                                    	<div class="input_fields_wrap">
+                                                            
+                                                            <div><input type="text" name="mytext[]" class="exitem60 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem61 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem62 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem63 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem64 floating-label form-control" placeholder="item name.."></div>
+                                                        </div>
+                                                 	
+                                                    </div>  
+                                                   </div> 
+							<div class="clearfix"></div>
+							<hr>
+
+							<div>
+                                            	<label>Exercise Name</label>
+                                             	<input type="text" class="form-control floating-label" placeholder="Exercise name.." id="exercisename7"/>
+                                                <label>Calorie</label>
+                                                <input type="text" class="form-control floating-label" placeholder="Calorie Burn.." id="calorieburn7"/>
+                                                <label>Exercise Sets</label><!--<span class="btn btn-primary btn-fab btn-raised mdi-content-add add_field_button" data-toggle="tooltip" data-placement="right" title="Add Exercise Set"></span>-->
+                                                 
+                                                 	<div class="item-div">
+                                                    	<div class="input_fields_wrap">
+                                                            
+                                                            <div><input type="text" name="mytext[]" class="exitem70 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem71 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem72 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem73 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem74 floating-label form-control" placeholder="item name.."></div>
+                                                        </div>
+                                                 	
+                                                    </div>  
+                                                   </div> 
+							<div class="clearfix"></div>
+							<hr>
+
+							<div>
+                                            	<label>Exercise Name</label>
+                                             	<input type="text" class="form-control floating-label" placeholder="Exercise name.." id="exercisename8"/>
+                                                <label>Calorie</label>
+                                                <input type="text" class="form-control floating-label" placeholder="Calorie Burn.." id="calorieburn8"/>
+                                                <label>Exercise Sets</label><!--<span class="btn btn-primary btn-fab btn-raised mdi-content-add add_field_button" data-toggle="tooltip" data-placement="right" title="Add Exercise Set"></span>-->
+                                                 
+                                                 	<div class="item-div">
+                                                    	<div class="input_fields_wrap">
+                                                            
+                                                            <div><input type="text" name="mytext[]" class="exitem80 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem81 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem82 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem83 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem84 floating-label form-control" placeholder="item name.."></div>
+                                                        </div>
+                                                 	
+                                                    </div>  
+                                                   </div> 
+							<div class="clearfix"></div>
+							<hr>
+
+							<div>
+                                            	<label>Exercise Name</label>
+                                             	<input type="text" class="form-control floating-label" placeholder="Exercise name.." id="exercisename9"/>
+                                                <label>Calorie</label>
+                                                <input type="text" class="form-control floating-label" placeholder="Calorie Burn.." id="calorieburn9"/>
+                                                <label>Exercise Sets</label><!--<span class="btn btn-primary btn-fab btn-raised mdi-content-add add_field_button" data-toggle="tooltip" data-placement="right" title="Add Exercise Set"></span>-->
+                                                 
+                                                 	<div class="item-div">
+                                                    	<div class="input_fields_wrap">
+                                                            
+                                                            <div><input type="text" name="mytext[]" class="exitem90 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem91 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem92 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem93 floating-label form-control" placeholder="item name.."></div>
+							<div><input type="text" name="mytext[]" class="exitem94 floating-label form-control" placeholder="item name.."></div>
+                                                        </div>
+                                                 	
+                                                    </div>  
+                                                   </div> 
+							<div class="clearfix"></div>
+							<hr>
+                                                 </div>
+                                                 <div style="text-align:center;"><a href="#" style="margin:5px 50px 5px 0px;line-height:2;" class="btn-sm btn-info reset">Reset</a><a href="#" class="btn-sm btn-info addtojson">Add</a></div>
+                                            </div>
+                                            <div class="tab-pane fade in" id="hydration">
+                                            	<div class="col-md-1">
+                                                	 
+                                                </div>
+                                                <div class="col-md-11 formarea">
+                                                <div>
+                                            	<label>Item name</label>
+                                             	<input type="text" class="form-control floating-label" placeholder="Hydration item name.." id="hydrationname0"/>
+                                                <label>Required</label>
+                                                <input type="text" class="form-control floating-label" placeholder="Required.." id="hydrationrequired0"/>
+                                                  
+                                                 </div> 
+						<div class="clearfix"></div>
+						<hr>
+
+						<div>
+                                            	<label>Item name</label>
+                                             	<input type="text" class="form-control floating-label" placeholder="Hydration item name.." id="hydrationname1"/>
+                                                <label>Required</label>
+                                                <input type="text" class="form-control floating-label" placeholder="Required.." id="hydrationrequired1"/>
+                                                  
+                                                 </div> 
+						<div class="clearfix"></div>
+						<hr> 
+
+						
+						<div>
+                                            	<label>Item name</label>
+                                             	<input type="text" class="form-control floating-label" placeholder="Hydration item name.." id="hydrationname2"/>
+                                                <label>Required</label>
+                                                <input type="text" class="form-control floating-label" placeholder="Required.." id="hydrationrequired2"/>
+                                                  
+                                                 </div> 
+						<div class="clearfix"></div>
+						<hr>  
+
+						<div>
+                                            	<label>Item name</label>
+                                             	<input type="text" class="form-control floating-label" placeholder="Hydration item name.." id="hydrationname3"/>
+                                                <label>Required</label>
+                                                <input type="text" class="form-control floating-label" placeholder="Required.." id="hydrationrequired3"/>
+                                                  
+                                                 </div> 
+						<div class="clearfix"></div>
+						<hr>  
+
+
+						<div>
+                                            	<label>Item name</label>
+                                             	<input type="text" class="form-control floating-label" placeholder="Hydration item name.." id="hydrationname4"/>
+                                                <label>Required</label>
+                                                <input type="text" class="form-control floating-label" placeholder="Required.." id="hydrationrequired4"/>
+                                                  
+                                                 </div> 
+						<div class="clearfix"></div>
+						<hr> 
+
+						                   					
+                                                 </div>
+                                                 <div style="text-align:center;"><a href="#" style="margin:5px 50px 5px 0px;line-height:2;" class="btn-sm btn-info reset">Reset</a><a href="#" class="btn-sm btn-info addtojson">Add</a></div>
+                                            </div>
+                                        </div>
+                                             	
+                                 	</div>
+                                 	<div class="row replybar">
+                                      <input type="date" class="form-control floating-label date" placeholder="select date" name="date" style="float:left;"/>
+                                      <div><a href="#" class="btn-sm btn-success submitplan">Submit Plan</a></div>   
+                                      
+                                    </div>
+                                 </div>
+                            </div>
+                     </div>
+                     <!--<div class="tab-pane fade in active" id="contactus">-->
+
+                  	 </div>
+                </div>
+                <!--<div id="myTabContent" class="tab-content">-->
+            </div>
+        </div>
+    </div>
+    
+    <div id="insertalertbox" class="modal fade" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        
+        <h4 class="modal-title"></h4>
+      </div>
+      <div class="modal-body">
+        <p></p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary btn-flat" data-dismiss="modal"><i class="mdi-navigation-check"></i> Ok</button>
+        </div>
+    </div>
+  </div>
+</div>         
+
+        <!-- Your site ends -->
+
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        
+        <script src="js/ripples.min.js"></script>
+        <script src="js/material.min.js"></script>
+        <script src="js/jquery.dropdown.js"></script>
+        <script src="js/cms.js"></script>
+        
+        
+        
+        <script>
+            
+        </script>
+
+    </body>
+
+</html>
