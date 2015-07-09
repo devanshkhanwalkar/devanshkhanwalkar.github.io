@@ -12,9 +12,13 @@ $(document).ready(function() {
     else {
 
         var chatIds = new Array();
+		var articleIds = new Array();
+		var newArticleIds = new Array();
         var newIds = new Array();
         var current_cid;
         var current_count;
+		var current_aid;
+        var current_acount;
         $.material.init();
 		
         $(window).load(function() {
@@ -26,10 +30,24 @@ $(document).ready(function() {
             //alert(chatIds);
         });
 
-
-
+		$("#admintab1").click(function(){
+									   
+				getAllUsers();		   
+									   
+									   
+									   
+						});
+		
+		$("#admintab2").click(function(){
+									   
+				getAllArticles();		   
+									   
+									   
+									   
+						});
 
         function getAllUsers() {
+			
             chatIds = [];
             //alert("dasda");	  
             $.ajax({
@@ -41,6 +59,7 @@ $(document).ready(function() {
 
                 beforeSend: function() {
                     $(".allunreadmsg .allusers").html("<div class='se-pre-con'></div>");
+					
                     //$(".se-pre-con").css({"display":"block"});
                 },
                 success: function(result) {
@@ -87,6 +106,79 @@ $(document).ready(function() {
 
             });
         }
+		
+		function getAllArticles() {
+            articleIds = [];
+            //alert("dasda");	  
+            $.ajax({
+
+                type: 'GET',
+                url: "http://52.4.33.129:9000/api/getArticle?category=Health",
+                dataType: "json",
+				
+                beforeSend: function(request) {
+                    $(".allunreadmsg .allusers").html("<div class='se-pre-con'></div>");
+					request.setRequestHeader("token",token);
+                    //$(".se-pre-con").css({"display":"block"});
+                },
+                success: function(result) {
+
+                    var result =JSON.parse(JSON.stringify(result));
+					alert(JSON.stringify(result));
+                    var v, node, count = 0;
+                    var topbar = '<section class="module">\
+			 \
+			  <ol class="discussion">';
+
+                    var bottombar = ' </ol>\
+			  \
+			</section>';
+                    for (v in result.data) {
+                        //d= new Date(result.data[count].time *1000);
+                        node = '<li class="other" id="user' + count + '">\
+				  <div class="avatar">\
+					<img src="'+result.data[count].imageUrl+'" />\
+				  </div>\
+				  <div class="messages">\
+					<p>' + getTruncatedTitle(result.data[count].title) + '</p>\
+					<span class="hidden">'+result.data[count].id+'</span>\
+					<time datetime="2009-11-13T20:00"><span class="mdi-content-create editarticle" data-toggle="tooltip" data-placement="left" title="Edit article"></span><span data-toggle="modal" data-target="#alertbox"><a class="mdi-content-remove-circle deletearticle" data-toggle="tooltip" data-placement="left" title="Delete article"></a></span>\
+					<div>Created on '+ getdate(result.data[count].createdTime)+ '</div>\
+					</time>\
+				  </div>\
+				</li>' + node;
+                        articleIds.push(result.data[count]);
+                        count++;
+
+
+                    }
+                    //sort_names(chatIds, chatIds.length);
+                    //newIds = JSON.parse(JSON.stringify(chatIds));
+                    var displayusers = topbar + node + bottombar;
+                    $(".se-pre-con").fadeOut("slow");
+                    $(".allunreadmsg .allusers").html(displayusers);
+					$(".replybar").html('');
+                    //alert(chatIds.length);
+                    current_aid = articleIds.length - 1;
+                    current_acount = 10;
+                    $('[data-toggle="tooltip"]').tooltip();
+
+                }
+
+
+            });
+        }
+		
+		function getTruncatedTitle(message) {
+            if (message.length > 10) {
+                newmsg = message.substr(0, 10) + '...';
+
+            } else {
+                newmsg = message + '...';
+            }
+            return newmsg;
+        }
+		
 
         function updateUserList() {
             var node;
@@ -143,9 +235,58 @@ $(document).ready(function() {
 						  
 						  var response=JSON.parse(JSON.stringify(response));
 						  $("#deletemsg .modal-dialog .modal-body").html("<font color='#00acc1'>"+response.message+"</font>")
+						  $('#deletemsg').modal('show');
 						getAllUsers();
 						  
-						  }
+						  },
+					error: function(xhr, status, error) {
+
+                    $("#deletemsg .modal-dialog .modal-content .modal-body").html("<font color='#eb4141'>" + xhr.responseText + "</font>");
+                    $("#deletemsg").modal('show');
+
+
+                }
+					   
+					   
+					   
+					   });
+																					
+																					
+																					});
+
+        });
+		
+		$(document).on('click', '.discussion li .deletearticle', function() {
+	var name = $(this).parents('time').siblings('p').text();
+            var username = $(this).parents('time').siblings('span').text();
+            $("#alertbox .modal-body p").html("Sure you want to delete article -> <font color='#eb4141'>" +name+ "</font>");
+			var data={"articleId":username};
+			
+			
+			$(document).on('click','#alertbox .modal-dialog .modal-footer .deleteok	',function(){
+																					
+																					
+				$.ajax({
+					   
+					  url:'http://52.4.33.129:9000/api/deleteArticle',
+					  type:'POST',
+					  data:JSON.stringify(data),
+					  contentType:'application/json',
+					  success:function(response){
+						  
+						  var response=JSON.parse(JSON.stringify(response));
+						  $("#deletemsg .modal-body p").html("<font color='#00acc1'>"+response.message+"</font>")
+						  $('#deletemsg').modal('show');
+						getAllArticles();
+						  
+						  },
+					error: function(xhr, status, error) {
+
+                    $("#deletemsg .modal-dialog .modal-content .modal-body").html("<font color='#eb4141'>" + xhr.responseText + "</font>");
+                    $("#deletemsg").modal('show');
+
+
+                }
 					   
 					   
 					   
@@ -160,6 +301,7 @@ $(document).ready(function() {
             var userid = $(this).parents('time').siblings('span').text();
 		alert(userid);
             //$(".topbarpanel .rightpanel").html("Editing user <font color='#4caf50'>" + username + "</font>");
+			
             $(".replybar").html('<a href="javascript:void(0)" class="btn-sm btn-success updateuserbutton">Update User</a>');
 			getuser(userid);
 			
@@ -169,11 +311,20 @@ $(document).ready(function() {
 
 
             //$(".topbarpanel .rightpanel").html("Creating user...");
-            $(".replybar").html('');
+            
 			$('#tab a[href="#createuser"]').tab('show');
 
         });
+		
+		$(document).on('click', '.createarticle', function() {
 
+
+            //$(".topbarpanel .rightpanel").html("Creating user...");
+			$(".replybar").html('');
+            $(".replybar").html('<a href="javascript:void(0)" class="btn-sm btn-success createarticlebutton">Create Article</a>');
+			$('#articletab a[href="#postarticle"]').tab('show');
+
+        });
 
         $(".searchinput").keyup(function() {
 
@@ -396,8 +547,16 @@ $(document).ready(function() {
 							$(".errors").html("");
 						$(".signupstep4").addClass("hidden");
 						$("#deletemsg .modal-body p").html("<font color='#00acc1'>User created successfully</font>");
+						$('#deletemsg').modal('show');
 						getAllUsers();
-									}
+									},
+					error: function(xhr, status, error) {
+
+                    $("#deletemsg .modal-body p").html("<font color='#eb4141'>" + xhr.responseText + "</font>");
+                    $("#deletemsg").modal('show');
+
+
+                }
 
 
 						});
@@ -472,6 +631,24 @@ $(document).ready(function() {
 				   });
 		}
 		
+		function getdate(timestamp) {
+            var d = new Date(timestamp);
+            var mm = d.getMonth()+1;
+            var dd = d.getDate();
+            var yy = d.getFullYear();
+            var h = d.getHours();
+            var minute = d.getMinutes();
+            var ampm;
+            if (h > 12) {
+                h = h - 12;
+                ampm = 'PM';
+            } else {
+                ampm = 'AM';
+            }
+            var dates = dd + '/' + mm + '/' + yy;
+            //alert(dates);
+            return dates;
+        }
 		
 		$(document).on('click','.updateuserbutton',function(){
 
@@ -497,10 +674,54 @@ $(document).ready(function() {
 				   data:JSON.stringify(profile),
 				contentType:'application/json',
 				success:function(response){
-					alert(JSON.stringify(response));
+					$("#deletemsg .modal-body p").html("<font color='#00acc1'>User Updated successfully</font>");
+					$('#deletemsg').modal('show');
+					//alert(JSON.stringify(response));
+					getAllUsers();
 					
 
-						}
+						},
+					error: function(xhr, status, error) {
+
+                    $("#deletemsg .modal-body p").html("<font color='#eb4141'>" + xhr.responseText + "</font>");
+                    $("#deletemsg").modal('show');
+
+
+                }
+
+					});
+									});
+		
+		$(document).on('click','.createarticlebutton',function(){
+
+				var title=$("#title").val();
+				var description=$("#description").val();
+				var imageurl=$("#imageurl").val();
+				var category=$("#category").val();
+				
+				var article={"title":title,"description":description,"imageUrl":imageurl,"category":category};
+				alert(JSON.stringify(article));
+				$.ajax({
+					type:'POST',
+				   dataType:'json',
+				   url:'http://52.4.33.129:9000/api/CMSpostArticle',
+				   data:JSON.stringify(article),
+				contentType:'application/json',
+				success:function(response){
+					alert(JSON.stringify(response));
+					$("#deletemsg .modal-body p").html("<font color='#00acc1'>Article created successfully</font>");
+					
+					$('#deletemsg').modal('show');
+					getAllArticles();
+
+						},
+					error: function(xhr, status, error) {
+
+                    $("#deletemsg .modal-body p").html("<font color='#eb4141'>" + xhr.responseText + "</font>");
+                    $("#deletemsg").modal('show');
+
+
+                }
 
 					});
 									});

@@ -445,7 +445,7 @@ $(document).ready(function() {
 
         function getdate(timestamp) {
             var d = new Date(timestamp * 1000);
-            var mm = d.getMonth();
+            var mm = d.getMonth()+1;
             var dd = d.getDate();
             var yy = d.getFullYear();
             var h = d.getHours();
@@ -661,6 +661,8 @@ currtab=$(this).find('a').attr('href');
                 }
 
             }
+			$('#insertalertbox .modal-body p').html("<font color='#00acc1'>Meal Pattern Added successfully!</font>");
+			$('#insertalertbox').modal('show');
             alert(JSON.stringify(mealPattern));
         });
 
@@ -719,7 +721,9 @@ mealPattern.push(mealPatternv);
                   	}
 
             }
-		$('#hydration .reset').click();
+		$('#insertalertbox .modal-body p').html("<font color='#00acc1'>Exercises Added successfully!</font>");
+		$('#insertalertbox').modal('show');
+		$('#exercises .reset').click();
 		alert(JSON.stringify(exercises));
            /* var exercisesv = {};
 		if($("#exercisename").val()=='')
@@ -784,7 +788,8 @@ mealPattern.push(mealPatternv);
             hydrationv.name = $("#hydrationname").val();
             hydrationv.required = parseInt($("#hydrationrequired").val(), 10);
             hydartionItems.push(hydrationv);*/
-
+			$('#insertalertbox .modal-body p').html("<font color='#00acc1'>Hydration Plan Added successfully!</font>");
+			$('#insertalertbox').modal('show');
             $('#hydration .reset').click();
             alert(JSON.stringify(hydartionItems));
             //$("#mealpattern .addtojson").attr("disabled","true");
@@ -1068,6 +1073,7 @@ mealPattern.push(mealPatternv);
                                                 	<td>Item Name</td>\
                                                     <td contenteditable="true" id="dpmp' + row + 'item4itemName">' + dpres.data[c].dietPlan.mealPattern[row].items[4].itemName + '</td>\
                                                     <td>Qty</td>\
+\
                                                     <td contenteditable="true" id="dpmp' + row + 'item4qty">' + dpres.data[c].dietPlan.mealPattern[row].items[4].qty + '</td>\
                                                     <td>Calorie</td>\
                                                     <td contenteditable="true" id="dpmp' + row + 'item4cal">' + dpres.data[c].dietPlan.mealPattern[row].items[4].cal + '</td>\

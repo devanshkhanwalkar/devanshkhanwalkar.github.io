@@ -53,7 +53,26 @@
 </div>
     <div class="container">
       	<div class="row">
+        <ul id="admintab" class="nav nav-tabs nav-justified">
+                                <li id="admintab1" class="active">
+                                    <a href="#usertasks" data-toggle="tab">
+                                    USER
+                                    </a>
+                                </li>
+                               <!-- <li id="tab4">
+                                    <a href="#userinfo" data-toggle="tab">
+                                    USER INFO
+                                    </a>
+                                </li>-->
+                                 <li id="admintab2">
+                                    <a href="#articletasks" data-toggle="tab">
+                                    ARTICLE
+                                    </a>
+                                </li>
+             </ul>
       		<div class="well page active" id="about">
+            <div id="admintabcontent" class="tab-content">
+             <div class="tab-pane fade in active" id="usertasks">
                 <div class="row topbarpanel">
                      <div class="col-md-3 adminpanel">
                            <img src="img/client.png"/><span></span>Admin Panel
@@ -154,7 +173,7 @@
 					<input type="date" class="form-control" name="updatedob" id="updatedob" placeholder="Enter DOB.."/>
 					<input type="text" class="form-control" name="updateaddress" id="updateaddress" placeholder="Enter Address.."/>
 					<div class="nxt">
-                                        <a class="btn btn-lg btn-primary btn-raised next4" data-toggle="modal" data-target="#deletemsg">NEXT</a>
+                                        <a class="btn btn-lg btn-primary btn-raised next4">NEXT</a>
                                      </div>
 				
                                     </div>
@@ -207,6 +226,72 @@
                          </div>
                     </div>
                 </div>
+                </div>
+                <div class="tab-pane fade in" id="articletasks">
+                	<div class="row topbarpanel">
+                     <div class="col-md-3 adminpanel">
+                           <img src="img/client.png"/><span></span>Admin Panel
+                           <span class="btn btn-primary btn-fab btn-raised mdi-content-add createarticle" data-toggle="tooltip" data-placement="left" title="Create Article"></span>
+                      </div>
+                      <div class="col-md-9 rightpanel">
+                      	<ul id="articletab" class="nav nav-tabs nav-justified">
+                                <li class="hidden" id="articletab1">
+                                    <a href="#postarticle" data-toggle="tab">
+                                    Post Article
+                                    </a>
+                                </li>
+                               <!-- <li id="tab4">
+                                    <a href="#userinfo" data-toggle="tab">
+                                    USER INFO
+                                    </a>
+                                </li>-->
+                                 <li id="articletab2" class="hidden">
+                                    <a href="#editarticle" data-toggle="tab">
+                                    Edit Article
+                                    </a>
+                                </li>
+                           </ul>
+                      </div>
+                      </div>
+                <div class="row">
+                    <div class="col-md-3 allunreadmsg">
+                    	<div class="row search">
+                                 
+                                 </div>
+                                 
+                                 <div class="row allusers">
+                                 	<div class="se-pre-con"></div>
+                                 </div>
+                          
+                    </div>
+                    <div class="col-md-9 lastnmsg">
+                         <div class="row lastnmsgbox">
+                         	<div id="articleTabContent" class="tab-content">
+                         	<div class="tab-pane fade in" id="postarticle">
+                            
+                                   
+                                <div class="formarea">
+                                    <h1 class="text-center" style='color:#fed859'>Post Article</h1>
+                                    <label>Title</label>
+                                    <input type="text" name="Title" id="title" class="form-control" placeholder="title.."/>
+                                    <label>Description</label>    
+                                	<textarea name="description" id="description" rows="5" class="form-control" placeholder="Type a description"></textarea>
+                                    <label>Featured Image</label>                                    
+                                	<input type="text" name="imageurl" id="imageurl" class="form-control" placeholder="Paste an image URL.."/>
+                                    <label>Category</label>    
+                                	<input type="text" name="category" id="category" class="form-control" placeholder="Category.." value="Health" disabled/>
+                                </div>
+							</div>
+                            </div>
+                          </div>
+                          <div class="row replybar text-center">
+                               
+                         </div>
+
+                    </div>
+                </div>
+                </div>
+                
             </div>
                      <!--<div class="tab-pane fade in active" id="contactus">-->
         </div>      
