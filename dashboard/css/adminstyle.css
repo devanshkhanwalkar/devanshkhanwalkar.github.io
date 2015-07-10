@@ -41,7 +41,13 @@ background:#FED859;
   border-radius:50%;
 }
 
-
+#questiontasks .messages
+{
+	background:none;
+  padding: 20px;
+  margin: -10px 0px 0px 0px;
+  position:relative;
+}
 .messages {
   background:none;
   padding: 20px;
@@ -52,6 +58,12 @@ background:#FED859;
   font-size:1.2rem;
   margin: 0;
   float:left;
+}
+#questiontasks .messages time
+{
+	font-size:1rem;
+  color: #ccc;
+  float:none;
 }
 .messages time{
   font-size:1rem;
@@ -220,11 +232,11 @@ background:#FED859;
 {
 	color:#FED859;
 }
-.mdi-content-remove-circle.deleteuser:hover,.mdi-content-remove-circle.deletearticle:hover
+.mdi-content-remove-circle.deleteuser:hover,.mdi-content-remove-circle.deletearticle:hover,.mdi-content-remove-circle.deletequestion:hover
 {
 	color:#f44336;
 }
-.mdi-content-remove-circle.deleteuser,.mdi-content-remove-circle.deletearticle
+.mdi-content-remove-circle.deleteuser,.mdi-content-remove-circle.deletearticle,.mdi-content-remove-circle.deletequestion
 {
 	color:#CCC;
 }
@@ -237,11 +249,11 @@ background:#FED859;
 {
 	margin-right:20px;
 }
-.updateuserbutton,.createarticlebutton
+.updateuserbutton,.createarticlebutton,.createquestionbutton
 {
   line-height:48px;
 }
-.createuserbutton,.createarticle
+.createuserbutton,.createarticle,.createquestion
 {
 	background:#00acc1;
 	color:#fff;
@@ -261,7 +273,17 @@ a,a:hover
 	  margin-top:5px;
 	  color:#fff;
   }
-  .btn.btn-raised.mdi-content-add.createarticle,.btn.btn-raised.mdi-content-add.createarticle:hover
+  .btn.btn-raised.mdi-content-add.add_field_button,.btn.btn-raised.mdi-content-add.add_field_button:hover
+  {
+	  width:40px;
+	  height:40px;
+	  padding:6px;
+	  background:#fed859;
+	  margin-top:5px;
+	  margin-left:20px;
+	  color:#fff;
+  }
+  .btn.btn-raised.mdi-content-add.createarticle,.btn.btn-raised.mdi-content-add.createarticle:hover,.btn.btn-raised.mdi-content-add.createquestion,.btn.btn-raised.mdi-content-add.createquestion:hover
   {
 	  width:40px;
 	  height:40px;
@@ -308,9 +330,13 @@ a,a:hover
   	border-radius: 2px;
   	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
-.lastnmsgbox .formarea input,.lastnmsgbox .formarea textarea
+.lastnmsgbox .formarea input,.lastnmsgbox .formarea textarea,.lastnmsgbox .formarea select,.radio
 {
 	margin-bottom:50px;
 }
 
-
+.remove_field,.remove_field:hover
+{
+	float:left;
+	color:#eb4141;
+}

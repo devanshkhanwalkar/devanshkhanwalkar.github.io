@@ -14,11 +14,15 @@ $(document).ready(function() {
         var chatIds = new Array();
 		var articleIds = new Array();
 		var newArticleIds = new Array();
+		var questionIds=new Array();
+		var newquestionIds=new Array();
         var newIds = new Array();
         var current_cid;
         var current_count;
 		var current_aid;
         var current_acount;
+		var current_qid;
+        var current_qcount;
         $.material.init();
 		
         $(window).load(function() {
@@ -41,6 +45,13 @@ $(document).ready(function() {
 		$("#admintab2").click(function(){
 									   
 				getAllArticles();		   
+									   
+									   
+									   
+						});
+		$("#admintab3").click(function(){
+									   
+				getAllQuestions();		   
 									   
 									   
 									   
@@ -135,7 +146,7 @@ $(document).ready(function() {
 			</section>';
                     for (v in result.data) {
                         //d= new Date(result.data[count].time *1000);
-                        node = '<li class="other" id="user' + count + '">\
+                        node = '<li class="other" id="article' + count + '">\
 				  <div class="avatar">\
 					<img src="'+result.data[count].imageUrl+'" />\
 				  </div>\
@@ -169,9 +180,80 @@ $(document).ready(function() {
             });
         }
 		
+		function getAllQuestions() {
+            questionIds = [];
+            //alert("dasda");	  
+            $.ajax({
+
+                type: 'GET',
+                url: "http://52.4.33.129:9000/api/getquestion",
+                dataType: "json",
+				
+                beforeSend: function(request) {
+                    $(".allunreadmsg .allusers").html("<div class='se-pre-con'></div>");
+					request.setRequestHeader("token",token);
+                    //$(".se-pre-con").css({"display":"block"});
+                },
+                success: function(result) {
+
+                    var result =JSON.parse(JSON.stringify(result));
+					alert(JSON.stringify(result));
+                    var v, node, count = 0;
+                    var topbar = '<section class="module">\
+			 \
+			  <ol class="discussion">';
+
+                    var bottombar = ' </ol>\
+			  \
+			</section>';
+                    for (v in result.data) {
+						var q=0;
+						for(w in result.data[count].questions)
+						{
+                        //d= new Date(result.data[count].time *1000);
+                        node = '<li class="other" id="question' + count + '">\
+				  <div class="messages">\
+					<p>' + getTruncatedQuestion(result.data[count].questions[q].description) + '</p>\
+					<span class="hidden">'+result.data[count].questions[q].id+'</span>\
+					<time datetime="2009-11-13T20:00"><span data-toggle="modal" data-target="#alertbox"><a class="mdi-content-remove-circle deletequestion" data-toggle="tooltip" data-placement="left" title="Delete Question"></a></span>\
+					<div>'+result.data[count].categoryName+ '</div>\
+					</time>\
+				  </div>\
+				</li>' + node;
+                        questionIds.push(result.data[count].questions[q]);
+						q++;
+						}
+                        count++;
+                    }
+                    //sort_names(chatIds, chatIds.length);
+                    //newIds = JSON.parse(JSON.stringify(chatIds));
+                    var displayusers = topbar + node + bottombar;
+                    $(".se-pre-con").fadeOut("slow");
+                    $(".allunreadmsg .allusers").html(displayusers);
+					$(".replybar").html('');
+                    //alert(chatIds.length);
+                    current_qid = articleIds.length - 1;
+                    current_qcount = 10;
+                    $('[data-toggle="tooltip"]').tooltip();
+
+                }
+
+
+            });
+        }
+		
 		function getTruncatedTitle(message) {
             if (message.length > 10) {
                 newmsg = message.substr(0, 10) + '...';
+
+            } else {
+                newmsg = message + '...';
+            }
+            return newmsg;
+        }
+		function getTruncatedQuestion(message) {
+            if (message.length > 25) {
+                newmsg = message.substr(0, 25) + '...';
 
             } else {
                 newmsg = message + '...';
@@ -296,6 +378,48 @@ $(document).ready(function() {
 																					});
 
         });
+		
+		$(document).on('click', '.discussion li .deletequestion', function() {
+	var name = $(this).parents('time').siblings('p').text();
+            var username = $(this).parents('time').siblings('span').text();
+            $("#alertbox .modal-body p").html("Sure you want to delete user -> <font color='#eb4141'>" +name+ "</font>");
+			alert(username);
+			
+			
+			$(document).on('click','#alertbox .modal-dialog .modal-footer .deleteok	',function(){
+																					
+																					
+				$.ajax({
+					   
+					  url:'http://52.4.33.129:9000/api/CMSdeleteQuestion?questionId='+username,
+					  type:'POST',
+					  data:JSON.stringify(data),
+					  contentType:'application/json',
+					  success:function(response){
+						  
+						  var response=JSON.parse(JSON.stringify(response));
+						  $("#deletemsg .modal-dialog .modal-body").html("<font color='#00acc1'>"+response.message+"</font>")
+						  $('#deletemsg').modal('show');
+						getAllQuestions();
+						  
+						  },
+					error: function(xhr, status, error) {
+
+                    $("#deletemsg .modal-dialog .modal-content .modal-body").html("<font color='#eb4141'>" + xhr.responseText + "</font>");
+                    $("#deletemsg").modal('show');
+
+
+                }
+					   
+					   
+					   
+					   });
+																					
+																					
+																					});
+
+        });
+		
         $(document).on('click', '.discussion li .edituser', function() {
 
             var userid = $(this).parents('time').siblings('span').text();
@@ -320,9 +444,18 @@ $(document).ready(function() {
 
 
             //$(".topbarpanel .rightpanel").html("Creating user...");
-			$(".replybar").html('');
+			
             $(".replybar").html('<a href="javascript:void(0)" class="btn-sm btn-success createarticlebutton">Create Article</a>');
 			$('#articletab a[href="#postarticle"]').tab('show');
+
+        });
+		$(document).on('click', '.createquestion', function() {
+
+
+            //$(".topbarpanel .rightpanel").html("Creating user...");
+			
+            $(".replybar").html('<a href="javascript:void(0)" class="btn-sm btn-success createquestionbutton">Create Question</a>');
+			$('#articletab a[href="#createquestion"]').tab('show');
 
         });
 
@@ -334,9 +467,114 @@ $(document).ready(function() {
 
 
         });
+		
+		
+		var max_fields = 10;
+        var wrapper = $("#createquestion .input_fields_wrap"); //Fields wrapper
+        var add_button = $("#createquestion .add_field_button"); //Add button ID
+
+        var x = 1; //initlal text box count
+        $(add_button).click(function(e) { //on add input button click
+            e.preventDefault();
+            if (x < max_fields) { //max input box allowed
+               x++; //text box increment
+                $(wrapper).append('<div class="option"><input type="text" name="optionname" class="oname form-control" placeholder="option name.." id="optionname0" style="float:left;width:30%;margin-left:20px;"><textarea name="optiondesc" style="width:30%;margin-left:20px;float:left;" class="odesc form-control" placeholder="Description.." id="optiondesc0" rows="3"></textarea><a href="#" class="remove_field mdi-content-clear" data-toggle="tooltip" data-placement="right" title="Remove this option"></a></div><div class="clearfix"></div>'); //add input box
+                $('[data-toggle="tooltip"]').tooltip();
+            }
+        });
+
+        $(wrapper).on("click", ".remove_field", function(e) { //user click on remove text
+            e.preventDefault();
+            $(this).parent('div').remove();
+            x--;
+        })
+		
+		var categoryid='';
+		$(document).on('blur','#categoryid',function(){
+				
+			categoryid=$("#categoryid option:selected").val();
+				if(categoryid=='1')
+			{
+				$("#categoryname").val("Lifestyle");
+			}
+			else if(categoryid=='2')
+			{
+				$("#categoryname").val("Current Status");
+			}
+			else if(categoryid=='3')
+			{
+				$("#categoryname").val("Routine");
+			}
+			else if(categoryid=='4')
+			{
+				$("#categoryname").val("Habits");
+			}
+			else if(categoryid=='5')
+			{
+				$("#categoryname").val("Medical Status");
+			}						
+																
+																
+																
+																})
+		
+		$(document).on('click','.createquestionbutton',function(){
+												 
+			
+			var sequenceid=$("#sequenceid").val();
+			
+			var categoryname=$("#categoryname").val();
+			var qdesc=$("#qdescription").val();
+			var qtype=$("#qtype").val();
+			var singlechoice=$("input[name=issinglechoice]:checked").val();
+			var multiplechoice=$("input[name=ismultiplechoice]:checked").val();
+			var fixedformat=$("input[name=fixedformat]:checked").val();
+			var customanswer=$("input[name=iscustomanswer]:checked").val();	
+			alert(customanswer);
+			var option=new Array();
+			$(".option-div .input_fields_wrap div.option").each(function(){
+					//alert($(".option-div .input_fields_wrap div.option input").val());
+					//alert($(".option-div .input_fields_wrap div.option textarea").val());
+						var obj={"option":$(this).children('input').val(),"optionDescription":$(this).children('textarea').val()};
+						option.push(obj);
+																  });								 
+												 
+			//alert(JSON.stringify(option));
+			
+			if(categoryid!=''&&sequenceid!=''&&categoryname!=''&&qdesc!=''&&qtype!=''&&singlechoice!=''&&multiplechoice!=''&&fixedformat!=''&&customanswer!='')
+			{
+	var question={"categoryId":categoryid,"sequenceId":sequenceid,"categoryName":categoryname,"description":qdesc,"isMultipleChoice":multiplechoice,"isCustomAnswer":customanswer,"fixedFormat":fixedformat,"type":qtype,"options":option,"isSingleChoice":singlechoice};
+	
+				$.ajax({
+					   url:"http://52.4.33.129:9000/api/CMSinsertQuestion",
+					   type:"POST",
+					   data:JSON.stringify(question),
+					   contentType:'application/json',
+					   success:function(response){
+						   $("#deletemsg .modal-body p").html("<font color='#00acc1'>Question inserted successfully!</font>");
+						   $("#deletemsg").modal('show');
+						   getAllQuestions();
+						   categoryid='';
+						   
+						   },
+						error: function(xhr, status, error) {
+
+                    $("#deletemsg .modal-body p").html("<font color='#eb4141'>" + xhr.responseText + "</font>");
+                    $("#deletemsg").modal('show');
 
 
-
+                }
+					});
+				//alert(JSON.stringify(question));
+				
+			}
+			else
+			{
+				$("#deletemsg .modal-body p").html("<font color='#eb4141'>Please enter all fields!</font>");
+				$("#deletemsg").modal("show");
+			}
+												 
+												 });
 
        /* function sort_names(chatIds, n) {
             var i, pivot, maxpos = 0;
