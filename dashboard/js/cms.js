@@ -313,31 +313,31 @@ $(document).ready(function() {
         },];
         var hydartionItems = [{
 
-		"name":"",
+		"name":"--NA--",
 		"required":0
 
 
 			},{
 
-		"name":"",
+		"name":"--NA--",
 		"required":0
 
 
 			},{
 
-		"name":"",
+		"name":"--NA--",
 		"required":0
 
 
 			},{
 
-		"name":"",
+		"name":"--NA--",
 		"required":0
 
 
 			},{
 
-		"name":"",
+		"name":"--NA--",
 		"required":0
 
 
@@ -1005,7 +1005,7 @@ mealPattern.push(mealPatternv);
         });
 
         function dptableMaker(c, dpres) {
-           // alert(JSON.stringify(dpres));
+           //alert(JSON.stringify(dpres));
             $('.dptable .table').find("tr:gt(3)").remove();
             $("#biid").html(dpres.data[c].id);
             $("#biuserid").html(dpres.data[c].userId);
