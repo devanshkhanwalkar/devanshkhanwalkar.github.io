@@ -76,7 +76,7 @@ $(document).ready(function() {
                 success: function(result) {
 
                     var result =JSON.parse(JSON.stringify(result));
-					alert(JSON.stringify(result));
+					//alert(JSON.stringify(result));
                     var v, node, count = 0;
                     var topbar = '<section class="module">\
 			 \
@@ -135,7 +135,7 @@ $(document).ready(function() {
                 success: function(result) {
 
                     var result =JSON.parse(JSON.stringify(result));
-					alert(JSON.stringify(result));
+					//alert(JSON.stringify(result));
                     var v, node, count = 0;
                     var topbar = '<section class="module">\
 			 \
@@ -197,7 +197,7 @@ $(document).ready(function() {
                 success: function(result) {
 
                     var result =JSON.parse(JSON.stringify(result));
-					alert(JSON.stringify(result));
+					//alert(JSON.stringify(result));
                     var v, node, count = 0;
                     var topbar = '<section class="module">\
 			 \
@@ -383,7 +383,7 @@ $(document).ready(function() {
 	var name = $(this).parents('time').siblings('p').text();
             var username = $(this).parents('time').siblings('span').text();
             $("#alertbox .modal-body p").html("Sure you want to delete user -> <font color='#eb4141'>" +name+ "</font>");
-			alert(username);
+			//alert(username);
 			
 			
 			$(document).on('click','#alertbox .modal-dialog .modal-footer .deleteok	',function(){
@@ -423,7 +423,7 @@ $(document).ready(function() {
         $(document).on('click', '.discussion li .edituser', function() {
 
             var userid = $(this).parents('time').siblings('span').text();
-		alert(userid);
+		//alert(userid);
             //$(".topbarpanel .rightpanel").html("Editing user <font color='#4caf50'>" + username + "</font>");
 			
             $(".replybar").html('<a href="javascript:void(0)" class="btn-sm btn-success updateuserbutton">Update User</a>');
@@ -530,7 +530,7 @@ $(document).ready(function() {
 			var multiplechoice=$("input[name=ismultiplechoice]:checked").val();
 			var fixedformat=$("input[name=fixedformat]:checked").val();
 			var customanswer=$("input[name=iscustomanswer]:checked").val();	
-			alert(customanswer);
+			//alert(customanswer);
 			var option=new Array();
 			$(".option-div .input_fields_wrap div.option").each(function(){
 					//alert($(".option-div .input_fields_wrap div.option input").val());
@@ -638,7 +638,7 @@ $(document).ready(function() {
 				var email=$("#email").val();
 				var pass=$("#password").val();
 				var type=$("input[name=type]:checked").val();
-				alert(type);
+				//alert(type);
 				//var type=$("#type").val();
 				if(email!='' && pass!='' && type!='')
 				{
@@ -663,7 +663,7 @@ $(document).ready(function() {
 							},
 							success: function(userdata){
 							 var userdata = JSON.parse(JSON.stringify(userdata));
-							 alert(JSON.stringify(userdata));
+							 //alert(JSON.stringify(userdata));
 							 //token=userdata.data.token;
 							u_id=userdata.data.userId;
 							 $(".errors").html("");
@@ -683,7 +683,7 @@ $(document).ready(function() {
 				
 				
 				$(document).on('submit','form#data',function(event){
- 						alert('Fired!');
+ 						//alert('Fired!');
 					  //disable the default form submission
 					  event.preventDefault();
 					 
@@ -707,9 +707,9 @@ $(document).ready(function() {
 						success: function (returndata) {
 							$(".errors").html("");
 							//var returndata=JSON.parse(returndata);
-						  alert(JSON.stringify(returndata));
+						  //alert(JSON.stringify(returndata));
 						image_url=returndata.data.uploaded_image_url;
-						alert(image_url);
+						//alert(image_url);
 						  $(".signupstep2").addClass("hidden");
 							 $(".signupstep3").removeClass("hidden");
 						}
@@ -861,7 +861,7 @@ $(document).ready(function() {
 					$("#editbg").val(r.data.bloodGroup);
 					curr_user=r.data.id;
 					curr_url=r.data.imageUrl;
-					   alert(JSON.stringify(r));
+					   //alert(JSON.stringify(r));
 				   }
 				   
 				   
@@ -904,7 +904,7 @@ $(document).ready(function() {
 				var newweight=$("#editweight").val();
 				var newbg=$("#editbg").val();
 				var profile={"userId":curr_user,"email":newemail,"userType":newusertype,"name":newname,"phoneNumber":newphone,"address":newaddress,"age":newage,"sex":newsex,"dob":newdob,"height":newheight,"weight":newweight,"bloodGroup":newbg};
-				alert(JSON.stringify(profile));
+				//alert(JSON.stringify(profile));
 				$.ajax({
 					type:'POST',
 				   dataType:'json',
@@ -938,7 +938,7 @@ $(document).ready(function() {
 				var category=$("#category").val();
 				
 				var article={"title":title,"description":description,"imageUrl":imageurl,"category":category};
-				alert(JSON.stringify(article));
+				//alert(JSON.stringify(article));
 				$.ajax({
 					type:'POST',
 				   dataType:'json',
@@ -946,7 +946,7 @@ $(document).ready(function() {
 				   data:JSON.stringify(article),
 				contentType:'application/json',
 				success:function(response){
-					alert(JSON.stringify(response));
+					//alert(JSON.stringify(response));
 					$("#deletemsg .modal-body p").html("<font color='#00acc1'>Article created successfully</font>");
 					
 					$('#deletemsg').modal('show');
@@ -976,7 +976,7 @@ $(document).ready(function() {
             if (sessionData[0] && sessionData[1] == 'A')
 			{
 				token=sessionData[0];
-				alert(token);
+				//alert(token);
                 return true;
 			}
         }

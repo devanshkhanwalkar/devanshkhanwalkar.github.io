@@ -565,7 +565,7 @@ $(document).ready(function() {
                     chatId: chatIds[current_cid],
                     msg: reply
                 };
-                alert(JSON.stringify(data));
+                //alert(JSON.stringify(data));
                 $.ajax({
 
                     type: 'POST',
@@ -593,7 +593,7 @@ $(document).ready(function() {
 
         });
         $('.discussion li').click(function() {
-            alert("asas");
+            //alert("asas");
             $(this).toggleClass('active');
 
         });
@@ -626,7 +626,7 @@ currtab=$(this).find('a').attr('href');
 	var currid = $(this).find('span').text();
 	dailyPlan.userId = currid;
            // dailyPlan.userId = allUsers[current_user].id;
-            alert(currid);
+            //alert(currid);
             selectedUserName = $(this).find('p').text();
             //alert(selectedUserName);
             //alert(dailyPlan.userId);
@@ -663,7 +663,7 @@ currtab=$(this).find('a').attr('href');
             }
 			$('#insertalertbox .modal-body p').html("<font color='#00acc1'>Meal Pattern Added successfully!</font>");
 			$('#insertalertbox').modal('show');
-            alert(JSON.stringify(mealPattern));
+            //alert(JSON.stringify(mealPattern));
         });
 
         /*var mealPatternv={};
@@ -724,7 +724,7 @@ mealPattern.push(mealPatternv);
 		$('#insertalertbox .modal-body p').html("<font color='#00acc1'>Exercises Added successfully!</font>");
 		$('#insertalertbox').modal('show');
 		$('#exercises .reset').click();
-		alert(JSON.stringify(exercises));
+		//alert(JSON.stringify(exercises));
            /* var exercisesv = {};
 		if($("#exercisename").val()=='')
 		{	
@@ -791,7 +791,7 @@ mealPattern.push(mealPatternv);
 			$('#insertalertbox .modal-body p').html("<font color='#00acc1'>Hydration Plan Added successfully!</font>");
 			$('#insertalertbox').modal('show');
             $('#hydration .reset').click();
-            alert(JSON.stringify(hydartionItems));
+            //alert(JSON.stringify(hydartionItems));
             //$("#mealpattern .addtojson").attr("disabled","true");
         });
 
@@ -900,7 +900,7 @@ mealPattern.push(mealPatternv);
 
 
                     }
-			alert(JSON.stringify(allUsers));
+			//alert(JSON.stringify(allUsers));
                     //alert(JSON.stringify(allUsers));
                     var displayusers = topbar + node + bottombar;
                     $(".se-pre-con").fadeOut("slow");
@@ -966,13 +966,13 @@ mealPattern.push(mealPatternv);
                 data: 'userId=' + id,
                 beforeSend: function() {
                     $("#editdailyplan .lastnmsg .lastnmsgbox .jsontable").html("<div class='se-pre-con1'></div>");
-                    alert(id);
+                    //alert(id);
 
                 },
                 success: function(response) {
                     var response = JSON.parse(JSON.stringify(response));
                     newresponse = response;
-                    alert(JSON.stringify(response));
+                    //alert(JSON.stringify(response));
                     newdate = 0;
                     var ul = '<div class="dropdown datedropdown"><a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Select Date <b \class="caret"></b></a>\
         <ul class="dropdown-menu">';
@@ -1005,7 +1005,7 @@ mealPattern.push(mealPatternv);
         });
 
         function dptableMaker(c, dpres) {
-            alert(JSON.stringify(dpres));
+           // alert(JSON.stringify(dpres));
             $('.dptable .table').find("tr:gt(3)").remove();
             $("#biid").html(dpres.data[c].id);
             $("#biuserid").html(dpres.data[c].userId);
@@ -1087,14 +1087,14 @@ mealPattern.push(mealPatternv);
 
         function eptableMaker(c,epres)
 		{
-			alert("ep");
+			//alert("ep");
 			$('.eptable .table').find("tr:gt(3)").remove();
 			$("#epissubmitted").html(epres.data[c].exercisePlan.isSubmited);
 			$("#epcalorieburn").html(epres.data[c].exercisePlan.calorieBurn);
 			$("#epselfevaluation").html(epres.data[c].exercisePlan.selfEvaluation);
 			for(var row=0;row<10;row++)
 		{
-		alert(row);
+		//alert(row);
 		$('.eptable .table tr:last').after('<tr><th colspan="6">Exercises'+row+'</th>\
                                                 </tr>\
                                                 <tr>\
@@ -1134,7 +1134,7 @@ mealPattern.push(mealPatternv);
 		
 		function hptableMaker(c,hpres)
 		{
-			alert("hp");
+			//alert("hp");
 			$('.hptable .table').find("tr:gt(1)").remove();
 			$("#hpissubmitted").html(hpres.data[c].hydrationPlan.isSubmited);
 			
@@ -1191,7 +1191,7 @@ mealPattern.push(mealPatternv);
                         newresponse.data[newdate].dietPlan.mealPattern[obj_no].items[item_no].cal = $(this).text();
                 }
             }
-			alert(JSON.stringify(newresponse.data[newdate]));
+			//alert(JSON.stringify(newresponse.data[newdate]));
 
         });
 
@@ -1202,7 +1202,7 @@ mealPattern.push(mealPatternv);
 								
 			var obj_no=$(this).attr("id").charAt(4);
 			var item_no=$(this).attr("id").charAt(11);
-			alert(obj_no+","+item_no);
+			//alert(obj_no+","+item_no);
 			if(isNaN(obj_no) && isNaN(item_no))
 			{
 				var topids=$(this).attr("id").substr(2);
@@ -1235,7 +1235,7 @@ mealPattern.push(mealPatternv);
 					
 				}
 			}
-				alert(JSON.stringify(newresponse.data[newdate]));				
+				//alert(JSON.stringify(newresponse.data[newdate]));				
 								
 								
 								});
@@ -1244,7 +1244,7 @@ mealPattern.push(mealPatternv);
 								
 			var obj_no=$(this).attr("id").charAt(4);
 			var item_no=$(this).attr("id").charAt(11);
-			alert(obj_no+","+item_no);
+			//alert(obj_no+","+item_no);
 			if(isNaN(obj_no) && isNaN(item_no))
 			{
 				var topids=$(this).attr("id").substr(2);
@@ -1265,7 +1265,7 @@ mealPattern.push(mealPatternv);
 					newresponse.data[newdate].hydrationPlan.hydartionItems[obj_no].userIntake=$(this).text();
 				
 			}
-				alert(JSON.stringify(newresponse.data[newdate]));				
+				//alert(JSON.stringify(newresponse.data[newdate]));				
 								
 								
 								});
@@ -1276,7 +1276,7 @@ mealPattern.push(mealPatternv);
                         newdate = $(this).attr('id').substr(4, $(this).attr('id').length);
                         //alert(curr_date);
                         
-                        alert(newdate);
+                        //alert(newdate);
                         dptableMaker(newdate, newresponse);
                         eptableMaker(newdate,newresponse);
                         hptableMaker(newdate,newresponse);
@@ -1288,7 +1288,7 @@ mealPattern.push(mealPatternv);
 
 		$(".updateplan").click(function(){
 			console.log(JSON.stringify(newresponse.data[newdate]));
-			alert(token);
+			//alert(token);
 			newresponse.data[newdate].date=newresponse.data[newdate].date+'';
 			$.ajax({
                 type: 'POST',

@@ -58,7 +58,7 @@ $(document).ready(function() {
                 contentType: 'application/json',
                 success: function(response) {
                     var response = $.parseJSON(JSON.stringify(response));
-			alert(JSON.stringify(response));
+			//alert(JSON.stringify(response));
                     var session = [response.data.token, response.data.userType,response.data.userId];
                     sessionStorage.setItem("sessionKey", JSON.stringify(session));
 
