@@ -663,6 +663,7 @@ currtab=$(this).find('a').attr('href');
             }
 			$('#insertalertbox .modal-body p').html("<font color='#00acc1'>Meal Pattern Added successfully!</font>");
 			$('#insertalertbox').modal('show');
+			$('#mealpattern .reset').click();
             //alert(JSON.stringify(mealPattern));
         });
 
@@ -698,6 +699,15 @@ mealPattern.push(mealPatternv);
 												
 												});
 	*/
+	$('#mealpattern .reset').click(function(){
+				$('#mealpattern').find('input').each(function () {
+								$(this).val("");					
+								});
+				$('#mealpattern').find('.remove_field').each(function () {
+								$(this).click();					
+								});			
+												
+												});
         //======================================================================================================
 
         $("#exercises .addtojson").click(function() {
