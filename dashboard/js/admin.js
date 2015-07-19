@@ -153,7 +153,7 @@ $(document).ready(function() {
 				  <div class="messages">\
 					<p>' + getTruncatedTitle(result.data[count].title) + '</p>\
 					<span class="hidden">'+result.data[count].id+'</span>\
-					<time datetime="2009-11-13T20:00"><span class="mdi-content-create editarticle" data-toggle="tooltip" data-placement="left" title="Edit article"></span><span data-toggle="modal" data-target="#alertbox"><a class="mdi-content-remove-circle deletearticle" data-toggle="tooltip" data-placement="left" title="Delete article"></a></span>\
+					<time datetime="2009-11-13T20:00"><!--<span class="mdi-content-create editarticle" data-toggle="tooltip" data-placement="left" title="Edit article"></span>--><span data-toggle="modal" data-target="#alertbox"><a class="mdi-content-remove-circle deletearticle" data-toggle="tooltip" data-placement="left" title="Delete article"></a></span>\
 					<div>Created on '+ getdate(result.data[count].createdTime)+ '</div>\
 					</time>\
 				  </div>\
@@ -163,6 +163,7 @@ $(document).ready(function() {
 
 
                     }
+					//alert(JSON.stringify(articleIds));
                     //sort_names(chatIds, chatIds.length);
                     //newIds = JSON.parse(JSON.stringify(chatIds));
                     var displayusers = topbar + node + bottombar;
@@ -206,12 +207,14 @@ $(document).ready(function() {
                     var bottombar = ' </ol>\
 			  \
 			</section>';
+					var z=0;
                     for (v in result.data) {
 						var q=0;
 						for(w in result.data[count].questions)
 						{
+							//alert(v);
                         //d= new Date(result.data[count].time *1000);
-                        node = '<li class="other" id="question' + count + '">\
+                        node = '<li class="other" id="question' + z + '">\
 				  <div class="messages">\
 					<p>' + getTruncatedQuestion(result.data[count].questions[q].description) + '</p>\
 					<span class="hidden">'+result.data[count].questions[q].id+'</span>\
@@ -222,6 +225,7 @@ $(document).ready(function() {
 				</li>' + node;
                         questionIds.push(result.data[count].questions[q]);
 						q++;
+						z++;
 						}
                         count++;
                     }
@@ -231,7 +235,7 @@ $(document).ready(function() {
                     $(".se-pre-con").fadeOut("slow");
                     $(".allunreadmsg .allusers").html(displayusers);
 					$(".replybar").html('');
-                    //alert(chatIds.length);
+                    //alert(JSON.stringify(questionIds));
                     current_qid = articleIds.length - 1;
                     current_qcount = 10;
                     $('[data-toggle="tooltip"]').tooltip();
@@ -431,6 +435,42 @@ $(document).ready(function() {
 			
 
         });
+		
+		$(document).on('click', '#articletasks .discussion li', function() {
+
+            var userid = $(this).attr('id').substr(7, $(this).attr('id').length);
+		//alert(userid);
+            //$(".topbarpanel .rightpanel").html("Editing user <font color='#4caf50'>" + username + "</font>");
+			
+            //$(".replybar").html('<a href="javascript:void(0)" class="btn-sm btn-success updateuserbutton">Update User</a>');
+			getarticle(userid);
+			
+
+        });
+		function getarticle(userid)
+		{
+			var info=JSON.stringify(articleIds[userid]);
+			$("#articletasks .lastnmsg .lastnmsgbox").html(info);
+		}
+		
+		$(document).on('click', '#questiontasks .discussion li', function() {
+
+            var userid =$(this).attr('id').substr(8, $(this).attr('id').length);
+		//alert(userid);
+            //$(".topbarpanel .rightpanel").html("Editing user <font color='#4caf50'>" + username + "</font>");
+			
+            //$(".replybar").html('<a href="javascript:void(0)" class="btn-sm btn-success updateuserbutton">Update User</a>');
+			getquestion(userid);
+			
+
+        });
+		function getquestion(userid)
+		{
+			var info=JSON.stringify(questionIds[userid]);
+			$("#questiontasks .lastnmsg .lastnmsgbox").html(info);
+		}
+		
+		
         $(document).on('click', '.createuser', function() {
 
 

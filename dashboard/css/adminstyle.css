@@ -340,3 +340,8 @@ a,a:hover
 	float:left;
 	color:#eb4141;
 }
+.btn-primary:not(.btn-link):not(.btn-flat).logout
+{
+	background:#fff;
+	color:#009688;
+}

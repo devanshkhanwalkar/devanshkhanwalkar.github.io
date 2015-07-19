@@ -702,15 +702,17 @@ mealPattern.push(mealPatternv);
 
         $("#exercises .addtojson").click(function() {
 
-
+		var errorFlag=0;
 		for (var i = 0; i < 10; i++) {
 		if($("#exercisename" + i).val()=='')
 		$("#exercisename" + i).val("--NA--");
 		if($("#calorieburn" + i).val()=='')
 		$("#calorieburn" + i).val("--NA--");
                 exercises[i].name = $("#exercisename" + i).val();
-		exercises[i].calorieBurn = $("#calorieburn" + i).val();
-                for (var j = 0; j < 5; j++) {
+				
+		
+		exercises[i].calorieBurn = $("#calorieburn" + i).val();	
+             for (var j = 0; j < 5; j++) {
 		//alert($(".exitem" + i + j).val());
                     if ($(".exitem" + i + j).val() == '') {
                         exercises[i].exerciseSets[j] = "--NA--";
@@ -720,10 +722,12 @@ mealPattern.push(mealPatternv);
 		//alert(exercises[i].exerciseSets[j]);
                   	}
 
-            }
+		}
+		
 		$('#insertalertbox .modal-body p').html("<font color='#00acc1'>Exercises Added successfully!</font>");
 		$('#insertalertbox').modal('show');
 		$('#exercises .reset').click();
+		
 		//alert(JSON.stringify(exercises));
            /* var exercisesv = {};
 		if($("#exercisename").val()=='')
@@ -751,7 +755,8 @@ mealPattern.push(mealPatternv);
             $('#exercises .reset').click();
             alert(JSON.stringify(exercises));
             //$("#mealpattern .addtojson").attr("disabled","true");*/
-
+		
+		
 
         });
 
