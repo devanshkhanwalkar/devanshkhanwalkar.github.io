@@ -66,7 +66,7 @@ $(document).ready(function() {
                 type: 'GET',
                 url: "http://52.4.33.129:9000/api/getAllUser",
                 dataType: "json",
-		data:'userType=CC,A',
+		data:'userType=CC,A,C',
 
                 beforeSend: function() {
                     $(".allunreadmsg .allusers").html("<div class='se-pre-con'></div>");
