@@ -641,7 +641,8 @@ currtab=$(this).find('a').attr('href');
         $("#mealpattern .addtojson").click(function() {
 
             for (var i = 0; i < 10; i++) {
-                mealPattern[i].time = $("#time" + i).val();
+                mealPattern[i].time = $("#time" + i).val()+'';
+				//alert($("#time" + i).val());
                 for (var j = 0; j < 5; j++) {
                     if ($("#itemname" + i + j).val() == '') {
                         mealPattern[i].items[j].itemName = "--NA--";
