@@ -348,6 +348,7 @@ $(document).ready(function() {
         var current_count;
         var newresponse;
         var newdate;
+		var currentuser;
 	var cmsid;
         $.material.init();
         $(".select").dropdown({
@@ -408,6 +409,8 @@ $(document).ready(function() {
 </section>';
                     for (v in result.data) {
                         //d= new Date(result.data[count].time *1000);
+				
+					
                         node = '<li class="other" id="user' + count + '">\
       <div class="avatar">\
         <img src="'+result.data[count].userImageUrl+'" />\
@@ -421,14 +424,13 @@ $(document).ready(function() {
                         chatIds.push(result.data[count].chatId);
                         count++;
 
-
-                    }
+					}
+                    
 
                     var displayusers = topbar + node + bottombar;
                     $(".se-pre-con").fadeOut("slow");
                     $("#contactus .allunreadmsg .allusers").html(displayusers);
-
-                    //alert(chatIds.length);
+					//alert(chatIds.length);
                     current_cid = chatIds.length - 1;
                     current_count = 10;
                     getFullChat(chatIds.length - 1, 10);
@@ -971,7 +973,7 @@ mealPattern.push(mealPatternv);
 
             //var id = allUsers[$(this).attr('id').substr(4, $(this).attr('id').length)].id;
 		var id=$(this).find('span').text();
-            $("#editdailyplan .topbarpanel .datelistinfo").html("Editing Daily plan of <font color='#00acc1'>" + allUsers[$(this).attr('id').substr(4, $(this).attr('id').length)].name + "</font>");
+         currentuser=allUsers[$(this).attr('id').substr(4, $(this).attr('id').length)].name;   
             $.ajax({
 
                 type: 'GET',
@@ -1005,6 +1007,7 @@ mealPattern.push(mealPatternv);
 
                     var list = ul + li + ulclose;
                     $("#editdailyplan .topbarpanel .datelist").html(list);
+					$("#editdailyplan .topbarpanel .datelistinfo").html("Editing Daily plan of <font color='#00acc1'>" + currentuser + "</font> for date <font color='#00acc1'>"+ $('.datedropdown li:last-child').text() +"</font>");
                     //$(".se-pre-con1").fadeOut("slow");
                     dptableMaker(newdate, response);
                     eptableMaker(newdate,response);
@@ -1020,11 +1023,14 @@ mealPattern.push(mealPatternv);
         });
 
         function dptableMaker(c, dpres) {
-           //alert(JSON.stringify(dpres));
+          
             $('.dptable .table').find("tr:gt(3)").remove();
-            $("#biid").html(dpres.data[c].id);
+			if(dpres.data[c])
+			{
+			$("#biid").html(dpres.data[c].id);
             $("#biuserid").html(dpres.data[c].userId);
-            $("#dpissubmitted").html(dpres.data[c].dietPlan.isSubmited);
+			//alert(dpres.data[c].dietPlan.isSubmited);
+            $("#dpissubmitted").text(dpres.data[c].dietPlan.isSubmited);
             $("#dpcalorieintake").html(dpres.data[c].dietPlan.calorieIntake);
             $("#dpselfevaluation").html(dpres.data[c].dietPlan.selfEvaluation);
             for (var row = 0; row <10; row++) {
@@ -1095,7 +1101,16 @@ mealPattern.push(mealPatternv);
                                                     \
                                                 </tr>');
             }
-
+			
+			}
+			else
+			{
+				$("#biid").html('');
+            $("#biuserid").html('');
+            $("#dpissubmitted").html('');
+            $("#dpcalorieintake").html('');
+            $("#dpselfevaluation").html('');
+			}
         }
 		
 		
@@ -1104,7 +1119,9 @@ mealPattern.push(mealPatternv);
 		{
 			//alert("ep");
 			$('.eptable .table').find("tr:gt(3)").remove();
-			$("#epissubmitted").html(epres.data[c].exercisePlan.isSubmited);
+			if(epres.data[c])
+			{
+			$("#epissubmitted").text(epres.data[c].exercisePlan.isSubmited);
 			$("#epcalorieburn").html(epres.data[c].exercisePlan.calorieBurn);
 			$("#epselfevaluation").html(epres.data[c].exercisePlan.selfEvaluation);
 			for(var row=0;row<10;row++)
@@ -1129,21 +1146,28 @@ mealPattern.push(mealPatternv);
                                                     \
                                                 </tr>\
                                                 <tr>\
-                                                	<td colspan="3">Exercise Name</td>\
+                                                	<td colspan="3">Exercise Set</td>\
                                                     <td colspan="3" contenteditable="true" id="epex'+row+'exsets0exName">'+epres.data[c].exercisePlan.exercises[row].exerciseSets[0]+'</td></tr>\
 												<tr>\
-                                                	<td colspan="3">Exercise Name</td>\
+                                                	<td colspan="3">Exercise Set</td>\
                                                     <td colspan="3" contenteditable="true" id="epex'+row+'exsets1exName">'+epres.data[c].exercisePlan.exercises[row].exerciseSets[1]+'</td></tr>\
 												<tr>\
-                                                	<td colspan="3">Exercise Name</td>\
+                                                	<td colspan="3">Exercise Set</td>\
                                                     <td colspan="3" contenteditable="true" id="epex'+row+'exsets2exName">'+epres.data[c].exercisePlan.exercises[row].exerciseSets[2]+'</td></tr>\
 													<tr>\
-                                                	<td colspan="3">Exercise Name</td>\
+                                                	<td colspan="3">Exercise Set</td>\
                                                     <td colspan="3" contenteditable="true" id="epex'+row+'exsets3exName">'+epres.data[c].exercisePlan.exercises[row].exerciseSets[3]+'</td></tr>\
 													<tr>\
-                                                	<td colspan="3">Exercise Name</td>\
+                                                	<td colspan="3">Exercise Set</td>\
                                                     <td colspan="3" contenteditable="true" id="epex'+row+'exsets4exName">'+epres.data[c].exercisePlan.exercises[row].exerciseSets[4]+'</td></tr>');
 		}
+			}
+			else
+			{
+				$("#epissubmitted").html('');
+			$("#epcalorieburn").html('');
+			$("#epselfevaluation").html('');
+			}
 			
 		}
 		
@@ -1151,7 +1175,9 @@ mealPattern.push(mealPatternv);
 		{
 			//alert("hp");
 			$('.hptable .table').find("tr:gt(1)").remove();
-			$("#hpissubmitted").html(hpres.data[c].hydrationPlan.isSubmited);
+		if(hpres.data[c])
+			{
+			$("#hpissubmitted").text(hpres.data[c].hydrationPlan.isSubmited);
 			
 			for(var row=0;row<hpres.data[c].hydrationPlan.hydartionItems.length;row++)
 		{
@@ -1170,6 +1196,11 @@ mealPattern.push(mealPatternv);
                                                     <td colspan="2" contenteditable="true" id="hphi'+row+'required">'+hpres.data[c].hydrationPlan.hydartionItems[row].required+'</td>\
                                                 </tr>');
 		}
+			}
+			else
+			{
+				$("#hpissubmitted").html('');
+			}
 			
 		}
 
@@ -1290,7 +1321,7 @@ mealPattern.push(mealPatternv);
 
                         newdate = $(this).attr('id').substr(4, $(this).attr('id').length);
                         //alert(curr_date);
-                        
+                        $("#editdailyplan .topbarpanel .datelistinfo").html("Editing Daily plan of <font color='#00acc1'>" + currentuser + "</font> for date <font color='#00acc1'>"+ $(this).text() +"</font>");
                         //alert(newdate);
                         dptableMaker(newdate, newresponse);
                         eptableMaker(newdate,newresponse);
