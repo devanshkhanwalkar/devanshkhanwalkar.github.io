@@ -1,0 +1,16 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+
+
+.ng-dirty.ng-invalid
+{
+	border-color:#eb4141;
+	
+}
+
+.ng-dirty.ng-valid
+{
+	border-color:#007526;
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="store">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="application.css" rel="stylesheet" />
+<script src="includes/js/angular.min.js" type="text/javascript"></script>
+
+<script src="includes/js/app.js"></script>
+
+</head>
+<div id="app"></div>
+<body ng-controller="storeController as store">
+	<div >
+    
+		<ul class="list-group">
+			<li class="list-group-item" ng-repeat="product in store.products">
+				<product-title></product-title>
+				<div class="gallery" ng-show="product.images.length">
+          			<img class="img img-circle img-thumbnail center-block" ng-src="{{product.images[0]}}" />
+          			<ul class="clearfix">
+            			<li class="small-image pull-left thumbnail" ng-repeat="image in product.images"> <img ng-src="{{image}}" /> </li>
+          			</ul>
+       		 	</div>
+
+
+				<section ng-controller="panelController as panel">
+					<ul class="nav nav-pills">
+						<li ng-class="{active:panel.isSelected(1)}">
+							<a href ng-click="panel.selectTab(1)">Description</a>
+						</li>
+						
+                        <li ng-class="{active:panel.isSelected(2)}">
+							<a href ng-click="panel.selectTab(2)">Specifications</a>
+						</li>
+						
+                        <li ng-class="{active:panel.isSelected(3)}">
+							<a href ng-click="panel.selectTab(3)">Reviews</a>
+						</li>
+					</ul>
+                
+				
+                    <div class="panel" ng-show="panel.isSelected(1)">
+                        <h4>Description</h4>
+                        <p>{{product.description}}</p>
+                    </div>
+                    <div class="panel" ng-show="panel.isSelected(2)">
+                        <h4>Specification</h4>
+                        <p>Shine:{{product.shine}}</p>
+                        <p>Rarity:{{product.rarity}}</p>
+                        <p>Color:{{product.color}}</p>
+                        <p>Faces:{{product.faces}}</p>
+                    </div>
+                    <div class="panel" ng-show="panel.isSelected(3)">
+                        <ul>
+                        <h4>Reviews</h4>
+                        	
+                        	<li ng-repeat="review in product.reviews">
+                        		<strong>{{review.stars}} stars</strong>
+                            	{{review.body}}
+                            	{{review.author}}
+                            </li>
+                            
+                        </ul>
+                        
+                        <form name="reviewForm" ng-controller="reviewController as reviewCtrl" ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>
+              <!--  Live Preview -->
+              <blockquote>
+                <strong> {{reviewCtrl.review.stars}}Stars</strong>
+                {{reviewCtrl.review.body}}
+                <cite class="clearfix">—{{reviewCtrl.review.author}}</cite>
+              </blockquote>
+
+              <!--  Review Form -->
+              <h4>Submit a Review</h4>
+              <fieldset class="form-group">
+                <select class="form-control" ng-options="stars for stars in [5,4,3,2,1]" ng-model="reviewCtrl.review.stars" title="Stars" required>
+                  <option value="">Rate the Product</option>
+                </select>
+              </fieldset>
+              <fieldset class="form-group">
+                <textarea class="form-control" ng-model="reviewCtrl.review.body" placeholder="Write a short review of the product..." title="Review" required></textarea>
+              </fieldset>
+              <fieldset class="form-group">
+                <input type="email" class="form-control" ng-model="reviewCtrl.review.author" placeholder="jimmyDean@example.org" title="Email" required/>
+              </fieldset>
+              <fieldset class="form-group">
+                <input type="submit" class="btn btn-primary pull-right" value="Submit Review" />
+              </fieldset>
+            </form>
+                        
+                    </div>
+
+				<button ng-show="product.canPurchase">Add to cart</button>
+                </section>
+			</li>
+		</ul>
+	</div>
+    <script src="includes/js/bundle.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+</body>
+</html>
