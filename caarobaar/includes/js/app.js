@@ -6,13 +6,8 @@
 var app=angular.module('store',[]);
 
 var login=false;
-app.controller('load',function($scope){
-	$scope.onLoad=function(){
-		alert("aasa");
-		
-		};									  
-										  
-										  });
+var count=0;	
+var cart=[];
 app.controller('loginController',function($scope){
 										  
 	$scope.isLoggedIn=function()
@@ -45,16 +40,31 @@ app.controller('loginController',function($scope){
 										  });
 
 app.controller('cartController',function($scope){
-	//$scope.count=0;			  
+	this.items=cart;
+	$scope.c=count;		  
 	$scope.showCart=function(){	
 	$('#cartModal').modal('show');
 	};
 	
-	/*$scope.nocars=function(){
-		$scope.count++;
-		alert($scope.count);
+	$scope.nocars=function(product){
+		alert(JSON.stringify(product));
+		cart.push(product);
+		count++;
+		$scope.c=count;
+		$("span.badge").html($scope.c);
+		//alert($scope.c);
 		//$scope.$apply();
-		};*/
+		};
+		
+		$scope.getTotal=function()
+		{
+			var total=0;
+			for(var i = 0; i < $scope.cart.items.length; i++){
+        		var p = $scope.cart.items[i];
+       	 		total += p.price;
+    		}
+    		return total;
+		}
 										  });
 app.controller('storeController',function(){
 										  

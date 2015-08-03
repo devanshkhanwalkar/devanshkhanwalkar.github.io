@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" ng-app="store">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Caar-o-baar</title>
+<title>Caar-O-Baar |</title>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
 <link href="includes/css/application.css" rel="stylesheet" />
 <script src="includes/js/angular.min.js" type="text/javascript"></script>
@@ -65,6 +65,22 @@
         <h4 class="modal-title" id="cartModalLabel">your cart</h4>
       </div>
       <div class="modal-body">
+      	<div class="cartlist" ng-controller="cartController as cart">
+        	<ul class="list-group">
+			<li class="list-group-item" style="height:auto;" ng-repeat="item in cart.items">
+            
+            	<span class="pull-left text-center"><img ng-src="{{item.images[0]}}" width="50" height="50" /></span>
+                <span>{{item.name}}</span>
+                <span style="float:right;">{{item.price}}</span>
+                <span class="clearfix"></span>
+            </li>
+            <li class="list-group-item">
+            	<span>TOTAL AMOUNT</span>
+                <span style="float:right; color:#337AB7;">{{getTotal()}}</span>
+            </li>
+            </ul>
+        </div>
+        </div>
        <!-- <form>
           <div class="form-group">
             <label for="username" class="control-label">Username</label>
@@ -77,8 +93,7 @@
         </form>-->
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Login</button>
+        
       </div>
     </div>
   </div>
@@ -108,7 +123,7 @@
                         <a class="page-scroll" ng-controller="loginController as login" ng-click="isLoggedIn()"><span><img src="includes/img/Accounts-Book-24.png"/></span>Account</a>
                     </li>
                     <li>
-                        <a class="page-scroll" ng-controller="cartController as cart" ng-click="showCart()"><span><img src="includes/img/Shopping-Cart-01-24.png"/></span>Cart <span class="badge">{{cart.count}}</span></a>
+                        <a class="page-scroll" ng-controller="cartController as cart" ng-click="showCart()"><span><img src="includes/img/Shopping-Cart-01-24.png"/></span>Cart <span class="badge">{{c}}</span></a>
                     </li>
                     <li>
                         <a href="#" data-toggle="modal" data-target="#fModal"><span><img src="includes/img/Heart-24 (1).png"/></span>Favourites</a>
@@ -201,7 +216,7 @@
                         
                     </div>
 
-				<button class="btn btn-warning" ng-controller="cartController as cart" ng-init="count=0"  ng-click="count=count+1" ng-show="product.canPurchase">Add to cart</button>
+				<button class="btn btn-warning" ng-controller="cartController as cart" ng-click="nocars(product)" ng-show="product.canPurchase">Add to cart</button>
                 </section>
 			</li>
 		</ul>
