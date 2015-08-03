@@ -53,9 +53,11 @@ var gems = [{
       color: '#CCC',
       faces: 14,
       images: [
-        "images/gem-02.gif",
-        "images/gem-05.gif",
-        "images/gem-09.gif"
+        "http://images0.cardekho.com/images/car-images/520x216/Jaguar/Jaguar-XF/047.jpg",
+        "http://images0.cardekho.com/images/carinteriorimages/910x378/Jaguar/Jaguar-XF/059.jpg",
+        "http://images0.cardekho.com/images/carexteriorimages/910x378/Jaguar/Jaguar-XF/118.jpg",
+		"http://images0.cardekho.com/images/carexteriorimages/910x378/Jaguar/Jaguar-XF/047.jpg",
+		"http://images0.cardekho.com/images/carexteriorimages/910x378/Jaguar/Jaguar-XF/090.jpg"
       ],
       reviews: [{
         stars: 5,
