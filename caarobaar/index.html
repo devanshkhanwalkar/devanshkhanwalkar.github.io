@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Untitled Document</title>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
-<link href="application.css" rel="stylesheet" />
+<link href="includes/css/application.css" rel="stylesheet" />
 <script src="includes/js/angular.min.js" type="text/javascript"></script>
 
 <script src="includes/js/app.js"></script>
@@ -12,21 +12,23 @@
 </head>
 <div id="app"></div>
 <body ng-controller="storeController as store">
-	<div >
+	<div class="container">
     
 		<ul class="list-group">
-			<li class="list-group-item" ng-repeat="product in store.products">
+			<li class="list-group-item well" ng-repeat="product in store.products">
 				<product-title></product-title>
+                
 				<div class="gallery" ng-show="product.images.length">
           			<img class="img img-circle img-thumbnail center-block" ng-src="{{product.images[0]}}" />
           			<ul class="clearfix">
-            			<li class="small-image pull-left thumbnail" ng-repeat="image in product.images"> <img ng-src="{{image}}" /> </li>
+                    <hr />
+            			<li class="small-image pull-left text-center thumbnail" ng-repeat="image in product.images"> <img ng-src="{{image}}" /> </li>
           			</ul>
        		 	</div>
-
+				<hr />
 
 				<section ng-controller="panelController as panel">
-					<ul class="nav nav-pills">
+					<ul class="nav nav-pills nav-justified">
 						<li ng-class="{active:panel.isSelected(1)}">
 							<a href ng-click="panel.selectTab(1)">Description</a>
 						</li>
@@ -98,7 +100,8 @@
 		</ul>
 	</div>
     <script src="includes/js/bundle.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    
 </body>
 </html>
