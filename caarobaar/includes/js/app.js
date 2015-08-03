@@ -4,6 +4,58 @@
 		   
 		   
 var app=angular.module('store',[]);
+
+var login=false;
+app.controller('load',function($scope){
+	$scope.onLoad=function(){
+		alert("aasa");
+		
+		};									  
+										  
+										  });
+app.controller('loginController',function($scope){
+										  
+	$scope.isLoggedIn=function()
+	{
+		if(!login)
+		{
+			$(".error").html("<font color='#eb4141'>Wrong username Password!</font>");
+			$('#loginModal').modal('show');
+		}
+	};
+	
+	$scope.signin=function()
+	{
+		var username=$("#username").val();
+		var password=$("#password").val();
+		if(username=='devansh151@gmail.com'&&password=='devansh')
+		{
+			$("li.acc").html('<a class="page-scroll" ng-controller="loginController as login" ng-click="isLoggedIn()">Welcome Devansh</a>');
+			login=true;
+		}
+		else
+		{
+			$("li.acc").html('<a class="page-scroll" ng-controller="loginController as login" ng-click="isLoggedIn()">Account</a>');
+			$(".error").html("<font color='#eb4141'>Wrong username Password!</font>");
+		}
+	};
+								  
+										  
+										  
+										  });
+
+app.controller('cartController',function($scope){
+	//$scope.count=0;			  
+	$scope.showCart=function(){	
+	$('#cartModal').modal('show');
+	};
+	
+	/*$scope.nocars=function(){
+		$scope.count++;
+		alert($scope.count);
+		//$scope.$apply();
+		};*/
+										  });
 app.controller('storeController',function(){
 										  
 				this.products=cars;						  
@@ -21,12 +73,6 @@ app.controller('panelController',function(){
 				return this.tab===checkTab;
 				
 				};
-				
-				this.isSelectedDesc=function(){
-					
-					return this.description;
-					
-					};
 					});
 
 app.controller('reviewController',function(){
@@ -59,6 +105,7 @@ var cars = [{
       power: '502.9bhp @ 6000-6500rpm',
       mileage: 11.6,
       centralLocking: 'standard',
+	  canPurchase:true,
       images: [
         "http://images0.cardekho.com/images/car-images/520x216/Jaguar/Jaguar-XF/047.jpg",
         "http://images0.cardekho.com/images/carinteriorimages/910x378/Jaguar/Jaguar-XF/059.jpg",
@@ -87,6 +134,7 @@ var cars = [{
       power: '184bhp @ 4000rpm',
       mileage: 19.59,
       centralLocking: 'standard',
+	  canPurchase:true,
       images: [
         "http://images0.cardekho.com/images/car-images/520x216/BMW/BMW-3-Series/glacier-silver.jpg",
         "http://images0.cardekho.com/images/carexteriorimages/910x378/BMW/BMW-3-Series/118.jpg",
@@ -115,6 +163,7 @@ var cars = [{
       power: '523bhp @ 4900rpm',
       mileage: 7.81,
       centralLocking: 'standard',
+	  canPurchase:true,
       images: [
         "http://images0.cardekho.com/images/car-images/520x216/Mercedes-Benz/Mercedes-Benz-S-Class/Iridium-Silver.jpg",
         "http://images0.cardekho.com/images/carexteriorimages/910x378/Mercedes-Benz/Mercedes-Benz-S-Class/121.jpg",
@@ -143,6 +192,7 @@ var cars = [{
       power: '167.62bhp @ 3800-6200rpm',
       mileage: 15.64,
       centralLocking: 'standard',
+	  canPurchase:true,
       images: [
         "http://images0.cardekho.com/images/car-images/520x216/Audi/Audi-A4/florett-siver.metallic.jpg",
         "http://images0.cardekho.com/images/carexteriorimages/910x378/Audi/Audi-A4/118.jpg",
@@ -172,6 +222,7 @@ var cars = [{
       power: '544bhp @ 5250rpm',
       mileage: 7.46,
       centralLocking: 'standard',
+	  canPurchase:true,
       images: [
         "http://images0.cardekho.com/images/car-images/520x216/BMW/BMW-7-Series/midnight-blue.jpg",
         "http://images0.cardekho.com/images/carexteriorimages/910x378/BMW/BMW-7-Series/118.jpg",
@@ -200,6 +251,7 @@ var cars = [{
       power: '306bhp @ 5700rpm',
       mileage: 19.6,
       centralLocking: 'standard',
+	  canPurchase:true,
       images: [
         "http://images0.cardekho.com/images/car-images/520x216/Volvo/Volvo-S60/047.jpg",
         "http://images0.cardekho.com/images/carexteriorimages/910x378/Volvo/Volvo-S60/120.jpg",
@@ -228,6 +280,7 @@ var cars = [{
       power: '552.5bhp @ 5700-6600rpm',
       mileage: 10.41,
       centralLocking: 'standard',
+	  canPurchase:true,
       images: [
         "http://images0.cardekho.com/images/car-images/520x216/Audi/Audi-RS6/Nardo-grey.jpg",
         "http://images0.cardekho.com/images/car-images/910x378/Audi/Audi-RS6/047.jpg",
@@ -256,6 +309,7 @@ var cars = [{
       power: '563bhp @ 5250rpm',
       mileage: 10.20,
       centralLocking: 'standard',
+	  canPurchase:true,
       images: [
         "http://images0.cardekho.com/images/car-images/520x216/Rolls-Royce/Rolls-Royce-Ghost/047.jpg",
         "http://images0.cardekho.com/images/car-images/910x378/Rolls-Royce/Rolls-Royce-Ghost/diamond-black.jpg",
@@ -284,6 +338,7 @@ var cars = [{
       power: '552.5bhp @ 5700-6600rpm',
       mileage: 13.30,
       centralLocking: 'standard',
+	  canPurchase:true,
       images: [
         "http://images0.cardekho.com/images/car-images/520x216/Audi/Audi-RS7/audi-rs7-phantom-black-pearl-effect.jpg",
         "http://images0.cardekho.com/images/car-images/910x378/Audi/Audi-RS7/audi-rs7-ibis-white.jpg",
@@ -312,6 +367,7 @@ var cars = [{
       power: '530bhp @ 4200rpm',
       mileage: 10.10,
       centralLocking: 'standard',
+	  canPurchase:true,
       images: [
         "http://images0.cardekho.com/images/car-images/520x216/Bentley/Bentley-Mulsanne/bentley-mulsanne-black-sapphire.jpg",
         "http://images0.cardekho.com/images/car-images/910x378/Bentley/Bentley-Mulsanne/bentley-mulsanne-alpine-green.jpg",
@@ -340,6 +396,7 @@ var cars = [{
       power: '616bhp @ 6000rpm',
       mileage: 10.20,
       centralLocking: 'standard',
+	  canPurchase:true,
       images: [
         "http://images0.cardekho.com/images/car-images/520x216/Bentley/Bentley-Flying-Spur/extreme-silver.jpg",
         "http://images0.cardekho.com/images/car-images/910x378/Bentley/Bentley-Flying-Spur/glacier-white.jpg",
@@ -368,6 +425,7 @@ var cars = [{
       power: '570bhp @ 6000rpm',
       mileage: 12.98,
       centralLocking: 'standard',
+	  canPurchase:true,
       images: [
         "http://images0.cardekho.com/images/car-images/520x216/Porsche/Porsche-Panamera/Ruby-Red-Metallic.jpg",
         "http://images0.cardekho.com/images/car-images/910x378/Porsche/Porsche-Panamera/Black.jpg",
@@ -396,6 +454,7 @@ var cars = [{
       power: '470bhp @ 6000rpm',
       mileage: 10.90,
       centralLocking: 'standard',
+	  canPurchase:true,
       images: [
         "http://images0.cardekho.com/images/car-images/520x216/Aston-Martin/Aston-Martin-Rapide/aston-martin-rapide-s-red-lion.jpg",
         "http://images0.cardekho.com/images/car-images/910x378/Aston-Martin/Aston-Martin-Rapide/aston-martin-rapide-s-amethyst-red.jpg",
@@ -424,6 +483,7 @@ var cars = [{
       power: '530bhp @ 6500rpm',
       mileage: 11.76,
       centralLocking: 'standard',
+	  canPurchase:true,
       images: [
         "http://images0.cardekho.com/images/car-images/520x216/Maserati/Maserati-Quattroporte/047.jpg",
         "http://images0.cardekho.com/images/car-images/910x378/Maserati/Maserati-Quattroporte/ROSSO-FOLGORE.jpg",
@@ -452,6 +512,7 @@ var cars = [{
       power: '530bhp @ 6500rpm',
       mileage: 11.76,
       centralLocking: 'standard',
+	  canPurchase:true,
       images: [
         "http://images0.cardekho.com/images/car-images/520x216/Audi/Audi-R8/audi-r8-estorill-blue-crysta.jpg",
         "http://images0.cardekho.com/images/car-images/910x378/Audi/Audi-R8/audi-r8-ibis-white.jpg",
