@@ -47,7 +47,7 @@ app.controller('cartController',function($scope){
 	};
 	
 	$scope.nocars=function(product){
-		alert(JSON.stringify(product));
+		//alert(JSON.stringify(product));
 		cart.push(product);
 		count++;
 		$scope.c=count;
