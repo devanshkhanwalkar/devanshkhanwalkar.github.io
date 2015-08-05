@@ -287,6 +287,11 @@
                                 	<input type="text" name="category" id="category" class="form-control" placeholder="Category.." value="Health" disabled/>
                                 </div>
 							</div>
+                            <div class="tab-pane fade in" id="editarticle">
+                            	<div class="formarea">
+                                </div>
+                                
+                            </div>
                             </div>
                           </div>
                           <div class="row replybar text-center">
@@ -304,8 +309,8 @@
                            <span class="btn btn-primary btn-fab btn-raised mdi-content-add createquestion" data-toggle="tooltip" data-placement="left" title="Create Question"></span>
                       </div>
                       <div class="col-md-9 rightpanel">
-                      	<ul id="articletab" class="nav nav-tabs nav-justified">
-                                <li class="hidden" id="questiontab1">
+                      	<ul id="questiontab" class="nav nav-tabs nav-justified">
+                                <li id="questiontab1" class="hidden">
                                     <a href="#createquestion" data-toggle="tab">
                                     Create Question
                                     </a>
@@ -316,7 +321,7 @@
                                     </a>
                                 </li>-->
                                  <li id="questiontab2" class="hidden">
-                                    <a href="#editarticle" data-toggle="tab">
+                                    <a href="#editquestion" data-toggle="tab">
                                     Edit Question
                                     </a>
                                 </li>
@@ -411,7 +416,13 @@
                                        </div>
                                     </div>
                                 </div>
+                                
 							</div>
+                            <div class="tab-pane fade in" id="editquestion">
+                            	<div class="formarea">
+                                </div>
+                                
+                            </div>
                             </div>
                           </div>
                           <div class="row replybar text-center">

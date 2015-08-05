@@ -450,7 +450,9 @@ $(document).ready(function() {
 		function getarticle(userid)
 		{
 			var info=JSON.stringify(articleIds[userid]);
-			$("#articletasks .lastnmsg .lastnmsgbox").html(info);
+			$("#editarticle .formarea").html(info);
+			$('#articletab a[href="#editarticle"]').tab('show');
+			$(".replybar").html('');
 		}
 		
 		$(document).on('click', '#questiontasks .discussion li', function() {
@@ -467,9 +469,24 @@ $(document).ready(function() {
 		function getquestion(userid)
 		{
 			var info=JSON.stringify(questionIds[userid]);
-			$("#questiontasks .lastnmsg .lastnmsgbox").html(info);
+			$("#editquestion .formarea").html(info);
+			$('#questiontab a[href="#editquestion"]').tab('show');
+			$(".replybar").html('');
+			
 		}
-		
+		/*function concatObject(obj) { 
+		//alert(JSON.stringify(obj));
+			strArray = []; //new Array 
+			
+			$.each(obj, function(key, value){
+								 var i=0;
+				$.each(obj[i], function(key, value){
+    				strArray.push(key+' : '+value);
+									 });
+				i++;
+			})
+			return strArray.join("<br />"); 
+		} */
 		
         $(document).on('click', '.createuser', function() {
 
@@ -493,9 +510,9 @@ $(document).ready(function() {
 
 
             //$(".topbarpanel .rightpanel").html("Creating user...");
-			
+			//$("#questiontasks .lastnmsg .lastnmsgbox").html("");
             $(".replybar").html('<a href="javascript:void(0)" class="btn-sm btn-success createquestionbutton">Create Question</a>');
-			$('#articletab a[href="#createquestion"]').tab('show');
+			$('#questiontab a[href="#createquestion"]').tab('show');
 
         });
 
