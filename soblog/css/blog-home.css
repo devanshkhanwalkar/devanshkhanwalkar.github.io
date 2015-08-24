@@ -1,0 +1,177 @@
+/*!
+ * Start Bootstrap - Blog Home HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+body {
+    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+body
+{
+	background:#f7F7F7;
+}
+::selection
+{
+	background:#5cb85c;
+	color:#fff;
+}
+::-moz-selection
+{
+	background:#5cb85c;
+	color:#fff;
+}
+.navbar-nav li a {
+ line-height: 50px;
+}
+.navbar-nav li a:hover {
+ color:#333;
+}
+.navbar-nav.navbar-left li:after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: auto;
+    margin: 5% -1px 0;
+    height: 20px;
+    width: 1px;
+    background-color: #ededed;
+    background-image: -moz-linear-gradient(top, #fcfcfc, #d6d6d6);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fcfcfc), to(#d6d6d6));
+    background-image: -webkit-linear-gradient(top, #fcfcfc, #d6d6d6);
+    background-image: -o-linear-gradient(top, #fcfcfc, #d6d6d6);
+    background-image: linear-gradient(to bottom, #fcfcfc, #d6d6d6);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffcfcfc', endColorstr='#ffd6d6d6', GradientType=0);
+}
+.navbar-nav.navbar-left li:hover {
+    
+    background-color: #ededed;
+    background-image: -moz-linear-gradient(top, #fcfcfc, #d6d6d6);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fcfcfc), to(#d6d6d6));
+    background-image: -webkit-linear-gradient(top, #fcfcfc, #d6d6d6);
+    background-image: -o-linear-gradient(top, #fcfcfc, #d6d6d6);
+    background-image: linear-gradient(to bottom, #fcfcfc, #d6d6d6);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffcfcfc', endColorstr='#ffd6d6d6', GradientType=0);
+}
+.navbar.navbar-fixed-top,.navbar-header
+{
+	background:#fff;
+	height:auto;
+}
+.navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse {
+    height:auto;
+	max-height:700px;
+}
+.navbar-fixed-top .navbar-collapse li a:hover
+{
+	background:none;
+}
+.navbar-toggle,.icon-bar
+{
+	background:none;
+	border:1px solid #F89924;
+}
+.navbar.navbar-fixed-top
+{
+	border-bottom:1px solid #bbb;
+}
+.page-heading-row
+{
+	background:#F7F7F7;
+	box-shadow:0px 0xp 1px #F7F7F7;
+}
+h4
+{
+	color:#0C6611;
+}
+h1.page-header
+{
+	color:#0C6611;
+}
+.discuss-textarea
+{
+	width:100%;
+}
+.newsletter-img
+{
+	width:100%;
+	height:auto;
+}
+footer
+{
+	background:url(../img/footer_background.png) repeat;
+	color:#fff;
+	padding:50px;
+	
+}
+a
+{
+	color:#333;
+}
+a:hover
+{
+	text-decoration:none;
+	color:#0c6611;
+}
+
+ul
+{
+	list-style:none;
+}
+footer h4
+{
+	margin-bottom:15px;
+	text-decoration:underline;
+	color:#fff;
+}
+footer li a
+{
+	color:#ddd;
+}
+footer li a:hover
+{
+	color:#fff;
+}
+
+.main-blog-area
+{
+	background:#fff;
+	padding:50px;
+}
+.blog-post-card
+{
+	margin-top:50px;
+	border:10px solid #D8D8D8;
+	box-shadow: inset 0px 1px 10px rgba #D8D8D8;
+	padding:20px;
+}
+.glyphicon.glyphicon-headphones
+{
+	color:#6D6D6D;
+}
+.glyphicon.glyphicon-headphones:hover
+{
+	color:#000;
+}
+.nav.navbar-nav.navbar-right li a:hover
+{
+	background:none;
+}
+.log-in
+{
+	background:#333;
+	border:1px solid #333;
+}
+.log-in:hover
+{
+	background:#000;
+	border:1px solid #000;
+}
+@media (max-width: 768px) {
+	.navbar-brand img
+	{
+		height:30px;
+	}
+}
