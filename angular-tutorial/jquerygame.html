@@ -1,0 +1,193 @@
+<html>
+<head>
+<title>4096 Devansh</title>
+<meta property="og:title" content="4096 game" />
+            <meta property="og:description" content="2048..4096..STOP it! now generalized.. feed your custom power of two and enjoy! How far can you go?" />
+            <meta property="og:type" content="jquery game by devansh khanwalkar" />
+            <meta property="og:url" content="http://devanshkhanwalkar.github.io" />
+            <link rel="shortcut icon" href="https://cloud.githubusercontent.com/assets/5525512/3385391/b8db63f8-fc69-11e3-8d6b-d6145238bc5a.png"  type="image/x-icon">
+<link href="style.css" rel="stylesheet" />
+	<script src="jquery.js"></script>
+    <script src="amazingslider.js"></script>
+    <script src="initslider-1.js"></script>
+
+<script src="game.js" type="text/javascript">
+</script>
+
+<script>
+
+function show()
+{
+	
+	if(document.getElementById("power").style.display=="block")
+	document.getElementById("power").style.display="none";
+	else
+	document.getElementById("power").style.display="block";
+}
+</script>
+</head>
+<body>
+<div id="wrapper">
+
+<center>
+<div id="logo">
+
+<h1 id="title"></h1>
+<h5>Awesomely addictive!</h5>
+
+</div>
+</center>
+<div id="header">
+
+<ul>
+<li class="sc">score<br>
+<input type="text" id="score" class="score" disabled></li>
+<li class="mv">moves<br>
+<input type="text" id="moves" class="moves" disabled></li>
+<li><input type="button" id="refresh" value="Restart" onClick="restart()" ></li>
+</ul>
+
+</div>
+
+<div id="slider">
+<div class="feed" >
+<div id="feedleft">
+<h1 style="font-family:'Comic Sans MS', cursive;">2<sup>n --></sup></h1>
+</div>
+<div id="feedrite">
+<img src="https://cloud.githubusercontent.com/assets/5525512/3385391/b8db63f8-fc69-11e3-8d6b-d6145238bc5a.png
+" width="50" style="cursor:pointer;" id="box" onClick="show()" />		
+<table id="power" style="display:none;">
+<tr><td><input type="text" id="pow" onKeyUp="init(12)" placeholder="custom"/></td></tr> 
+<tr><td id="p9" onClick="init(9)">9</td></tr>			
+<tr><td id="p10" onClick="init(10)">10</td></tr>           
+<tr><td id="p11" onClick="init(11)">11</td></tr>
+<tr><td id="p12" onClick="init(12)">12</td></tr>
+<tr><td id="p13" onClick="init(13)">13</td></tr>
+<tr><td id="p14" onClick="init(14)">14</td></tr>
+<tr><td id="p15" onClick="init(15)">15</td></tr>
+<tr><td id="p16" onClick="init(16)">16</td></tr>
+<tr><td id="p17" onClick="init(17)">17</td></tr>
+<tr><td id="p18" onClick="init(18)">18</td></tr>
+<tr><td id="p19" onClick="init(19)">19</td></tr>
+</table>
+</div>
+</div>
+
+
+
+<table id="myTable" class="schedule" >
+<tr>
+<td>
+<input type="button" id="00" value="" class="b">
+</td>
+<td>
+<input type="button" id="01" value="" class="b">
+</td>
+<td>
+<input type="button" id="02" value="" class="b">
+</td>
+<td>
+<input type="button" id="03" value="" class="b">
+</td>
+</tr>
+
+<tr>
+<td>
+<input type="button" id="10" value="" class="b">
+</td>
+<td>
+<input type="button" id="11" value="" class="b">
+</td>
+<td>
+<input type="button" id="12" value="" class="b">
+</td>
+<td>
+<input type="button" id="13" value="" class="b">
+</td>
+</tr>
+
+<tr>
+<td>
+<input type="button" id="20" value="" class="b">
+</td>
+<td>
+<input type="button" id="21" value="" class="b">
+</td>
+<td>
+<input type="button" id="22" value="" class="b">
+</td>
+<td>
+<input type="button" id="23" value="" class="b">
+</td>
+</tr>
+
+<tr>
+<td>
+<input type="button" id="30" value="" class="b"> 
+</td>
+<td>
+<input type="button" id="31" value="" class="b">
+</td>
+<td>
+<input type="button" id="32" value="" class="b">
+</td>
+<td>
+<input type="button" id="33" value="" class="b">
+</td>
+</tr>
+</table>
+
+<div style="margin:100px auto;max-width:411px;float:left;position:relative;left:50px;">
+    
+    <!-- Insert to your webpage where you want to display the slider -->
+    <div id="amazingslider-1" style="display:block;position:relative;margin:16px auto 32px;">
+        <ul class="amazingslider-slides" style="display:none;">
+            <li><img src="https://cloud.githubusercontent.com/assets/5525512/3426512/1e959c6a-0023-11e4-8ec1-d73ba1cc8442.png" /></li>
+            <li><img src="https://cloud.githubusercontent.com/assets/5525512/3426513/1ecd2d10-0023-11e4-825b-58f553c573ae.png" /></li>
+        </ul>
+        
+    <!-- End of body section HTML codes -->
+    
+</div>
+
+</div>
+
+<center>
+<div id="disqus_thread"></div></center>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = '4096devansh'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<div id="footer">
+&COPY; Devansh Khanwalkar | NIT Trichy
+</div>
+
+
+<br clear="all"/>
+</div>
+
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = '4096devansh'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+    </script>
+</body>
+</html>
