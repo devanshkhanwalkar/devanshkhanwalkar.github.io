@@ -59,6 +59,10 @@ window.gon = {};gon.flash={};gon.bounce_modal_settings={"type":"","show":false,"
 </div></div><div class="iquestion-footer"><a class="iquestion-answer_link"><span class="iquestion-answer_icon"></span><span class="iquestion-answer_text">code goes here &rarr;</span></a><a class="iquestion-twitter_link" data-pass-click-event="true" href="https://twitter.com/share?url=http%3A%2F%2Fwww.toptal.com%2Fjavascript%2Finterview-questions.html%23iquestion-14&amp;text=Great%20JavaScript%20Interview%20Questions&amp;via=toptalllc" onClick="javascript:window.open(this.href, &#39;&#39;, &#39;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600&#39;);return false;" target="_blank" title="share on twitter"></a><a class="iquestion-facebook_link" data-pass-click-event="true" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.toptal.com%2Fjavascript%2Finterview-questions.html%23iquestion-14&amp;t=Toptal%20JavaScript%20Interview%20Questions" onClick="javascript:window.open(this.href, &#39;&#39;, &#39;menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600&#39;);return false;" target="_blank" title="Share on Facebook"></a></div></div></div><div class="iquestion_answer"><div class="iquestion_answer-wrapper" data-role="iquestion-answer"><div class="iquestion_answer-inner"><div class="iquestion_answer-icon"></div><div class="iquestion_answer-body content_body is-small" data-view="content#body">
 
 <p>index.html<br><code>&lt;!DOCTYPE html &gt;<br>
+&lt;link href="bootstrap.min.css" rel="stylesheet"/&gt;
+&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script src="angular.min.js"&gt;&lt;/script&gt;
+&lt;script src="app.js"&gt;&lt;/script&gt;
 &lt;html &gt;<br>
 &lt;body &gt;<br>
 .........<br>
@@ -70,6 +74,11 @@ window.gon = {};gon.flash={};gon.bounce_modal_settings={"type":"","show":false,"
 function StoreController(){<br>
 alert('welcome to my tutorial!,folks :-)');<br>
 }<br>
+<br>
+$(document).ready(function(){<br>
+	StoreController();<br>
+<br>	
+});
 </code>
 </p>
 
@@ -131,17 +140,17 @@ var app=angular.module('store',[]);<br>
 <p>
 
 but this module has to be included in our HTML that tells it to invoke<br>
-<p>index.html<br><code>&lt; !DOCTYPE html &gt;<br>
-<font class="red">&lt; html ng-app="store"&gt;</font><br>
-&lt; head &gt;<br>
+<p>index.html<br><code>&lt;!DOCTYPE html&gt;<br>
+<font class="red">&lt;html ng-app="store"&gt;</font><br>
+&lt;head&gt;<br>
 &lt;link href="bootstrap.min.css" rel="stylesheet"/&gt;<br>
 &lt;script src="angular.min.js"&gt;&lt;/script&gt;<br>
 &lt;script src="app.js"&gt;&lt;/script&gt;<br>
-&lt;/head &gt;<br>
-&lt; body &gt;<br>
+&lt;/head&gt;<br>
+&lt;body&gt;<br>
 .........<br>
-&lt /body &gt;<br>
-&lt; /html &gt;<br>
+&lt/body&gt;<br>
+&lt;/html&gt;<br>
 </code> </p>
 
 <p>No need to code! just copy the code area and replace whole content of your index.html and/or app.js file with this content and run it in browser.</p>
@@ -165,6 +174,29 @@ but this module has to be included in our HTML that tells it to invoke<br>
 <p>
 
 we create an object "gem" and store it in the "StoreController"<br>
+<p>index.html<br><code><!DOCTYPE html ><br>
+<html ng-app="store"><br>
+<head ><br>
+<link href="bootstrap.min.css" rel="stylesheet"/><br>
+<script src="angular.min.js"></script><br>
+<script src="app.js"></script><br>
+</head ><br>
+<body ><br>
+<div class="container-fluid"><br>
+<div ng-controller="StoreController as store"><br>
+<ul class="list-group"><br>
+<li class="list-group-item" ><br>
+<h1 class="text-primary">name</h1><br>
+<h2><small>$ price</small></h2><br>
+<h3><small>description</small></h3><br>
+</li><br>
+</ul><br>
+</div><br>
+</div><br>
+</body ><br>
+</html ><br>
+</code> </p>
+
 <p>app.js<br><code>
 (function (){<br>
 		   
